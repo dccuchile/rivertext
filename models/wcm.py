@@ -117,16 +117,14 @@ class WordContextMatrix(IncrementalWordVector):
             idxs.append(self.vocab.word2idx.get(token, -1))
         return idxs
     
-    def _get_embeddings(self, idxs):
-        embs = np.array([self.get_embedding(idx) for idx in idxs])
+    def get_embeddings(self, idxs):
+        words = [self.vocab.idx2word[idx] for idx in idxs]
+        embs = np.array([self.transform_one(word) for word in words])
         return sparse.lil_matrix(embs)
 
 
-    def transform_one(self, x: dict):
-    
-        ...
-
-    def get_embedding(self, idx):
+    def transform_one(self, x):
+        idx = self.vocab.word2idx[x]
         if idx in self.vocab.idx2word:
             contexts_ids = self.coocurence_matrix[idx].nonzero()[1]
             embedding = [0.0 for _ in range(self.context_size)]
@@ -135,12 +133,12 @@ class WordContextMatrix(IncrementalWordVector):
                     (self.d * self.coocurence_matrix[idx, cidx]) / (self.vocab.counter[idx] * self.contexts.counter[cidx])
                 )
                 embedding[cidx] = max(0.0, value)
-            return embedding    
+        return embedding     
 
     def reduced_emb2dict(self):
         if self.reduced_emb_dim:
             indexes = np.array(list(self.modified_words), dtype=float)
-            embs = self.transformer.fit_transform(self._get_embeddings(indexes))
+            embs = self.transformer.fit_transform(self.get_embeddings(indexes))
 
             self.emb_matrix[indexes] = embs
 
@@ -152,23 +150,17 @@ class WordContextMatrix(IncrementalWordVector):
         return embeddings
 
 
-    def embedding2dict(self, word):
-        if word in self.vocab:
-            emb = self.get_embedding(word)
-            output = numpy2dict(emb) 
-            return output
-        raise ValueError(f"{word} not found in vocabulary.")
     
     def vocab2dict(self):
         embeddings = {}
-        for word, idx in self.vocab.word2idx.items():
-            embeddings[word] = self.get_embedding(idx)
+        for word in self.vocab.word2idx.keys():
+            embeddings[word] = self.transform_one(word)
         return embeddings
 
     def vocab2matrix(self):
         mat = np.empty((self.vocab_size, self.context_size))
         for word, idx in self.vocab.word2idx.items():
-            mat[idx] = self.get_embedding(idx)
+            mat[idx] = self.transform_one(word)
         return sparse.lil_matrix(mat)
 
 

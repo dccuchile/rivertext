@@ -37,9 +37,9 @@ class IncrementalWordVector(Transformer, VectorizerMixin):
         ...
     
 
-    @abc.abstractmethod
-    def get_embedding(self, word):
-        ...
+    # @abc.abstractmethod
+    # def get_embedding(self, word):
+    #     ...
     
     def embedding2dict(self, word):
         emb = self.get_embedding(word)
