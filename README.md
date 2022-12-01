@@ -167,8 +167,8 @@ Bibtex:
 Team
 ====
 
-- `Gabriel Iturra <https://github.com/giturra/>`.
-- `Felipe Bravo-Marquez <https://felipebravom.com/>`_.
+- _`Gabriel Iturra <https://github.com/giturra/>`_.
+- _`Felipe Bravo-Marquez <https://felipebravom.com/>`_.
 
 Contributors
 ------------
