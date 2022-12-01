@@ -64,8 +64,7 @@ class Preprocessing:
         np.random.seed(0)
 
     def reduce_vocab(self) -> None:
-        """_summary_
-        """
+        """_summary_"""
         self.vocab.counter = self.vocab.counter - 1
         for idx, count in list(self.vocab.counter.items()):
             if count == 0:

@@ -49,7 +49,8 @@ class Word2Vec(nn.Module):
                 print("Save embeddings to " + output_vec_path + ".pkl")
                 embs_tmp = {w: embs[wid] for wid, w in id2word.items()}
                 pickle.dump(
-                    embs_tmp, open(output_vec_path + ".pkl", "wb"),
+                    embs_tmp,
+                    open(output_vec_path + ".pkl", "wb"),
                 )
             else:
                 raise FileExistsError("'" + output_vec_path + ".pkl' already exists")

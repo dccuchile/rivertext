@@ -1,6 +1,6 @@
-from river.utils import VectorDict
-
 from typing import Set
+
+from river.utils import VectorDict
 
 
 class Vocab:
