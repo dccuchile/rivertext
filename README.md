@@ -1,33 +1,7 @@
-.. -*- mode: rst -*-
-
-|License|_ |GithubActions|_ |ReadTheDocs|_ |Downloads|_ |Pypy|_ |CondaVersion|_
-
-.. |License| image:: https://img.shields.io/github/license/dccuchile/wefe
-.. _License: https://github.com/dccuchile/wefe/blob/master/LICENSE
-
-.. |ReadTheDocs| image:: https://readthedocs.org/projects/wefe/badge/?version=latest
-.. _ReadTheDocs: https://wefe.readthedocs.io/en/latest/?badge=latest
-
-.. |GithubActions| image:: https://github.com/dccuchile/wefe/actions/workflows/ci.yaml/badge.svg?branch=master
-.. _GithubActions: https://github.com/dccuchile/wefe/actions
-
-.. |Downloads| image:: https://pepy.tech/badge/wefe
-.. _Downloads: https://pepy.tech/project/wefe
-
-.. |Pypy| image:: https://badge.fury.io/py/wefe.svg
-.. _Pypy: https://pypi.org/project/wefe/
-
-.. |CondaVersion| image:: https://anaconda.org/pbadilla/wefe/badges/version.svg
-.. _CondaVersion: https://anaconda.org/pbadilla/wefe
-
-
-WEFE: The Word Embedding Fairness Evaluation Framework
+IWEF: The Incremental Word Embedding  Framework
 ======================================================
 
-.. image:: ./docs/logos/WEFE_2.png
-  :width: 300
-  :alt: WEFE Logo
-  :align: center
+
 
 *Word Embedding Fairness Evaluation* (WEFE) is an open source library for
 measuring an mitigating bias in word embedding models.

@@ -1,3 +1,3 @@
-from .iwv import IncrementalWordVector
+from iwef.models.base import IncrementalWordVector
 
 __all__ = ["IncrementalWordVector"]
