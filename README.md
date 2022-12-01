@@ -167,19 +167,11 @@ Bibtex:
 Team
 ====
 
-
+- `Gabriel Iturra <https://github.com/giturra/>`.
 - `Felipe Bravo-Marquez <https://felipebravom.com/>`_.
 
 Contributors
 ------------
 
 
-We thank all our contributors who have allowed WEFE to grow, especially
-`stolenpyjak <https://github.com/stolenpyjak/>`_ and
-`mspl13 <https://github.com/mspl13/>`_ for implementing new metrics.
 
-We also thank `alan-cueva <https://github.com/alan-cueva/>`_ for initiating the development
-of metrics for contextualized embedding models and
-`harshvr15 <https://github.com/harshvr15/>`_ for the examples of multi-language bias measurement.
-
-Thank you very much 😊!
