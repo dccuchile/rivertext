@@ -1,16 +1,23 @@
 from river.utils import VectorDict
 
+from typing import Set
+
 
 class Vocab:
+    def __init__(self, max_size: int = 1_000_000):
 
-    def __init__(self, max_size: int=1_000_000):
+        if not isinstance(max_size, int):
+            raise TypeError(f"max_size should be int, got {max_size}")
+        if max_size < 0:
+            raise ValueError(f"max_size should be greater than 0, got {max_size}")
+
         self.max_size = max_size
         self.size = 0
 
         self.word2idx = VectorDict()
         self.idx2word = VectorDict()
 
-        self.free_idxs = set()
+        self.free_idxs: Set[int] = set()
 
         self.counter = VectorDict()
 
@@ -30,7 +37,7 @@ class Vocab:
             if self.is_full():
                 self.first_full = True
             return word_idx
-       
+
         elif word in self.word2idx.keys():
             word_idx = self.word2idx[word]
             self.counter[word_idx] += 1
@@ -39,22 +46,22 @@ class Vocab:
     def add_tokens(self, tokens):
         for token in tokens:
             self.add(token)
-    
+
     def is_full(self) -> bool:
         return self.size == self.max_size
-    
+
     def __len__(self) -> int:
         return len(self.word2idx)
-    
+
     def __contains__(self, word: str) -> bool:
         return word in self.word2idx
-    
+
     def __getitem__(self, word: str) -> int:
         if word in self.word2idx:
             word_idx = self.word2idx[word]
             return word_idx
         return -1
-    
+
     def delete(self, idx: int):
         self.free_idxs.add(idx)
         word = self.idx2word[idx]
@@ -65,6 +72,5 @@ class Vocab:
 
 
 class Context(Vocab):
-
     def __init__(self, max_size):
         super().__init__(max_size)

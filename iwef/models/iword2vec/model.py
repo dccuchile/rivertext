@@ -15,12 +15,8 @@ class Word2Vec(nn.Module):
 
         # syn0: embedding for input words
         # syn1: embedding for output words
-        self.syn0 = nn.Embedding(
-            emb_size, emb_dimension, sparse=True, padding_idx=0
-        )
-        self.syn1 = nn.Embedding(
-            emb_size, emb_dimension, sparse=True, padding_idx=0
-        )
+        self.syn0 = nn.Embedding(emb_size, emb_dimension, sparse=True, padding_idx=0)
+        self.syn1 = nn.Embedding(emb_size, emb_dimension, sparse=True, padding_idx=0)
 
         init_range = 0.5 / self.emb_dimension
         init.uniform_(self.syn0.weight.data, -init_range, init_range)
@@ -47,9 +43,7 @@ class Word2Vec(nn.Module):
                         e = " ".join(map(lambda x: str(x), embs[wid]))
                         f.write("%s %s\n" % (w, e))
             else:
-                raise FileExistsError(
-                    "'" + output_vec_path + ".txt' already exists"
-                )
+                raise FileExistsError("'" + output_vec_path + ".txt' already exists")
         else:
             if not os.path.exists(output_vec_path + ".pkl") or overwrite:
                 print("Save embeddings to " + output_vec_path + ".pkl")
@@ -58,36 +52,18 @@ class Word2Vec(nn.Module):
                     embs_tmp, open(output_vec_path + ".pkl", "wb"),
                 )
             else:
-                raise FileExistsError(
-                    "'" + output_vec_path + ".pkl' already exists"
-                )
+                raise FileExistsError("'" + output_vec_path + ".pkl' already exists")
         print("Done")
 
     def get_embedding(self, idx):
         return (self.syn0.weight[idx] + self.syn1.weight[idx]).cpu().detach().numpy()
 
-class SkipGram(Word2Vec):
 
+class SkipGram(Word2Vec):
     def __init__(self, emb_size, emb_dimension):
         super(SkipGram, self).__init__(emb_size, emb_dimension)
 
     def forward(self, target, context, negatives):
-        """t = self.syn1(target)
-        c = self.syn0(context)
-        n = self.syn1(negatives)
-        pos_scores = torch.mul(c, t)
-        pos_scores = torch.sum(pos_scores, dim=1)
-        # pos_scores = torch.einsum("ij,ij->i", [u_embs, self.v_embs(pos_v)])  # Batch dot product
-        pos_scores = -F.logsigmoid(pos_scores)
-        neg_scores = (
-            torch.bmm(n, c.unsqueeze(2)).squeeze()
-        )
-        # neg_scores = torch.einsum(
-        #     "ijk,ikl->ijl", [self.v_embs(neg_v), u_embs.unsqueeze(2)]
-        # )  # Batch matrix multiplication
-        neg_scores = -F.logsigmoid(-neg_scores).sum(dim=1)
-        return (pos_scores + neg_scores).sum()"""
-
         t = self.syn0(target)
         c = self.syn1(context)
 
@@ -103,7 +79,6 @@ class SkipGram(Word2Vec):
 
 
 class CBOW(Word2Vec):
-    
     def __init__(self, emb_size, emb_dimension, cbow_mean=True):
         super(CBOW, self).__init__(emb_size, emb_dimension)
         self.cbow_mean = cbow_mean
@@ -114,9 +89,7 @@ class CBOW(Word2Vec):
 
         # Mean of context vector without considering padding idx (0)
         if self.cbow_mean:
-            mean_c = torch.sum(c, dim=1) / torch.sum(
-                context != 0, dim=1, keepdim=True
-            )
+            mean_c = torch.sum(c, dim=1) / torch.sum(context != 0, dim=1, keepdim=True)
         else:
             mean_c = c.sum(dim=1)
 

@@ -1,17 +1,13 @@
-from utils import TweetStream
-from torch.utils.data import DataLoader
-
+# flake8: noqa
 from models import WordContextMatrix
-
+from torch.utils.data import DataLoader
 from tqdm import tqdm
+from utils import TweetStream
 
-ts = TweetStream(
-    '/data/giturra/datasets/1e5tweets.txt'
-)
+ts = TweetStream("/data/giturra/datasets/1e5tweets.txt")
 
 from web.datasets.similarity import fetch_MEN
 from web.evaluate import evaluate_similarity
-
 
 wcm = WordContextMatrix(10000, 3, 500)
 
@@ -23,7 +19,5 @@ for batch in tqdm(dataloader):
     wcm.learn_many(batch)
 
 
-    
 embs = wcm.reduced_emb2dict()
 print(evaluate_similarity(embs, men.X, men.y))
-
