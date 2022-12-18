@@ -1,4 +1,4 @@
-IWEF: The Incremental Word Embedding  Framework
+IWEF: The Incremental Word Embedding  Framework (This work is still in development)
 ======================================================
 
 
