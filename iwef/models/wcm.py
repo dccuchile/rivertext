@@ -129,7 +129,7 @@ class WordContextMatrix(IncrementalWordVector):
                 embedding[cidx] = max(0.0, value)
         return embedding
 
-    def _reduced_emb2dict(self) -> np.ndarray:
+    def reduced_emb2dict(self) -> np.ndarray:
         if self.reduced_emb_dim:
             indexes = np.array(list(self.modified_words), dtype=float)
             embs = self.transformer.fit_transform(self.get_embeddings(indexes))

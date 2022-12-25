@@ -8,7 +8,7 @@ import torch
 from nltk import word_tokenize
 from river.utils import dict2numpy
 
-from iwef.models.iword2vec import UnigramTable
+from iwef.models.iword2vec.unigram_table import UnigramTable
 from iwef.utils import Vocab
 
 
@@ -182,7 +182,7 @@ class PrepCbow(Preprocessing):
         )
 
 
-class PrepSkipGram(Preprocessing):
+class PrepSG(Preprocessing):
     def __init__(
         self,
         vocab_size: int = 1_000_000,

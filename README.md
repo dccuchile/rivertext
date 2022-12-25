@@ -61,6 +61,3 @@ Team
 
 Contributors
 ------------
-
-
-

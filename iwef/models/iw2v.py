@@ -5,7 +5,7 @@ from torch.optim import SparseAdam
 from tqdm import tqdm
 
 from iwef.models.base import IncrementalWordVector
-from iwef.models.iword2vec import CBOW, PrepCbow, PrepSkipGram, SkipGram
+from iwef.models.iword2vec import CBOW, SG, PrepCbow, PrepSG
 
 
 class IWord2Vec(IncrementalWordVector):
@@ -48,8 +48,8 @@ class IWord2Vec(IncrementalWordVector):
 
         if sg:
             self.model_name = "SG"
-            self.model = SkipGram(self.vocab_size, emb_size)
-            self.prep = PrepSkipGram(
+            self.model = SG(self.vocab_size, emb_size)
+            self.prep = PrepSG(
                 vocab_size=vocab_size,
                 unigram_table_size=unigram_table_size,
                 window_size=window_size,

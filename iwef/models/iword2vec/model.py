@@ -60,9 +60,9 @@ class Word2Vec(nn.Module):
         return (self.syn0.weight[idx] + self.syn1.weight[idx]).cpu().detach().numpy()
 
 
-class SkipGram(Word2Vec):
+class SG(Word2Vec):
     def __init__(self, emb_size, emb_dimension):
-        super(SkipGram, self).__init__(emb_size, emb_dimension)
+        super(SG, self).__init__(emb_size, emb_dimension)
 
     def forward(self, target, context, negatives):
         t = self.syn0(target)
