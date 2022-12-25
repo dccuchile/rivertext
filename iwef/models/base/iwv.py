@@ -69,8 +69,27 @@ class IncrementalWordVector(Transformer, VectorizerMixin):
 
     @abc.abstractmethod
     def learn_many(self, X: List[str], y=None, **kwargs) -> None:
+        """Train a mini-batch of text features.
+
+        Parameters
+        ----------
+        X : List[str]
+            A list of sentence features.
+        y : _type_, optional
+            A series of target values, by default None
+        """
         raise NotImplementedError()
 
     @abc.abstractmethod
     def vocab2dict(self) -> Dict[str, np.ndarray]:
+        """
+        Abstract method for transforming the vocabulary into a dictionary. The keys are
+        the words of the vocabulary, and the values are the training vectors.
+
+        Returns
+        -------
+        Dict[str, np.ndarray]
+            A dictionary of embeddings.
+
+        """
         raise NotImplementedError()
