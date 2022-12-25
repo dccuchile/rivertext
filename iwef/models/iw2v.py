@@ -11,7 +11,7 @@ from iwef.models.iword2vec import CBOW, SG, PrepCbow, PrepSG
 class IWord2Vec(IncrementalWordVector):
     def __init__(
         self,
-        batch_size=32,
+        batch_size: int = 32,
         vocab_size: int = 1_000_000,
         emb_size=100,
         unigram_table_size: int = 100_000_000,
