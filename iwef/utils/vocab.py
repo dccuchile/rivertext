@@ -165,8 +165,7 @@ class Vocab:
 
 
 class Context(Vocab):
-    """Container class for saving the contexts in the WCM model.
-    """
+    """Container class for saving the contexts in the WCM model."""
 
     def __init__(self, max_size):
         super().__init__(max_size)
