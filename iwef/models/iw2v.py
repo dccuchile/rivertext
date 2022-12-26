@@ -4,11 +4,11 @@ import numpy as np
 from torch.optim import SparseAdam
 from tqdm import tqdm
 
-from iwef.models.base import IncrementalWordVector
+from iwef.models.base import IWVBase
 from iwef.models.iword2vec import CBOW, SG, PrepCbow, PrepSG
 
 
-class IWord2Vec(IncrementalWordVector):
+class IWord2Vec(IWVBase):
     def __init__(
         self,
         batch_size: int = 32,

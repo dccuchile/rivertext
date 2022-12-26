@@ -7,8 +7,8 @@ from river.base.transformer import Transformer
 from river.feature_extraction.vectorize import VectorizerMixin
 
 
-class IncrementalWordVector(Transformer, VectorizerMixin):
-    """Mixin class for implement any incremental method in IWEF."""
+class IWVBase(Transformer, VectorizerMixin):
+    """Base class for implement any incremental method in IWEF."""
 
     def __init__(
         self,
@@ -18,8 +18,8 @@ class IncrementalWordVector(Transformer, VectorizerMixin):
         on: str = None,
         strip_accents: bool = True,
         lowercase: bool = True,
-        preprocessor=None,
-        tokenizer: Callable[[str], List[str]] = None,
+        preprocessor: Callable[str] = None,
+        tokenizer: Callable[str, List[str]] = None,
         ngram_range: Tuple[int, int] = (1, 1),
     ):
         """Base constructor for common hyperparameters.
@@ -40,7 +40,7 @@ class IncrementalWordVector(Transformer, VectorizerMixin):
             Whether or not to strip accent characters, by default True.
         lowercase : bool, optional
             Whether or not to convert all characters to lowercase by default True.
-        preprocessor : _type_, optional
+        preprocessor : Callable[str], optional
             An optional preprocessing function which overrides the `strip_accents` and
             `lowercase` steps, while preserving the tokenizing and n-grams generation
             steps., by default None
