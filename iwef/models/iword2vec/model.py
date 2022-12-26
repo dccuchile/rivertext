@@ -7,7 +7,14 @@ from torch.nn import init
 
 
 class Word2Vec(nn.Module):
-    """Base class for encapsulating the shared parameter beetween the two models."""
+    """Base class for encapsulating the shared parameter beetween the two models.
+
+        References
+    ----------
+    | [1]: Mikolov, T., Chen, K., Corrado, G. & Dean, J. (2013). Efficient Estimation
+    |      of Word Representations in Vector Space. CoRR, abs/1301.3781.
+
+    """
 
     def __init__(self, emb_size: int, emb_dimension: int):
         """Initialize a Word2Vec instance.
@@ -54,23 +61,17 @@ class Word2Vec(nn.Module):
 
 
 class SG(Word2Vec):
-    """_summary_
+    """SkipGram with Negative Sampling model Pytorch implementation."""
 
-    Parameters
-    ----------
-    Word2Vec : _type_
-        _description_
-    """
-
-    def __init__(self, emb_size, emb_dimension):
-        """_summary_
+    def __init__(self, emb_size: int, emb_dimension: int):
+        """Initialize a SG instance.
 
         Parameters
         ----------
-        emb_size : _type_
-            _description_
-        emb_dimension : _type_
-            _description_
+        emb_size : int
+            The number of words to process.
+        emb_dimension : int
+            The dimension of the word embeddings.
         """
         super(SG, self).__init__(emb_size, emb_dimension)
 
@@ -90,25 +91,20 @@ class SG(Word2Vec):
 
 
 class CBOW(Word2Vec):
-    """_summary_
+    """CBOW with Negative Sampling model Pytorch implementation."""
 
-    Parameters
-    ----------
-    Word2Vec : _type_
-        _description_
-    """
-
-    def __init__(self, emb_size, emb_dimension, cbow_mean=True):
-        """_summary_
+    def __init__(self, emb_size: int, emb_dimension: int, cbow_mean=True):
+        """Initialize a SG instance.
 
         Parameters
         ----------
-        emb_size : _type_
-            _description_
-        emb_dimension : _type_
-            _description_
-        cbow_mean : bool, optional
-            _description_, by default True
+        emb_size : int
+            The number of words to process.
+        emb_dimension : int
+            The dimension of the word embeddings.
+        cbow_mean : bool
+            True if it use mean of context vector without considering padding idx,
+            otherwise False.
         """
         super(CBOW, self).__init__(emb_size, emb_dimension)
         self.cbow_mean = cbow_mean
