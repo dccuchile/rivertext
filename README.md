@@ -48,7 +48,7 @@ Bibtex:
 Team
 ====
 
-- [Gabriel Iturra](https://github.com/giturra/)
+- [Gabriel Iturra](https://giturra.github.io/)
 - [Felipe Bravo-Marquez](https://felipebravom.com/)
 
 Contributors

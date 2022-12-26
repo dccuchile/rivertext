@@ -4,23 +4,66 @@ from iwef.utils import Vocab, round_number
 
 
 class UnigramTable:
+    """_summary_"""
+
     def __init__(self, max_size: int = 100_000_000):
+        """_summary_
+
+        Parameters
+        ----------
+        max_size : int, optional
+            _description_, by default 100_000_000
+
+        Raises
+        ------
+        TypeError
+            _description_
+        ValueError
+            _description_
+        """
+
+        if not isinstance(max_size, int):
+            raise TypeError(f"max_size should be int, got {max_size}")
+
+        if max_size < 0:
+            raise ValueError(f"max_size should be greater than 0, got {max_size}")
+
         self.max_size = max_size
         self.size = 0
         self.z = 0
         self.table = np.zeros(self.max_size)
 
     def sample(self) -> int:
+        """_summary_
+
+        Returns
+        -------
+        int
+            _description_
+        """
         assert 0 < self.size
         unigram_idx = self.table[np.random.randint(0, self.size)]
         return unigram_idx
 
     def samples(self, n: int) -> np.ndarray:
+        """_summary_
+
+        Parameters
+        ----------
+        n : int
+            _description_
+
+        Returns
+        -------
+        np.ndarray
+            _description_
+        """
         unigram_idxs = list(self.table[np.random.randint(0, self.size, size=n)])
         return unigram_idxs
 
     def build(self, vocab: Vocab, alpha: float) -> None:
 
+        """_summary_"""
         reserved_idxs = set(vocab.counter.keys())
         free_idxs = vocab.free_idxs
         counts = vocab.counter.to_numpy(reserved_idxs | free_idxs)
@@ -46,6 +89,7 @@ class UnigramTable:
 
     def update(self, word_idx: int, F: float) -> None:
 
+        """_summary_"""
         assert 0 <= word_idx
         assert 0.0 <= F
 
