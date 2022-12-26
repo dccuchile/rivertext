@@ -154,7 +154,7 @@ class Vocab:
         Parameters
         ----------
         idx : int
-            Index of the word.s
+            Index of the word.
         """
         self.free_idxs.add(idx)
         word = self.idx2word[idx]
