@@ -41,7 +41,19 @@ class Word2Vec(nn.Module):
         init.constant_(self.syn1.weight.data, 0)
         self.syn0.weight.data[0, :] = 0
 
-    def forward(self, pos_u, pos_v, neg_v):
+    def forward(self, pos_u: torch.Tensor, pos_v: torch.Tensor, neg_v: torch.Tensor):
+        """Forward network pass.
+
+        Parameters
+        ----------
+        pos_u : torch.Tensor
+            Target positive samples.
+        pos_v : torch.Tensor
+            Context positive samples.
+        neg_v : torch.Tensor
+            Negative samples.
+
+        """
         raise NotImplementedError()
 
     def get_embedding(self, idx: int) -> np.ndarray:
@@ -75,7 +87,25 @@ class SG(Word2Vec):
         """
         super(SG, self).__init__(emb_size, emb_dimension)
 
-    def forward(self, target, context, negatives):
+    def forward(
+        self, target: torch.Tensor, context: torch.Tensor, negatives: torch.Tensor
+    ) -> float:
+        """Forward pass the SG model.
+
+        Parameters
+        ----------
+        target : torch.Tensor
+            Target positive samples.
+        context : torch.Tensor
+            Context positive samples.
+        negatives : torch.Tensor
+            Negative samples.
+
+        Returns
+        -------
+        float
+            Objective function result.
+        """
         t = self.syn0(target)
         c = self.syn1(context)
 
@@ -109,7 +139,25 @@ class CBOW(Word2Vec):
         super(CBOW, self).__init__(emb_size, emb_dimension)
         self.cbow_mean = cbow_mean
 
-    def forward(self, target, context, negatives):
+    def forward(
+        self, target: torch.Tensor, context: torch.Tensor, negatives: torch.Tensor
+    ) -> float:
+        """Forward pass the CBOW model.
+
+        Parameters
+        ----------
+        target : torch.Tensor
+            Target positive samples.
+        context : torch.Tensor
+            Context positive samples.
+        negatives : torch.Tensor
+            Negative samples.
+
+        Returns
+        -------
+        float
+            Objective function result.
+        """
         t = self.syn1(target)
         c = self.syn0(context)
 
