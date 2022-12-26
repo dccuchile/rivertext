@@ -1,6 +1,3 @@
-import os
-import pickle
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -24,37 +21,7 @@ class Word2Vec(nn.Module):
         self.syn0.weight.data[0, :] = 0
 
     def forward(self, pos_u, pos_v, neg_v):
-        raise NotImplementedError
-
-    def save_embeddings(
-        self, id2word, output_vec_path: str, vec_format="txt", overwrite=True
-    ):
-        assert vec_format in ["txt", "pkl"]
-        if not os.path.exists(os.path.dirname(output_vec_path)):
-            os.makedirs(os.path.dirname(output_vec_path))
-        embs = self.syn0.weight.cpu().data.numpy()
-        output_vec_path = os.path.splitext(output_vec_path)[0]
-        if vec_format is None or vec_format == "txt":
-            if not os.path.exists(output_vec_path + ".txt") or overwrite:
-                print("Save embeddings to " + output_vec_path + ".txt")
-                with open(output_vec_path + ".txt", "w") as f:
-                    f.write("%d %d\n" % (len(id2word), self.emb_dimension))
-                    for wid, w in id2word.items():
-                        e = " ".join(map(lambda x: str(x), embs[wid]))
-                        f.write("%s %s\n" % (w, e))
-            else:
-                raise FileExistsError("'" + output_vec_path + ".txt' already exists")
-        else:
-            if not os.path.exists(output_vec_path + ".pkl") or overwrite:
-                print("Save embeddings to " + output_vec_path + ".pkl")
-                embs_tmp = {w: embs[wid] for wid, w in id2word.items()}
-                pickle.dump(
-                    embs_tmp,
-                    open(output_vec_path + ".pkl", "wb"),
-                )
-            else:
-                raise FileExistsError("'" + output_vec_path + ".pkl' already exists")
-        print("Done")
+        raise NotImplementedError()
 
     def get_embedding(self, idx):
         return (self.syn0.weight[idx] + self.syn1.weight[idx]).cpu().detach().numpy()
