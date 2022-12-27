@@ -119,7 +119,7 @@ class UnigramTable:
         word_idx : int
             Index of the word to update in the unigram table.
         F : float
-            Normalize value.d
+            Normalize value.
         """
 
         assert 0 <= word_idx
