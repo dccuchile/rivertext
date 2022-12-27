@@ -1,3 +1,4 @@
+"""Incremental algorithm for extracting negative sampling from a text data stream."""
 import numpy as np
 
 from iwef.utils import Vocab, round_number
@@ -7,19 +8,26 @@ class UnigramTable:
     """_summary_"""
 
     def __init__(self, max_size: int = 100_000_000):
-        """_summary_
+        """Initialize a Unigram Table instance.
 
         Parameters
         ----------
         max_size : int, optional
-            _description_, by default 100_000_000
+            Size of the unigram table, by default 100_000_000
 
         Raises
         ------
         TypeError
-            _description_
+            The max size should be int number.
         ValueError
-            _description_
+            The max size should be greater than 0.
+
+        ----------
+        | [1]: Nobuhiro Kaji and Hayato Kobayashi. 2017. Incremental Skip-gram Model
+        |      with Negative Sampling. In Proceedings of the 2017 Conference on
+        |      Empirical Methods in Natural Language Processing, pages 363–371,
+        |      Copenhagen, Denmark. Association for Computational Linguistics.
+
         """
 
         if not isinstance(max_size, int):
@@ -34,36 +42,44 @@ class UnigramTable:
         self.table = np.zeros(self.max_size)
 
     def sample(self) -> int:
-        """_summary_
+        """Obtain a negative sample from the unigram table.
 
         Returns
         -------
         int
-            _description_
+            Index of negative sample obtained.
         """
         assert 0 < self.size
         unigram_idx = self.table[np.random.randint(0, self.size)]
         return unigram_idx
 
     def samples(self, n: int) -> np.ndarray:
-        """_summary_
+        """Obtain n negative samples from the unigram table
 
         Parameters
         ----------
         n : int
-            _description_
+            Number of negative samples.
 
         Returns
         -------
         np.ndarray
-            _description_
+            A array of negative samples.
         """
         unigram_idxs = list(self.table[np.random.randint(0, self.size, size=n)])
         return unigram_idxs
 
     def build(self, vocab: Vocab, alpha: float) -> None:
+        """_summary_
 
-        """_summary_"""
+        Parameters
+        ----------
+        vocab : Vocab
+            _description_
+        alpha : float
+            _description_
+        """
+
         reserved_idxs = set(vocab.counter.keys())
         free_idxs = vocab.free_idxs
         counts = vocab.counter.to_numpy(reserved_idxs | free_idxs)
@@ -88,8 +104,16 @@ class UnigramTable:
             self.size += nums[w]
 
     def update(self, word_idx: int, F: float) -> None:
+        """_summary_
 
-        """_summary_"""
+        Parameters
+        ----------
+        word_idx : int
+            _description_
+        F : float
+            _description_
+        """
+
         assert 0 <= word_idx
         assert 0.0 <= F
 

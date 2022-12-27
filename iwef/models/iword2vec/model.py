@@ -9,7 +9,7 @@ from torch.nn import init
 class Word2Vec(nn.Module):
     """Base class for encapsulating the shared parameter beetween the two models.
 
-        References
+    References
     ----------
     | [1]: Mikolov, T., Chen, K., Corrado, G. & Dean, J. (2013). Efficient Estimation
     |      of Word Representations in Vector Space. CoRR, abs/1301.3781.
