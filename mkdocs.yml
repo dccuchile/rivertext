@@ -1,1 +1,10 @@
 site_name: IWEF
+
+plugins:
+  - mkdocstrings
+
+theme:
+    name: readthedocs
+    highlightjs: true
+    hljs_languages:
+        - python
