@@ -1,5 +1,6 @@
-from typing import Callable
+from typing import Callable, Dict
 
+import numpy as np
 from torch.utils.data import DataLoader, IterableDataset
 
 from iwef.models.base import IWVBase
@@ -12,7 +13,7 @@ class PeriodEvaluator:
         model: IWVBase,
         batch_size: int = 32,
         golden_dataset: Callable = None,
-        eval_func=None,
+        eval_func=Callable[[Dict, np.ndarray, np.ndarray], int],
     ):
         self.dataset = dataset
         self.dataloader = DataLoader(self.dataset, batch_size=batch_size)

@@ -19,7 +19,7 @@ class IWVBase(Transformer, VectorizerMixin):
         strip_accents: bool = True,
         lowercase: bool = True,
         preprocessor: Callable[str] = None,
-        tokenizer: Callable[str, List[str]] = None,
+        tokenizer: Callable[[str], List[str]] = None,
         ngram_range: Tuple[int, int] = (1, 1),
     ):
         """Base constructor for common hyperparameters.

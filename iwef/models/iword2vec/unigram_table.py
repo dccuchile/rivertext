@@ -5,13 +5,13 @@ from iwef.utils import Vocab, round_number
 
 
 class UnigramTable:
-    """The algorithm updates incrementally a unigram table, which Kaji 
-    and Kobayashi proposed. 
+    """The algorithm updates incrementally a unigram table, which Kaji
+    and Kobayashi proposed.
 
-    1. While the table is incomplete, it is updated as the original unigram table 
+    1. While the table is incomplete, it is updated as the original unigram table
     algorithm.
 
-    2. If the table is complete, a random number n is selected, and n copies from the 
+    2. If the table is complete, a random number n is selected, and n copies from the
     word w are added to the array table.
 
         ----------
