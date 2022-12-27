@@ -100,7 +100,19 @@ class Preprocessing:
 
     @abc.abstractmethod
     def __call__(self, batch: List[str]):
-        ...
+        """_summary_
+
+        Parameters
+        ----------
+        batch : List[str]
+            _description_
+
+        Raises
+        ------
+        NotImplementedError
+            _description_
+        """
+        raise NotImplementedError()
 
 
 class PrepCbow(Preprocessing):
