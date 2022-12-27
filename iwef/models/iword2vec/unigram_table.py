@@ -5,7 +5,22 @@ from iwef.utils import Vocab, round_number
 
 
 class UnigramTable:
-    """_summary_"""
+    """The algorithm updates incrementally a unigram table, which Kaji 
+    and Kobayashi proposed. 
+
+    1. While the table is incomplete, it is updated as the original unigram table 
+    algorithm.
+
+    2. If the table is complete, a random number n is selected, and n copies from the 
+    word w are added to the array table.
+
+        ----------
+    | [1]: Nobuhiro Kaji and Hayato Kobayashi. 2017. Incremental Skip-gram Model
+    |      with Negative Sampling. In Proceedings of the 2017 Conference on
+    |      Empirical Methods in Natural Language Processing, pages 363–371,
+    |      Copenhagen, Denmark. Association for Computational Linguistics.
+
+    """
 
     def __init__(self, max_size: int = 100_000_000):
         """Initialize a Unigram Table instance.
@@ -21,13 +36,6 @@ class UnigramTable:
             The max size should be int number.
         ValueError
             The max size should be greater than 0.
-
-        ----------
-        | [1]: Nobuhiro Kaji and Hayato Kobayashi. 2017. Incremental Skip-gram Model
-        |      with Negative Sampling. In Proceedings of the 2017 Conference on
-        |      Empirical Methods in Natural Language Processing, pages 363–371,
-        |      Copenhagen, Denmark. Association for Computational Linguistics.
-
         """
 
         if not isinstance(max_size, int):
@@ -70,14 +78,14 @@ class UnigramTable:
         return unigram_idxs
 
     def build(self, vocab: Vocab, alpha: float) -> None:
-        """_summary_
+        """Build a unigram table based on the vocabulary structure.
 
         Parameters
         ----------
         vocab : Vocab
-            _description_
+            Vocabulary.
         alpha : float
-            _description_
+            Smoothed parameter.
         """
 
         reserved_idxs = set(vocab.counter.keys())
@@ -104,14 +112,14 @@ class UnigramTable:
             self.size += nums[w]
 
     def update(self, word_idx: int, F: float) -> None:
-        """_summary_
+        """Update the unigram table acording to the new words in the text stream.
 
         Parameters
         ----------
         word_idx : int
-            _description_
+            Index of the word to update in the unigram table.
         F : float
-            _description_
+            Normalize value.d
         """
 
         assert 0 <= word_idx
