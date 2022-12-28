@@ -75,7 +75,7 @@ class IWVBase(Transformer, VectorizerMixin):
         ----------
         X : List[str]
             A list of sentence features.
-        y : _type_, optional
+        y : Object, optional
             A series of target values, by default None
         """
         raise NotImplementedError()

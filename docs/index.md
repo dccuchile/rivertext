@@ -1,19 +1,45 @@
-# Welcome to MkDocs
+# IWEF: The Incremental Word Embedding Framework (This work is still in development)
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
-## Commands
+Incremental Word Embedding Framework (IWEF) is an open-source library for modeling and
+training different incremental word vector architectures proposed by the state-of-the-art.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+It seeks to standardize many existing incremental word vector algorithms into a unified
+framework to provide a standardized interface for:
 
-## Project layout
+* Encapsulating existing incremental word vector methods from previous work and designing new ones.
+* Training text representation regarding text data streams.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+IWEF also standardizes the training process through an interface similar to the `river` package. This standardization follows two training paradigms:
 
-::: iwef.models.base.iwv
+* Training one instance per time (`learn_one` method).
+* Training a mini-batch of instances per time (`learn_many` method).
+
+## Table Of Contents
+
+The documentation follows the best practice for
+project documentation as described by Daniele Procida
+in the [Diátaxis documentation framework](https://diataxis.fr/)
+and consists of four separate parts:
+
+1. [Tutorials](tutorials.md)
+2. [How-To Guides](how-to-guides.md)
+3. [Reference](reference.md)
+4. [Explanation](explanation.md)
+
+Quickly find what you're looking for depending on
+your use case by looking at the different pages.
+
+## Team
+
+
+* [Gabriel Iturra](https://giturra.github.io/)
+* [Felipe Bravo-Marquez](https://felipebravom.com/)
+
+
+## Acknowledgements
+
+I want to thank my house plants for providing me with
+a negligible amount of oxygen each day. Also, I want
+to thank the sun for providing more than half of their
+nourishment free of charge.

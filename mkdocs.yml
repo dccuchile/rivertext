@@ -8,3 +8,10 @@ theme:
     highlightjs: true
     hljs_languages:
         - python
+
+nav:
+  - IWEF: index.md
+  - tutorials.md
+  - How-To Guides: how-to-guides.md
+  - reference.md
+  - explanation.md

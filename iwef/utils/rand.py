@@ -4,18 +4,15 @@ import numpy as np
 
 
 def round_number(num: int) -> float:
-    """Random rounder function.
 
-    Parameters
-    ----------
-    num : int
-        Number to round.
+    """Round a number float depeding on the uniform distribution,
+        the number can be round by the ceil or floor
 
-    Returns
-    -------
-    float
-       Round number depeding on the uniform distribution,
-       the number can be round by the ceil or floor.
+    Args:
+        num: Number to round.
+
+    Returns:
+        Rounded number.
     """
     c = ceil(num)
     f = floor(num)
