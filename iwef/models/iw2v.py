@@ -1,3 +1,4 @@
+""""""
 from typing import Callable, List
 
 import numpy as np
@@ -9,6 +10,14 @@ from iwef.models.iword2vec import CBOW, SG, PrepCbow, PrepSG
 
 
 class IWord2Vec(IWVBase):
+    """_summary_
+
+    Parameters
+    ----------
+    IWVBase : _type_
+        _description_
+    """
+
     def __init__(
         self,
         batch_size: int = 32,
@@ -80,16 +89,42 @@ class IWord2Vec(IWVBase):
         ...
 
     def vocab2dict(self) -> np.ndarray:
+        """_summary_
+
+        Returns
+        -------
+        np.ndarray
+            _description_
+        """
         embeddings = {}
         for word in tqdm(self.prep.vocab.word2idx.keys()):
             embeddings[word] = self.transform_one(word)
         return embeddings
 
     def transform_one(self, x: str) -> np.ndarray:
+        """_summary_
+
+        Parameters
+        ----------
+        x : str
+            _description_
+
+        Returns
+        -------
+        np.ndarray
+            _description_
+        """
         word_idx = self.prep.vocab[x]
         return self.model.get_embedding(word_idx)
 
     def learn_one(self, x: str, **kwargs) -> None:
+        """_summary_
+
+        Parameters
+        ----------
+        x : str
+            _description_
+        """
         tokens = self.process_text(x)
         batch = self.prep(tokens)
         targets = batch[0].to(self.device)
@@ -102,6 +137,7 @@ class IWord2Vec(IWVBase):
         self.optimizer.step()
 
     def learn_many(self, X: List[str], y=None, **kwargs) -> None:
+        """ """
         tokens = list(map(self.process_text, X))
         batch = self.prep(tokens)
         targets = batch[0].to(self.device)

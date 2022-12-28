@@ -1,3 +1,4 @@
+""""""
 import abc
 import math
 import random
@@ -13,6 +14,8 @@ from iwef.utils import Vocab
 
 
 class Preprocessing:
+    """_summary_"""
+
     def __init__(
         self,
         vocab_size: int = 1_000_000,
@@ -195,6 +198,8 @@ class PrepCbow(Preprocessing):
 
 
 class PrepSG(Preprocessing):
+    """"""
+
     def __init__(
         self,
         vocab_size: int = 1_000_000,
@@ -205,6 +210,25 @@ class PrepSG(Preprocessing):
         neg_samples_sum: int = 10,
         tokenizer=word_tokenize,
     ):
+        """_summary_
+
+        Parameters
+        ----------
+        vocab_size : int, optional
+            _description_, by default 1_000_000
+        unigram_table_size : int, optional
+            _description_, by default 100_000_000
+        window_size : int, optional
+            _description_, by default 5
+        alpha : float, optional
+            _description_, by default 0.75
+        subsampling_threshold : float, optional
+            _description_, by default 1e-3
+        neg_samples_sum : int, optional
+            _description_, by default 10
+        tokenizer : _type_, optional
+            _description_, by default word_tokenize
+        """
 
         super().__init__(
             vocab_size,
@@ -219,6 +243,14 @@ class PrepSG(Preprocessing):
     def __call__(
         self, batch: List[str]
     ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+
+        """_summary_
+
+        Returns
+        -------
+        _type_
+            _description_
+        """
 
         targets = []
         contexts = []

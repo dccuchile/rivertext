@@ -1,3 +1,4 @@
+""""""
 from typing import Callable, List, Tuple
 
 import numpy as np
@@ -9,6 +10,14 @@ from iwef.utils import Context, Vocab
 
 
 class WordContextMatrix(IWVBase):
+    """_summary_
+
+    Parameters
+    ----------
+    IWVBase : _type_
+        _description_
+    """
+
     def __init__(
         self,
         vocab_size: int,
@@ -23,6 +32,33 @@ class WordContextMatrix(IWVBase):
         tokenizer: Callable[[str], List[str]] = None,
         ngram_range: Tuple[int, int] = (1, 1),
     ):
+        """_summary_
+
+        Parameters
+        ----------
+        vocab_size : int
+            _description_
+        window_size : int
+            _description_
+        context_size : int
+            _description_
+        emb_size : int, optional
+            _description_, by default 300
+        reduce_emb_dim : bool, optional
+            _description_, by default True
+        on : str, optional
+            _description_, by default None
+        strip_accents : bool, optional
+            _description_, by default True
+        lowercase : bool, optional
+            _description_, by default True
+        preprocessor : _type_, optional
+            _description_, by default None
+        tokenizer : Callable[[str], List[str]], optional
+            _description_, by default None
+        ngram_range : Tuple[int, int], optional
+            _description_, by default (1, 1)
+        """
         super().__init__(
             vocab_size,
             emb_size,
@@ -53,6 +89,13 @@ class WordContextMatrix(IWVBase):
             )
 
     def learn_one(self, x: str, **kwargs) -> None:
+        """_summary_
+
+        Parameters
+        ----------
+        x : str
+            _description_
+        """
         tokens = self.process_text(x)
         for w in tokens:
             self.d += 1
@@ -69,6 +112,15 @@ class WordContextMatrix(IWVBase):
                 self.coocurence_matrix[row, col] += 1
 
     def learn_many(self, X: List[str], y=None, **kwargs) -> None:
+        """_summary_
+
+        Parameters
+        ----------
+        X : List[str]
+            _description_
+        y : _type_, optional
+            _description_, by default None
+        """
         for x in X:
             tokens = self.process_text(x)
 
@@ -93,6 +145,7 @@ class WordContextMatrix(IWVBase):
                     self.coocurence_matrix[row, col] += 1
 
     def reduce_vocab(self) -> None:
+        """_summary_"""
         self.vocab.counter = self.vocab.counter - 1
         for idx, count in list(self.vocab.counter.items()):
             if count == 0:
@@ -106,17 +159,53 @@ class WordContextMatrix(IWVBase):
             self.emb_matrix[indexes, :] = 0.0
 
     def tokens2idxs(self, tokens: List[str]) -> np.ndarray:
+        """_summary_
+
+        Parameters
+        ----------
+        tokens : List[str]
+            _description_
+
+        Returns
+        -------
+        np.ndarray
+            _description_
+        """
         idxs = []
         for token in tokens:
             idxs.append(self.vocab.word2idx.get(token, -1))
         return idxs
 
     def get_embeddings(self, idxs: List[int]) -> np.ndarray:
+        """_summary_
+
+        Parameters
+        ----------
+        idxs : List[int]
+            _description_
+
+        Returns
+        -------
+        np.ndarray
+            _description_
+        """
         words = [self.vocab.idx2word[idx] for idx in idxs]
         embs = np.array([self.transform_one(word) for word in words])
         return sparse.lil_matrix(embs)
 
     def transform_one(self, x: str) -> np.ndarray:
+        """_summary_
+
+        Parameters
+        ----------
+        x : str
+            _description_
+
+        Returns
+        -------
+        np.ndarray
+            _description_
+        """
         idx = self.vocab.word2idx[x]
         if idx in self.vocab.idx2word:
             contexts_ids = self.coocurence_matrix[idx].nonzero()[1]
@@ -144,9 +233,23 @@ class WordContextMatrix(IWVBase):
         return embeddings
 
     def vocab2dict(self) -> np.ndarray:
+        """_summary_
+
+        Returns
+        -------
+        np.ndarray
+            _description_
+        """
         return self._reduced_emb2dict()
 
     def vocab2matrix(self):
+        """_summary_
+
+        Returns
+        -------
+        _type_
+            _description_
+        """
         mat = np.empty((self.vocab_size, self.context_size))
         for word, idx in self.vocab.word2idx.items():
             mat[idx] = self.transform_one(word)
