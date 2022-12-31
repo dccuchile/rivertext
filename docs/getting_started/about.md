@@ -14,6 +14,9 @@ IWEF also standardizes the training process through an interface similar to the 
 * Training one instance per time (`learn_one` method).
 * Training a mini-batch of instances per time (`learn_many` method).
 
+The official documentation can be found at this (link)[https://giturra.github.io/iwef/].
+
+
 ## Motivation and Goals
 
 ## Roadmap
