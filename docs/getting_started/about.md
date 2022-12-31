@@ -32,7 +32,7 @@ The official documentation can be found at this [link](https://giturra.github.io
 
 IWEF is licensed under the BSD 3-Clause License.
 
-Details of the license on this [link](sasa).
+Details of the license on this [link](https://github.com/giturra/iwef/blob/main/LICENSE).
 
 
 ## Contact
