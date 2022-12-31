@@ -67,5 +67,9 @@ Team
 - [Gabriel Iturra](https://giturra.github.io/)
 - [Felipe Bravo-Marquez](https://felipebravom.com/)
 
+Contact
+------------
+Please write to gabrieliturrab at ug.chile.cl for inquiries about the software. You are also welcome to do a pull request or publish an issue in the IWEF repository on Github.
+
 Contributors
 ------------
