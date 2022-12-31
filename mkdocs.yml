@@ -6,14 +6,19 @@ plugins:
 repo_name: IWEF
 repo_url: https://github.com/giturra/iwef
 
+
 theme:
-    name: readthedocs
+    name: material
+    locale: en
+    analytics: {gtag: 'G-274394082'}
     highlightjs: true
     hljs_languages:
+        - yaml
         - python
 
+
 nav:
-  - IWEF: index.md
+  - index.md
   - Getting Started:
       - About: getting_started/about.md
   - tutorials.md
