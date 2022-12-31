@@ -10,18 +10,23 @@ repo_url: https://github.com/giturra/iwef
 theme:
     name: material
     locale: en
+    features:
+      - navigation.tabs
     analytics: {gtag: 'G-274394082'}
     highlightjs: true
     hljs_languages:
         - yaml
         - python
 
+# Copyright
+copyright: Copyright &copy; 2023
+
 
 nav:
-  - index.md
+  - Introduction:
+    - Welcome!: index.md
   - Getting Started:
       - About: getting_started/about.md
-  - tutorials.md
-  - How-To Guides: how-to-guides.md
-  - reference.md
-  - explanation.md
+  - User Guide: tutorials.md
+  - API: api.md
+  - Contributing: reference.md

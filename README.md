@@ -38,12 +38,28 @@ Build the documentation
 Changelog
 =========
 
-Citation
+References
 ========
 
-Bibtex:
+```bibtex
+@article{bravo2022incremental,
+  title={Incremental Word Vectors for Time-Evolving Sentiment Lexicon Induction},
+  author={Bravo-Marquez, Felipe and Khanchandani, Arun and Pfahringer, Bernhard},
+  journal={Cognitive Computation},
+  volume={14},
+  number={1},
+  pages={425--441},
+  year={2022},
+  publisher={Springer}
+}
 
-.. code-block:: latex
+@article{kaji2017incremental,
+  title={Incremental skip-gram model with negative sampling},
+  author={Kaji, Nobuhiro and Kobayashi, Hayato},
+  journal={arXiv preprint arXiv:1704.03956},
+  year={2017}
+}
+```
 
 Team
 ====

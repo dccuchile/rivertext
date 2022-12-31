@@ -53,16 +53,12 @@ class Vocab:
         The new word added must update several data structures to maintain the look-up
         tables, word counts, and free index for new words.
 
-        Parameters
-        ----------
-        word : str
-           New word to add.
+        Args:
+            word: New word to add.
 
-        Returns
-        -------
-        int
+        Returns:
             Index mapped to the new word. If the max size is equal to the current size,
-            the method returns -1.
+                the method returns -1.
         """
         if word not in self.word2idx.keys() and not self.is_full():
             if not self.first_full:
