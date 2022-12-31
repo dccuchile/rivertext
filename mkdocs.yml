@@ -3,14 +3,19 @@ site_name: IWEF
 plugins:
   - mkdocstrings
 
+repo_name: IWEF
+repo_url: https://github.com/giturra/iwef
+
 theme:
-    name: material
+    name: readthedocs
     highlightjs: true
     hljs_languages:
         - python
 
 nav:
   - IWEF: index.md
+  - Getting Started: 
+      - About: getting_started/about.md
   - tutorials.md
   - How-To Guides: how-to-guides.md
   - reference.md

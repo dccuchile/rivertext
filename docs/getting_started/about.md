@@ -1,5 +1,4 @@
-# IWEF: The Incremental Word Embedding Framework (This work is still in development)
-
+# About
 
 Incremental Word Embedding Framework (IWEF) is an open-source library for modeling and
 training different incremental word vector architectures proposed by the state-of-the-art.
@@ -15,20 +14,9 @@ IWEF also standardizes the training process through an interface similar to the 
 * Training one instance per time (`learn_one` method).
 * Training a mini-batch of instances per time (`learn_many` method).
 
-## Table Of Contents
+## Motivation and Goals
 
-The documentation follows the best practice for
-project documentation as described by Daniele Procida
-in the [Diátaxis documentation framework](https://diataxis.fr/)
-and consists of four separate parts:
-
-1. [Tutorials](tutorials.md)
-2. [How-To Guides](how-to-guides.md)
-3. [Reference](reference.md)
-4. [Explanation](explanation.md)
-
-Quickly find what you're looking for depending on
-your use case by looking at the different pages.
+## Roadmap
 
 ## Team
 
@@ -37,6 +25,13 @@ your use case by looking at the different pages.
 * [Felipe Bravo-Marquez](https://felipebravom.com/)
 
 
-## Acknowledgements
+## License
+
+IWEF is licensed under the BSD 3-Clause License.
+
+Details of the license on this [link](sasa).
 
 
+## Contact
+
+Please write to gabrieliturrab at ug.chile.cl for inquiries about the software. You are also welcome to do a pull request or publish an issue in the IWEF repository on Github.
