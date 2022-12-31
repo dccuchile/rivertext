@@ -38,5 +38,3 @@ your use case by looking at the different pages.
 
 
 ## Acknowledgements
-
-
