@@ -28,5 +28,10 @@ nav:
   - Getting Started:
       - About: getting_started/about.md
   - User Guide: tutorials.md
-  - API: api.md
+  - API:
+      - utils:
+          - api/rand.md
+          - api/vocab.md
+      - models: api/rand.md
+      - evaluator: api/rand.md
   - Contributing: reference.md
