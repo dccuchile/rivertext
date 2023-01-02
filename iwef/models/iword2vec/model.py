@@ -19,12 +19,11 @@ class Word2Vec(nn.Module):
     def __init__(self, emb_size: int, emb_dimension: int):
         """Initialize a Word2Vec instance.
 
-        Parameters
-        ----------
-        emb_size : int
-            The number of words to process.
-        emb_dimension : int
-            The dimension of the word embeddings.
+        Args:
+            emb_size:
+                The number of words to process.
+            emb_dimension: int
+                The dimension of the word embeddings.
         """
 
         super(Word2Vec, self).__init__()
@@ -44,14 +43,10 @@ class Word2Vec(nn.Module):
     def forward(self, pos_u: torch.Tensor, pos_v: torch.Tensor, neg_v: torch.Tensor):
         """Forward network pass.
 
-        Parameters
-        ----------
-        pos_u : torch.Tensor
-            Target positive samples.
-        pos_v : torch.Tensor
-            Context positive samples.
-        neg_v : torch.Tensor
-            Negative samples.
+        Args:
+            pos_u: Target positive samples.
+            pos_v: Context positive samples.
+            neg_v: Negative samples.
 
         """
         raise NotImplementedError()
@@ -59,14 +54,11 @@ class Word2Vec(nn.Module):
     def get_embedding(self, idx: int) -> np.ndarray:
         """Obtain the vector associated with a word by its index.
 
-        Parameters
-        ----------
-        idx : int
-            Index associated with a word.
+        Args:
+            idx:
+                Index associated with a word.
 
-        Returns
-        -------
-        np.ndarray
+        Returns:
             The vector associated with a word.
         """
         return (self.syn0.weight[idx] + self.syn1.weight[idx]).cpu().detach().numpy()
@@ -78,12 +70,11 @@ class SG(Word2Vec):
     def __init__(self, emb_size: int, emb_dimension: int):
         """Initialize a SG instance.
 
-        Parameters
-        ----------
-        emb_size : int
-            The number of words to process.
-        emb_dimension : int
-            The dimension of the word embeddings.
+        Args:
+            emb_size:
+                The number of words to process.
+            emb_dimension:
+                The dimension of the word embeddings.
         """
         super(SG, self).__init__(emb_size, emb_dimension)
 
@@ -92,18 +83,12 @@ class SG(Word2Vec):
     ) -> float:
         """Forward pass the SG model.
 
-        Parameters
-        ----------
-        target : torch.Tensor
-            Target positive samples.
-        context : torch.Tensor
-            Context positive samples.
-        negatives : torch.Tensor
-            Negative samples.
+        Args:
+            target: Target positive samples.
+            context: Context positive samples.
+            negatives: Negative samples.
 
-        Returns
-        -------
-        float
+        Returns:
             Objective function result.
         """
         t = self.syn0(target)
@@ -123,18 +108,14 @@ class SG(Word2Vec):
 class CBOW(Word2Vec):
     """CBOW with Negative Sampling model Pytorch implementation."""
 
-    def __init__(self, emb_size: int, emb_dimension: int, cbow_mean=True):
+    def __init__(self, emb_size: int, emb_dimension: int, cbow_mean: bool = True):
         """Initialize a SG instance.
 
-        Parameters
-        ----------
-        emb_size : int
-            The number of words to process.
-        emb_dimension : int
-            The dimension of the word embeddings.
-        cbow_mean : bool
-            True if it use mean of context vector without considering padding idx,
-            otherwise False.
+        Args:
+            emb_size: The number of words to process.
+            emb_dimension: The dimension of the word embeddings.
+            cbow_mean: True if it use mean of context vector without considering padding
+                idx, otherwise False.
         """
         super(CBOW, self).__init__(emb_size, emb_dimension)
         self.cbow_mean = cbow_mean
@@ -144,18 +125,12 @@ class CBOW(Word2Vec):
     ) -> float:
         """Forward pass the CBOW model.
 
-        Parameters
-        ----------
-        target : torch.Tensor
-            Target positive samples.
-        context : torch.Tensor
-            Context positive samples.
-        negatives : torch.Tensor
-            Negative samples.
+        Args:
+            target: Target positive samples.
+            context: Context positive samples.
+            negatives: Negative samples.
 
-        Returns
-        -------
-        float
+        Returns:
             Objective function result.
         """
         t = self.syn1(target)

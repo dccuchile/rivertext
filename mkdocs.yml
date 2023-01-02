@@ -30,8 +30,11 @@ nav:
   - User Guide: tutorials.md
   - API:
       - utils:
-          - api/rand.md
-          - api/vocab.md
-      - models: api/rand.md
+          - rand: api/rand.md
+          - vocab: api/vocab.md
+      - models:
+          - base: api/base.md
+          - iword2vec:
+            - pytorch_nn: api/pytorch_nn.md
       - evaluator: api/rand.md
   - Contributing: reference.md
