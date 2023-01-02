@@ -17,14 +17,24 @@ class TweetStream(IterableDataset):
 
         Args:
             filename: path to the tweets file in the disk.
+
+        Examples:
+            >>> from iwef.utils import TweetStream
+            >>> ts = TweetStream("/path/to/tweets.txt")
+            >>> dataloader = DataLoader(ts, batch_size=1)
+            >>> for batch in dataloader:
+            ...     print(batch)
+            >>> "hello how are you?"
+            >>> "This is tweet example?"
+
         """
         self.filename = filename
 
     def preprocess(self, text: str) -> List[str]:
-        """_summary_
+        """Remove the whitespace for the current tweet.
 
         Args:
-            text: Remove the whitespace for the current tweet.
+            text: tweet to remove whitespace.
 
         Returns:
             A String without whitespaces.
@@ -35,6 +45,14 @@ class TweetStream(IterableDataset):
 
     def __iter__(self) -> Iterator:
         """Take some tweets from the file on the disk, creating a generator.
+
+        Examples:
+            >>> from iwef.utils import TweetStream
+            >>> ts = TweetStream("/path/to/tweets.txt")
+            >>> next(ts)
+            >>> "hello how are you?"
+            >>> next(ts)
+            >>> "This is tweet example?"
 
         Yields:
             A generator of tweets.
