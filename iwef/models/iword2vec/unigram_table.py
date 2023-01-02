@@ -14,7 +14,7 @@ class UnigramTable:
     2. If the table is complete, a random number n is selected, and n copies from the
     word w are added to the array table.
 
-        ----------
+    References:
     | [1]: Nobuhiro Kaji and Hayato Kobayashi. 2017. Incremental Skip-gram Model
     |      with Negative Sampling. In Proceedings of the 2017 Conference on
     |      Empirical Methods in Natural Language Processing, pages 363–371,
@@ -25,17 +25,12 @@ class UnigramTable:
     def __init__(self, max_size: int = 100_000_000):
         """Initialize a Unigram Table instance.
 
-        Parameters
-        ----------
-        max_size : int, optional
-            Size of the unigram table, by default 100_000_000
+        Args:
+            max_size: Size of the unigram table, by default 100_000_000
 
-        Raises
-        ------
-        TypeError
-            The max size should be int number.
-        ValueError
-            The max size should be greater than 0.
+        Raises:
+            TypeError: The max size should be int number.
+            ValueError: The max size should be greater than 0.
         """
 
         if not isinstance(max_size, int):
@@ -52,9 +47,7 @@ class UnigramTable:
     def sample(self) -> int:
         """Obtain a negative sample from the unigram table.
 
-        Returns
-        -------
-        int
+        Returns:
             Index of negative sample obtained.
         """
         assert 0 < self.size
@@ -64,14 +57,10 @@ class UnigramTable:
     def samples(self, n: int) -> np.ndarray:
         """Obtain n negative samples from the unigram table
 
-        Parameters
-        ----------
-        n : int
-            Number of negative samples.
+        Args:
+            n: Number of negative samples.
 
-        Returns
-        -------
-        np.ndarray
+        Returns:
             A array of negative samples.
         """
         unigram_idxs = list(self.table[np.random.randint(0, self.size, size=n)])
@@ -80,12 +69,9 @@ class UnigramTable:
     def build(self, vocab: Vocab, alpha: float) -> None:
         """Build a unigram table based on the vocabulary structure.
 
-        Parameters
-        ----------
-        vocab : Vocab
-            Vocabulary.
-        alpha : float
-            Smoothed parameter.
+        Args:
+            vocab: Vocabulary.
+            alpha: Smoothed parameter.
         """
 
         reserved_idxs = set(vocab.counter.keys())
@@ -114,12 +100,9 @@ class UnigramTable:
     def update(self, word_idx: int, F: float) -> None:
         """Update the unigram table acording to the new words in the text stream.
 
-        Parameters
-        ----------
-        word_idx : int
-            Index of the word to update in the unigram table.
-        F : float
-            Normalize value.
+        Args:
+            word_idx: Index of the word to update in the unigram table.
+            F: Normalize value.
         """
 
         assert 0 <= word_idx
