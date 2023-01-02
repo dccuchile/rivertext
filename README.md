@@ -59,6 +59,13 @@ References
   journal={arXiv preprint arXiv:1704.03956},
   year={2017}
 }
+
+@article{montiel2021river,
+  title={River: machine learning for streaming data in Python},
+  author={Montiel, Jacob and Halford, Max and Mastelini, Saulo Martiello and Bolmier, Geoffrey and Sourty, Raphael and Vaysse, Robin and Zouitine, Adil and Gomes, Heitor Murilo and Read, Jesse and Abdessalem, Talel and others},
+  year={2021}
+}
+
 ```
 
 Team
