@@ -30,6 +30,7 @@ nav:
   - User Guide: tutorials.md
   - API:
       - utils:
+          - data: api/data.md
           - rand: api/rand.md
           - vocab: api/vocab.md
       - models:
