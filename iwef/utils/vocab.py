@@ -17,17 +17,13 @@ class Vocab:
     def __init__(self, max_size: int = 1_000_000):
         """Initialize a Vocab instance
 
-        Parameters
-        ----------
-        max_size : int, optional
-            The size of the Vocabulary, by default 1_000_000.
+        Args:
+            max_size:
+                The size of the Vocabulary, by default 1_000_000.
 
-        Raises
-        ------
-        TypeError
-            The max size should be int number.
-        ValueError
-            The max size should be greater than 0.
+        Raises:
+            TypeError: The max size should be int number.
+            ValueError: The max size should be greater than 0.
         """
 
         if not isinstance(max_size, int):
