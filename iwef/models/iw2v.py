@@ -36,7 +36,7 @@ class IWord2Vec(IWVBase):
         """_summary_
 
         Args:
-            batch_size:_description_, by default 32
+            batch_size: _description_, by default 32
             vocab_size:_description_, by default 1_000_000
             emb_size: _description_, by default 100
             unigram_table_size: _description_, by default 100_000_000
@@ -119,9 +119,7 @@ class IWord2Vec(IWVBase):
     def vocab2dict(self) -> np.ndarray:
         """_summary_
 
-        Returns
-        -------
-        np.ndarray
+        Returns:
             _description_
         """
         embeddings = {}
@@ -132,14 +130,10 @@ class IWord2Vec(IWVBase):
     def transform_one(self, x: str) -> np.ndarray:
         """_summary_
 
-        Parameters
-        ----------
-        x : str
-            _description_
+        Args:
+        x: _description_
 
-        Returns
-        -------
-        np.ndarray
+        Returns:
             _description_
         """
         word_idx = self.prep.vocab[x]
@@ -148,9 +142,8 @@ class IWord2Vec(IWVBase):
     def learn_one(self, x: str, **kwargs) -> None:
         """_summary_
 
-        Parameters
-        ----------
-        x : str
+        Args:
+            x:
             _description_
         """
         tokens = self.process_text(x)
@@ -165,7 +158,13 @@ class IWord2Vec(IWVBase):
         self.optimizer.step()
 
     def learn_many(self, X: List[str], y=None, **kwargs) -> None:
-        """ """
+        """Train a mini-batch of text features.
+
+        Args:
+            X: A list of sentence features.
+            y: A series of target values, by default None.
+        """
+
         tokens = list(map(self.process_text, X))
         batch = self.prep(tokens)
         targets = batch[0].to(self.device)
