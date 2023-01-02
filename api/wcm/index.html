@@ -656,20 +656,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iwef.models.wcm.WordContextMatrix.reduce_vocab" class="md-nav__link">
-    reduce_vocab()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iwef.models.wcm.WordContextMatrix.tokens2idxs" class="md-nav__link">
-    tokens2idxs()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#iwef.models.wcm.WordContextMatrix.transform_one" class="md-nav__link">
     transform_one()
   </a>
@@ -821,20 +807,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iwef.models.wcm.WordContextMatrix.reduce_vocab" class="md-nav__link">
-    reduce_vocab()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iwef.models.wcm.WordContextMatrix.tokens2idxs" class="md-nav__link">
-    tokens2idxs()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#iwef.models.wcm.WordContextMatrix.transform_one" class="md-nav__link">
     transform_one()
   </a>
@@ -881,7 +853,7 @@
 <a id="iwef.models.wcm"></a>
   <div class="doc doc-contents first">
   
-      <p>hola hola</p>
+      <p>Implementation of the Incremental Word Contex Matrix algorithm.</p>
 
   
 
@@ -910,7 +882,6 @@
         Bases: <code><a class="autorefs autorefs-internal" title="iwef.models.base.IWVBase" href="../base/#iwef.models.base.iwv.IWVBase">IWVBase</a></code></p>
 
   
-      <p><em>summary</em></p>
 
 <p><strong>Examples:</strong></p>
     <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iwef.models.wcm</span> <span class="kn">import</span> <span class="n">WordContextMatrix</span>
@@ -1142,21 +1113,8 @@
 <span class="normal">218</span>
 <span class="normal">219</span>
 <span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">WordContextMatrix</span><span class="p">(</span><span class="n">IWVBase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;_summary_</span>
+<span class="normal">221</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">WordContextMatrix</span><span class="p">(</span><span class="n">IWVBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; from iwef.models.wcm import WordContextMatrix</span>
@@ -1246,17 +1204,17 @@
             <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">learn_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;_summary_</span>
+        <span class="sd">&quot;&quot;&quot;Train one instance using SPMMI method.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            x: _description_</span>
+<span class="sd">            x: one line of text.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">max_size</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">reduce_vocab</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_reduce_vocab</span><span class="p">()</span>
 
             <span class="n">i</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
             <span class="n">contexts</span> <span class="o">=</span> <span class="n">_get_contexts</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
@@ -1282,7 +1240,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
 
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">max_size</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">reduce_vocab</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_reduce_vocab</span><span class="p">()</span>
 
                 <span class="n">i</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
                 <span class="n">contexts</span> <span class="o">=</span> <span class="n">_get_contexts</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
@@ -1296,8 +1254,8 @@
                     <span class="n">col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">contexts</span><span class="o">.</span><span class="n">word2idx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">coocurence_matrix</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
-    <span class="k">def</span> <span class="nf">reduce_vocab</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;_summary_&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">_reduce_vocab</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Reduce the number of words in the vocabulary.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">counter</span> <span class="o">-</span> <span class="mi">1</span>
         <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">counter</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
             <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -1310,40 +1268,26 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduced_emb_dim</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">emb_matrix</span><span class="p">[</span><span class="n">indexes</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">0.0</span>
 
-    <span class="k">def</span> <span class="nf">tokens2idxs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;_summary_</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            tokens: _description_</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            _description_</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">idxs</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
-            <span class="n">idxs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">word2idx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">idxs</span>
-
     <span class="k">def</span> <span class="nf">get_embeddings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idxs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;_summary_</span>
+        <span class="sd">&quot;&quot;&quot;Obtain a list of embedding given by a list of indexes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            idxs:</span>
+<span class="sd">            idxs: List of indexes.</span>
 <span class="sd">        Returns:</span>
-<span class="sd">            _description_</span>
+<span class="sd">            List of embeddings vector.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">idx2word</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">idxs</span><span class="p">]</span>
         <span class="n">embs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">sparse</span><span class="o">.</span><span class="n">lil_matrix</span><span class="p">(</span><span class="n">embs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">transform_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;_summary_</span>
+        <span class="sd">&quot;&quot;&quot;Obtain the vector embedding of a word.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            x: _description_</span>
+<span class="sd">            x: word to obtain the embedding.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            _description_</span>
+<span class="sd">            The vector embedding of the word.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">word2idx</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">idx</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">idx2word</span><span class="p">:</span>
@@ -1371,11 +1315,12 @@
             <span class="n">embeddings</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb_matrix</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">embeddings</span>
 
-    <span class="k">def</span> <span class="nf">vocab2dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;_summary_</span>
+    <span class="k">def</span> <span class="nf">vocab2dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Converts the vocabulary in a dictionary of embeddings.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            _description_</span>
+<span class="sd">            An dict where the words are the keys, and their values are the</span>
+<span class="sd">                embedding vectors.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reduced_emb2dict</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -1688,7 +1633,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 
   <div class="doc doc-contents ">
   
-      <p><em>summary</em></p>
+      <p>Obtain a list of embedding given by a list of indexes.</p>
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1706,7 +1651,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
           <td>
                 <code><span title="typing.List">List</span>[int]</code>
           </td>
-          <td></td>
+          <td><p>List of indexes.</p></td>
           <td>
               <em>required</em>
           </td>
@@ -1727,30 +1672,30 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p><em>description</em></p></td>
+          <td><p>List of embeddings vector.</p></td>
         </tr>
     </tbody>
   </table>
 
       <details class="quote">
         <summary>Source code in <code>iwef/models/wcm.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_embeddings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idxs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;_summary_</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_embeddings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idxs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Obtain a list of embedding given by a list of indexes.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        idxs:</span>
+<span class="sd">        idxs: List of indexes.</span>
 <span class="sd">    Returns:</span>
-<span class="sd">        _description_</span>
+<span class="sd">        List of embeddings vector.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">idx2word</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">idxs</span><span class="p">]</span>
     <span class="n">embs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">])</span>
@@ -1854,7 +1799,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
             <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">max_size</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">reduce_vocab</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_reduce_vocab</span><span class="p">()</span>
 
             <span class="n">i</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
             <span class="n">contexts</span> <span class="o">=</span> <span class="n">_get_contexts</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
@@ -1885,7 +1830,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 
   <div class="doc doc-contents ">
   
-      <p><em>summary</em></p>
+      <p>Train one instance using SPMMI method.</p>
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1903,7 +1848,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
           <td>
                 <code>str</code>
           </td>
-          <td><p><em>description</em></p></td>
+          <td><p>one line of text.</p></td>
           <td>
               <em>required</em>
           </td>
@@ -1933,17 +1878,17 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 <span class="normal">119</span>
 <span class="normal">120</span>
 <span class="normal">121</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">learn_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;_summary_</span>
+    <span class="sd">&quot;&quot;&quot;Train one instance using SPMMI method.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        x: _description_</span>
+<span class="sd">        x: one line of text.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">max_size</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">reduce_vocab</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_reduce_vocab</span><span class="p">()</span>
 
         <span class="n">i</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
         <span class="n">contexts</span> <span class="o">=</span> <span class="n">_get_contexts</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
@@ -1962,142 +1907,6 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 
 
 
-<h3 id="iwef.models.wcm.WordContextMatrix.reduce_vocab" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">reduce_vocab</span><span class="p">()</span></code>
-
-</h3>
-
-
-  <div class="doc doc-contents ">
-  
-      <p><em>summary</em></p>
-
-      <details class="quote">
-        <summary>Source code in <code>iwef/models/wcm.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reduce_vocab</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;_summary_&quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">counter</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">counter</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-        <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduced_emb_dim</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">modified_words</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
-
-    <span class="n">indexes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">free_idxs</span><span class="o">.</span><span class="n">copy</span><span class="p">()))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">coocurence_matrix</span><span class="p">[</span><span class="n">indexes</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduced_emb_dim</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">emb_matrix</span><span class="p">[</span><span class="n">indexes</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">0.0</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h3 id="iwef.models.wcm.WordContextMatrix.tokens2idxs" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">tokens2idxs</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span></code>
-
-</h3>
-
-
-  <div class="doc doc-contents ">
-  
-      <p><em>summary</em></p>
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>tokens</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[str]</code>
-          </td>
-          <td><p><em>description</em></p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
-          </td>
-          <td><p><em>description</em></p></td>
-        </tr>
-    </tbody>
-  </table>
-
-      <details class="quote">
-        <summary>Source code in <code>iwef/models/wcm.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">tokens2idxs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;_summary_</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        tokens: _description_</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        _description_</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">idxs</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
-        <span class="n">idxs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">word2idx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">idxs</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
 <h3 id="iwef.models.wcm.WordContextMatrix.transform_one" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>
 
@@ -2106,7 +1915,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 
   <div class="doc doc-contents ">
   
-      <p><em>summary</em></p>
+      <p>Obtain the vector embedding of a word.</p>
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2124,7 +1933,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
           <td>
                 <code>str</code>
           </td>
-          <td><p><em>description</em></p></td>
+          <td><p>word to obtain the embedding.</p></td>
           <td>
               <em>required</em>
           </td>
@@ -2145,40 +1954,40 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p><em>description</em></p></td>
+          <td><p>The vector embedding of the word.</p></td>
         </tr>
     </tbody>
   </table>
 
       <details class="quote">
         <summary>Source code in <code>iwef/models/wcm.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">193</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
 <span class="normal">194</span>
 <span class="normal">195</span>
 <span class="normal">196</span>
 <span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">transform_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;_summary_</span>
+<span class="normal">198</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">transform_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Obtain the vector embedding of a word.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        x: _description_</span>
+<span class="sd">        x: word to obtain the embedding.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        _description_</span>
+<span class="sd">        The vector embedding of the word.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">word2idx</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">idx</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">idx2word</span><span class="p">:</span>
@@ -2209,7 +2018,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 
   <div class="doc doc-contents ">
   
-      <p><em>summary</em></p>
+      <p>Converts the vocabulary in a dictionary of embeddings.</p>
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2222,26 +2031,29 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
     <tbody>
         <tr>
           <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+                <code><span title="typing.Dict">Dict</span>[str, <span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span>]</code>
           </td>
-          <td><p><em>description</em></p></td>
+          <td><p>An dict where the words are the keys, and their values are the
+embedding vectors.</p></td>
         </tr>
     </tbody>
   </table>
 
       <details class="quote">
         <summary>Source code in <code>iwef/models/wcm.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">vocab2dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;_summary_</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">vocab2dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Converts the vocabulary in a dictionary of embeddings.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        _description_</span>
+<span class="sd">        An dict where the words are the keys, and their values are the</span>
+<span class="sd">            embedding vectors.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reduced_emb2dict</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
