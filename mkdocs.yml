@@ -35,8 +35,10 @@ nav:
           - vocab: api/vocab.md
       - models:
           - base: api/base.md
-          - iword2vec:
+          - iword2vec_utils:
             - pytorch_nn: api/pytorch_nn.md
             - unigram_table: api/unigram_table.md
+          - wcm: api/wcm.md
+          - word2vec: api/w2v.md
       - evaluator: api/evaluator.md
   - Contributing: reference.md

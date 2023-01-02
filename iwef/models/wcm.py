@@ -1,4 +1,4 @@
-""""""
+"""hola hola"""
 from typing import Callable, List, Tuple
 
 import numpy as np
@@ -12,10 +12,22 @@ from iwef.utils import Context, Vocab
 class WordContextMatrix(IWVBase):
     """_summary_
 
-    Parameters
-    ----------
-    IWVBase : _type_
-        _description_
+    Examples:
+        >>> from iwef.models.wcm import WordContextMatrix
+        >>> from torch.utils.data import DataLoader
+        >>> from iwef.utils import TweetStream
+        >>> ts = TweetStream("/path/to/tweets.txt")
+        >>> wcm = WordContextMatrix(5, 1, 3)
+        >>> dataloader = DataLoader(ts, batch_size=5)
+        >>> for batch in tqdm(dataloader):
+        >>>     wcm.learn_many(batch)
+        >>> wcm.vocab2dict()
+        {'hello': [0.77816248, 0.99913448, 0.14790398],
+        'are': [0.86127345, 0.24901696, 0.28613529],
+        'you': [0.64463917, 0.9003653 , 0.26000987],
+        'this': [0.97007572, 0.08310498, 0.61532574],
+        'example':  [0.74144294, 0.77877194, 0.67438642]
+        }
     """
 
     def __init__(
@@ -28,36 +40,35 @@ class WordContextMatrix(IWVBase):
         on: str = None,
         strip_accents: bool = True,
         lowercase: bool = True,
-        preprocessor=None,
+        preprocessor: Callable = None,
         tokenizer: Callable[[str], List[str]] = None,
         ngram_range: Tuple[int, int] = (1, 1),
     ):
-        """_summary_
+        """An instance of WCM class.
 
-        Parameters
-        ----------
-        vocab_size : int
-            _description_
-        window_size : int
-            _description_
-        context_size : int
-            _description_
-        emb_size : int, optional
-            _description_, by default 300
-        reduce_emb_dim : bool, optional
-            _description_, by default True
-        on : str, optional
-            _description_, by default None
-        strip_accents : bool, optional
-            _description_, by default True
-        lowercase : bool, optional
-            _description_, by default True
-        preprocessor : _type_, optional
-            _description_, by default None
-        tokenizer : Callable[[str], List[str]], optional
-            _description_, by default None
-        ngram_range : Tuple[int, int], optional
-            _description_, by default (1, 1)
+        Args:
+            vocab_size: The size of the vocabulary.
+            window_size: The size of the window.
+            context_size: The size of the contexts.
+            emb_size: The size of the embeddings.
+            reduce_emb_dim: , by default True
+            on: The name of the feature that contains the text to vectorize. If `None`,
+                then each `learn_one` and `transform_one` should treat `x` as a `str`
+                and not as a `dict`., by default None.
+            strip_accents: Whether or not to strip accent characters, by default True.
+                lowercase: Whether or not to convert all characters to lowercase
+                by default True.
+            preprocessor: An optional preprocessing function which overrides the
+                `strip_accents` and `lowercase` steps, while preserving the tokenizing
+                and n-grams generation steps., by default None
+            tokenizer: A function used to convert preprocessed text into a `dict` of
+                tokens. A default tokenizer is used if `None` is passed. Set to `False`
+                to disable tokenization, by default None.
+            ngram_range: The lower and upper boundary of the range n-grams to be
+                extracted. All values of n such that `min_n <= n <= max_n` will be used.
+                For example an `ngram_range` of `(1, 1)` means only unigrams, `(1, 2)`
+                means unigrams and bigrams, and `(2, 2)` means only bigrams, by default
+                (1, 1).
         """
         super().__init__(
             vocab_size,
@@ -91,10 +102,8 @@ class WordContextMatrix(IWVBase):
     def learn_one(self, x: str, **kwargs) -> None:
         """_summary_
 
-        Parameters
-        ----------
-        x : str
-            _description_
+        Args:
+            x: _description_
         """
         tokens = self.process_text(x)
         for w in tokens:
@@ -112,14 +121,11 @@ class WordContextMatrix(IWVBase):
                 self.coocurence_matrix[row, col] += 1
 
     def learn_many(self, X: List[str], y=None, **kwargs) -> None:
-        """_summary_
+        """Train a mini-batch of text features.
 
-        Parameters
-        ----------
-        X : List[str]
-            _description_
-        y : _type_, optional
-            _description_, by default None
+        Args:
+            X: A list of sentence features.
+            y: A series of target values, by default None.
         """
         for x in X:
             tokens = self.process_text(x)
@@ -161,14 +167,10 @@ class WordContextMatrix(IWVBase):
     def tokens2idxs(self, tokens: List[str]) -> np.ndarray:
         """_summary_
 
-        Parameters
-        ----------
-        tokens : List[str]
-            _description_
+        Args:
+            tokens: _description_
 
-        Returns
-        -------
-        np.ndarray
+        Returns:
             _description_
         """
         idxs = []
@@ -179,14 +181,9 @@ class WordContextMatrix(IWVBase):
     def get_embeddings(self, idxs: List[int]) -> np.ndarray:
         """_summary_
 
-        Parameters
-        ----------
-        idxs : List[int]
-            _description_
-
-        Returns
-        -------
-        np.ndarray
+        Args:
+            idxs:
+        Returns:
             _description_
         """
         words = [self.vocab.idx2word[idx] for idx in idxs]
@@ -196,14 +193,10 @@ class WordContextMatrix(IWVBase):
     def transform_one(self, x: str) -> np.ndarray:
         """_summary_
 
-        Parameters
-        ----------
-        x : str
-            _description_
+        Args:
+            x: _description_
 
-        Returns
-        -------
-        np.ndarray
+        Returns:
             _description_
         """
         idx = self.vocab.word2idx[x]
@@ -235,25 +228,10 @@ class WordContextMatrix(IWVBase):
     def vocab2dict(self) -> np.ndarray:
         """_summary_
 
-        Returns
-        -------
-        np.ndarray
+        Returns:
             _description_
         """
         return self._reduced_emb2dict()
-
-    def vocab2matrix(self):
-        """_summary_
-
-        Returns
-        -------
-        _type_
-            _description_
-        """
-        mat = np.empty((self.vocab_size, self.context_size))
-        for word, idx in self.vocab.word2idx.items():
-            mat[idx] = self.transform_one(word)
-        return sparse.lil_matrix(mat)
 
 
 def _get_contexts(ind_word: int, w_size: int, tokens: List[str]) -> Tuple[str]:
