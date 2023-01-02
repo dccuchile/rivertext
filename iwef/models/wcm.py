@@ -1,5 +1,5 @@
-"""hola hola"""
-from typing import Callable, List, Tuple
+"""Implementation of the Incremental Word Contex Matrix algorithm."""
+from typing import Callable, Dict, List, Tuple
 
 import numpy as np
 from scipy import sparse
@@ -10,7 +10,7 @@ from iwef.utils import Context, Vocab
 
 
 class WordContextMatrix(IWVBase):
-    """_summary_
+    """
 
     Examples:
         >>> from iwef.models.wcm import WordContextMatrix
@@ -100,17 +100,17 @@ class WordContextMatrix(IWVBase):
             )
 
     def learn_one(self, x: str, **kwargs) -> None:
-        """_summary_
+        """Train one instance using SPMMI method.
 
         Args:
-            x: _description_
+            x: one line of text.
         """
         tokens = self.process_text(x)
         for w in tokens:
             self.d += 1
             self.vocab.add(w)
             if self.vocab.max_size == self.vocab.size:
-                self.reduce_vocab()
+                self._reduce_vocab()
 
             i = tokens.index(w)
             contexts = _get_contexts(i, self.window_size, tokens)
@@ -136,7 +136,7 @@ class WordContextMatrix(IWVBase):
                 self.vocab.add(w)
 
                 if self.vocab.max_size == self.vocab.size:
-                    self.reduce_vocab()
+                    self._reduce_vocab()
 
                 i = tokens.index(w)
                 contexts = _get_contexts(i, self.window_size, tokens)
@@ -150,8 +150,8 @@ class WordContextMatrix(IWVBase):
                     col = self.contexts.word2idx.get(c, 0)
                     self.coocurence_matrix[row, col] += 1
 
-    def reduce_vocab(self) -> None:
-        """_summary_"""
+    def _reduce_vocab(self) -> None:
+        """Reduce the number of words in the vocabulary."""
         self.vocab.counter = self.vocab.counter - 1
         for idx, count in list(self.vocab.counter.items()):
             if count == 0:
@@ -164,40 +164,26 @@ class WordContextMatrix(IWVBase):
         if self.reduced_emb_dim:
             self.emb_matrix[indexes, :] = 0.0
 
-    def tokens2idxs(self, tokens: List[str]) -> np.ndarray:
-        """_summary_
-
-        Args:
-            tokens: _description_
-
-        Returns:
-            _description_
-        """
-        idxs = []
-        for token in tokens:
-            idxs.append(self.vocab.word2idx.get(token, -1))
-        return idxs
-
     def get_embeddings(self, idxs: List[int]) -> np.ndarray:
-        """_summary_
+        """Obtain a list of embedding given by a list of indexes.
 
         Args:
-            idxs:
+            idxs: List of indexes.
         Returns:
-            _description_
+            List of embeddings vector.
         """
         words = [self.vocab.idx2word[idx] for idx in idxs]
         embs = np.array([self.transform_one(word) for word in words])
         return sparse.lil_matrix(embs)
 
     def transform_one(self, x: str) -> np.ndarray:
-        """_summary_
+        """Obtain the vector embedding of a word.
 
         Args:
-            x: _description_
+            x: word to obtain the embedding.
 
         Returns:
-            _description_
+            The vector embedding of the word.
         """
         idx = self.vocab.word2idx[x]
         if idx in self.vocab.idx2word:
@@ -225,11 +211,12 @@ class WordContextMatrix(IWVBase):
             embeddings[word] = self.emb_matrix[idx].toarray()
         return embeddings
 
-    def vocab2dict(self) -> np.ndarray:
-        """_summary_
+    def vocab2dict(self) -> Dict[str, np.ndarray]:
+        """Converts the vocabulary in a dictionary of embeddings.
 
         Returns:
-            _description_
+            An dict where the words are the keys, and their values are the
+                embedding vectors.
         """
         return self._reduced_emb2dict()
 
