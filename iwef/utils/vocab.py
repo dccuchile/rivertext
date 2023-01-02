@@ -78,10 +78,8 @@ class Vocab:
     def add_tokens(self, tokens: List[str]) -> None:
         """Add a list of new words.
 
-        Parameters
-        ----------
-        tokens : List[str]
-            List of words to add.
+        Args:
+            tokens: List of words to add.
         """
         for token in tokens:
             self.add(token)
@@ -89,9 +87,7 @@ class Vocab:
     def is_full(self) -> bool:
         """Check if the vocabulary is full.
 
-        Returns
-        -------
-        bool
+        Returns:
             True if the vocabulary structure is full, otherwise False.
         """
         return self.size == self.max_size
@@ -99,9 +95,7 @@ class Vocab:
     def __len__(self) -> int:
         """Obtain the number of words inside the vocabulary.
 
-        Returns
-        -------
-        int
+        Returns:
             Number of words inside the vocabulary.
         """
         return len(self.word2idx)
@@ -109,14 +103,10 @@ class Vocab:
     def __contains__(self, word: str) -> bool:
         """Check if a word is in the vocabulary.
 
-        Parameters
-        ----------
-        word : str
-            Word to check.
+        Args:
+            word: Word to check.
 
-        Returns
-        -------
-        bool
+        Returns:
             True if the word is in the vocabulary structure, otherwise False.
         """
         return word in self.word2idx
@@ -125,14 +115,11 @@ class Vocab:
         """Obtain the index of a given the word. If the word is not in the vocabulary
         returns -1.
 
-        Parameters
-        ----------
-        word : str
-            word to get the index value.
+        Args:
+            word:
+                word to get the index value.
 
-        Returns
-        -------
-        int
+        Returns:
             The value of index if the word is in the vocabulary, otherwise -1.
         """
         if word in self.word2idx:
@@ -143,10 +130,9 @@ class Vocab:
     def delete(self, idx: int) -> None:
         """Delete the word mapped to the index idx.
 
-        Parameters
-        ----------
-        idx : int
-            Index of the word.
+        Args:
+            idx:
+                Index of the word.
         """
         self.free_idxs.add(idx)
         word = self.idx2word[idx]
