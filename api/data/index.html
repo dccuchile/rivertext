@@ -784,7 +784,7 @@
   <div class="doc doc-contents first">
   
       <p>An Iterable Dataset extends the Iterable class from the PyTorch package.</p>
-<p>The Iterable Dataset class is designed to process big volumes of tweets that 
+<p>The Iterable Dataset class is designed to process big volumes of tweets that
 do not necessarily fit in memory.</p>
 <p>The tweets are expected to be separated by a line break through the file on disk.</p>
 
@@ -848,20 +848,48 @@ do not necessarily fit in memory.</p>
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">TweetStream</span><span class="p">(</span><span class="n">IterableDataset</span><span class="p">):</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">TweetStream</span><span class="p">(</span><span class="n">IterableDataset</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;An instance of TweetStream class.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            filename: path to the tweets file in the disk.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; from iwef.utils import TweetStream</span>
+<span class="sd">            &gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; dataloader = DataLoader(ts, batch_size=1)</span>
+<span class="sd">            &gt;&gt;&gt; for batch in dataloader:</span>
+<span class="sd">            ...     print(batch)</span>
+<span class="sd">            &gt;&gt;&gt; &quot;hello how are you?&quot;</span>
+<span class="sd">            &gt;&gt;&gt; &quot;This is tweet example?&quot;</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span>
 
     <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;_summary_</span>
+        <span class="sd">&quot;&quot;&quot;Remove the whitespace for the current tweet.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            text: Remove the whitespace for the current tweet.</span>
+<span class="sd">            text: tweet to remove whitespace.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            A String without whitespaces.</span>
@@ -872,6 +900,14 @@ do not necessarily fit in memory.</p>
 
     <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Take some tweets from the file on the disk, creating a generator.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; from iwef.utils import TweetStream</span>
+<span class="sd">            &gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; next(ts)</span>
+<span class="sd">            &gt;&gt;&gt; &quot;hello how are you?&quot;</span>
+<span class="sd">            &gt;&gt;&gt; next(ts)</span>
+<span class="sd">            &gt;&gt;&gt; &quot;This is tweet example?&quot;</span>
 
 <span class="sd">        Yields:</span>
 <span class="sd">            A generator of tweets.</span>
@@ -932,6 +968,16 @@ do not necessarily fit in memory.</p>
     </tbody>
   </table>
 
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iwef.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">TweetStream</span><span class="p">(</span><span class="s2">&quot;/path/to/tweets.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;hello how are you?&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;This is tweet example?&quot;</span>
+</code></pre></div>
+
       <details class="quote">
         <summary>Source code in <code>iwef/utils/data.py</code></summary>
         <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
@@ -940,11 +986,31 @@ do not necessarily fit in memory.</p>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;An instance of TweetStream class.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        filename: path to the tweets file in the disk.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from iwef.utils import TweetStream</span>
+<span class="sd">        &gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; dataloader = DataLoader(ts, batch_size=1)</span>
+<span class="sd">        &gt;&gt;&gt; for batch in dataloader:</span>
+<span class="sd">        ...     print(batch)</span>
+<span class="sd">        &gt;&gt;&gt; &quot;hello how are you?&quot;</span>
+<span class="sd">        &gt;&gt;&gt; &quot;This is tweet example?&quot;</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span>
 </code></pre></div></td></tr></table></div>
@@ -967,6 +1033,15 @@ do not necessarily fit in memory.</p>
   
       <p>Take some tweets from the file on the disk, creating a generator.</p>
 
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iwef.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">TweetStream</span><span class="p">(</span><span class="s2">&quot;/path/to/tweets.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;hello how are you?&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;This is tweet example?&quot;</span>
+</code></pre></div>
+
   <p><strong>Yields:</strong></p>
   <table>
     <thead>
@@ -987,16 +1062,32 @@ do not necessarily fit in memory.</p>
 
       <details class="quote">
         <summary>Source code in <code>iwef/utils/data.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">:</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Take some tweets from the file on the disk, creating a generator.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from iwef.utils import TweetStream</span>
+<span class="sd">        &gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; next(ts)</span>
+<span class="sd">        &gt;&gt;&gt; &quot;hello how are you?&quot;</span>
+<span class="sd">        &gt;&gt;&gt; next(ts)</span>
+<span class="sd">        &gt;&gt;&gt; &quot;This is tweet example?&quot;</span>
 
 <span class="sd">    Yields:</span>
 <span class="sd">        A generator of tweets.</span>
@@ -1022,7 +1113,7 @@ do not necessarily fit in memory.</p>
 
   <div class="doc doc-contents ">
   
-      <p><em>summary</em></p>
+      <p>Remove the whitespace for the current tweet.</p>
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1040,7 +1131,7 @@ do not necessarily fit in memory.</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Remove the whitespace for the current tweet.</p></td>
+          <td><p>tweet to remove whitespace.</p></td>
           <td>
               <em>required</em>
           </td>
@@ -1068,22 +1159,22 @@ do not necessarily fit in memory.</p>
 
       <details class="quote">
         <summary>Source code in <code>iwef/utils/data.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;_summary_</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Remove the whitespace for the current tweet.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        text: Remove the whitespace for the current tweet.</span>
+<span class="sd">        text: tweet to remove whitespace.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        A String without whitespaces.</span>
