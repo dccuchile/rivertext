@@ -28,14 +28,7 @@ class TweetStream(IterableDataset):
     def __iter__(self) -> Iterator:
         """_summary_
 
-        Returns
-        -------
-        _type_
-            _description_
-
-        Yields
-        ------
-        Iterator
+        Yields:
             _description_
         """
         file_itr = open(self.filename, encoding="utf-8")
