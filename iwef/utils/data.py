@@ -1,10 +1,4 @@
-"""An Iterable Dataset extends the Iterable class from the PyTorch package.
-
-The Iterable Dataset class is designed to process big volumes of tweets that
-do not necessarily fit in memory.
-
-The tweets are expected to be separated by a line break through the file on disk.
-"""
+"""Module for adding new iterable datasets."""
 
 from typing import Iterator, List
 
@@ -12,20 +6,30 @@ from torch.utils.data import IterableDataset
 
 
 class TweetStream(IterableDataset):
+    """An Iterable Dataset extends the Iterable class from the PyTorch package.
+
+    The Iterable Dataset class is designed to process big volumes of tweets that
+        do not necessarily fit in memory.
+
+    The tweets are expected to be separated by a line break through the file on disk.
+
+    Examples:
+        >>> from iwef.utils import TweetStream
+        >>> ts = TweetStream("/path/to/tweets.txt")
+        >>> dataloader = DataLoader(ts, batch_size=1)
+        >>> for batch in dataloader:
+        ...     print(batch)
+        >>> "hello how are you?"
+        >>> "This is tweet example?"
+
+    """
+
     def __init__(self, filename: str):
         """An instance of TweetStream class.
 
         Args:
             filename: path to the tweets file in the disk.
 
-        Examples:
-            >>> from iwef.utils import TweetStream
-            >>> ts = TweetStream("/path/to/tweets.txt")
-            >>> dataloader = DataLoader(ts, batch_size=1)
-            >>> for batch in dataloader:
-            ...     print(batch)
-            >>> "hello how are you?"
-            >>> "This is tweet example?"
 
         """
         self.filename = filename
