@@ -602,14 +602,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2_2">
-          iword2vec
+          iword2vec_utils
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="iword2vec" data-md-level="3">
+      <nav class="md-nav" aria-label="iword2vec_utils" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_2_2">
           <span class="md-nav__icon md-icon"></span>
-          iword2vec
+          iword2vec_utils
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -643,6 +643,34 @@
           
         </ul>
       </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wcm/" class="md-nav__link">
+        wcm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../w2v/" class="md-nav__link">
+        word2vec
+      </a>
     </li>
   
 
@@ -783,10 +811,7 @@
 <a id="iwef.utils.data"></a>
   <div class="doc doc-contents first">
   
-      <p>An Iterable Dataset extends the Iterable class from the PyTorch package.</p>
-<p>The Iterable Dataset class is designed to process big volumes of tweets that
-do not necessarily fit in memory.</p>
-<p>The tweets are expected to be separated by a line break through the file on disk.</p>
+      <p>Module for adding new iterable datasets.</p>
 
   
 
@@ -814,11 +839,32 @@ do not necessarily fit in memory.</p>
       <p class="doc doc-class-bases">
         Bases: <code><span title="torch.utils.data.IterableDataset">IterableDataset</span></code></p>
 
+  
+      <p>An Iterable Dataset extends the Iterable class from the PyTorch package.</p>
+<p>The Iterable Dataset class is designed to process big volumes of tweets that
+    do not necessarily fit in memory.</p>
+<p>The tweets are expected to be separated by a line break through the file on disk.</p>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iwef.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">TweetStream</span><span class="p">(</span><span class="s2">&quot;/path/to/tweets.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;hello how are you?&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;This is tweet example?&quot;</span>
+</code></pre></div>
 
 
         <details class="quote">
           <summary>Source code in <code>iwef/utils/data.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
@@ -866,21 +912,35 @@ do not necessarily fit in memory.</p>
 <span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
-<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">TweetStream</span><span class="p">(</span><span class="n">IterableDataset</span><span class="p">):</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">TweetStream</span><span class="p">(</span><span class="n">IterableDataset</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;An Iterable Dataset extends the Iterable class from the PyTorch package.</span>
+
+<span class="sd">    The Iterable Dataset class is designed to process big volumes of tweets that</span>
+<span class="sd">        do not necessarily fit in memory.</span>
+
+<span class="sd">    The tweets are expected to be separated by a line break through the file on disk.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from iwef.utils import TweetStream</span>
+<span class="sd">        &gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; dataloader = DataLoader(ts, batch_size=1)</span>
+<span class="sd">        &gt;&gt;&gt; for batch in dataloader:</span>
+<span class="sd">        ...     print(batch)</span>
+<span class="sd">        &gt;&gt;&gt; &quot;hello how are you?&quot;</span>
+<span class="sd">        &gt;&gt;&gt; &quot;This is tweet example?&quot;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;An instance of TweetStream class.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            filename: path to the tweets file in the disk.</span>
 
-<span class="sd">        Examples:</span>
-<span class="sd">            &gt;&gt;&gt; from iwef.utils import TweetStream</span>
-<span class="sd">            &gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)</span>
-<span class="sd">            &gt;&gt;&gt; dataloader = DataLoader(ts, batch_size=1)</span>
-<span class="sd">            &gt;&gt;&gt; for batch in dataloader:</span>
-<span class="sd">            ...     print(batch)</span>
-<span class="sd">            &gt;&gt;&gt; &quot;hello how are you?&quot;</span>
-<span class="sd">            &gt;&gt;&gt; &quot;This is tweet example?&quot;</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span>
@@ -968,48 +1028,22 @@ do not necessarily fit in memory.</p>
     </tbody>
   </table>
 
-<p><strong>Examples:</strong></p>
-    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iwef.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">TweetStream</span><span class="p">(</span><span class="s2">&quot;/path/to/tweets.txt&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;hello how are you?&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;This is tweet example?&quot;</span>
-</code></pre></div>
-
       <details class="quote">
         <summary>Source code in <code>iwef/utils/data.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;An instance of TweetStream class.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        filename: path to the tweets file in the disk.</span>
 
-<span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; from iwef.utils import TweetStream</span>
-<span class="sd">        &gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)</span>
-<span class="sd">        &gt;&gt;&gt; dataloader = DataLoader(ts, batch_size=1)</span>
-<span class="sd">        &gt;&gt;&gt; for batch in dataloader:</span>
-<span class="sd">        ...     print(batch)</span>
-<span class="sd">        &gt;&gt;&gt; &quot;hello how are you?&quot;</span>
-<span class="sd">        &gt;&gt;&gt; &quot;This is tweet example?&quot;</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span>
@@ -1062,11 +1096,7 @@ do not necessarily fit in memory.</p>
 
       <details class="quote">
         <summary>Source code in <code>iwef/utils/data.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">50</span>
 <span class="normal">51</span>
 <span class="normal">52</span>
 <span class="normal">53</span>
@@ -1078,7 +1108,11 @@ do not necessarily fit in memory.</p>
 <span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
-<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">:</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Take some tweets from the file on the disk, creating a generator.</span>
 
 <span class="sd">    Examples:</span>
@@ -1159,18 +1193,18 @@ do not necessarily fit in memory.</p>
 
       <details class="quote">
         <summary>Source code in <code>iwef/utils/data.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Remove the whitespace for the current tweet.</span>
 
 <span class="sd">    Args:</span>

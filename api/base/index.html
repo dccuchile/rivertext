@@ -602,14 +602,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2_2">
-          iword2vec
+          iword2vec_utils
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="iword2vec" data-md-level="3">
+      <nav class="md-nav" aria-label="iword2vec_utils" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_2_2">
           <span class="md-nav__icon md-icon"></span>
-          iword2vec
+          iword2vec_utils
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -643,6 +643,34 @@
           
         </ul>
       </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wcm/" class="md-nav__link">
+        wcm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../w2v/" class="md-nav__link">
+        word2vec
+      </a>
     </li>
   
 
@@ -891,12 +919,7 @@
 <span class="normal">81</span>
 <span class="normal">82</span>
 <span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">IWVBase</span><span class="p">(</span><span class="n">Transformer</span><span class="p">,</span> <span class="n">VectorizerMixin</span><span class="p">):</span>
+<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">IWVBase</span><span class="p">(</span><span class="n">Transformer</span><span class="p">,</span> <span class="n">VectorizerMixin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base class for implement any incremental method in IWEF.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -907,40 +930,35 @@
         <span class="n">on</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">strip_accents</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">lowercase</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="n">preprocessor</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">preprocessor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">tokenizer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ngram_range</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Base constructor for common hyperparameters.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            vocab_size : int</span>
-<span class="sd">                The size of the vocabulary.</span>
-<span class="sd">            vector_size : int</span>
-<span class="sd">                The dimension of the embedding.</span>
-<span class="sd">            window_size : int</span>
-<span class="sd">                The size of the window.</span>
-<span class="sd">            on : str, optional</span>
+<span class="sd">            vocab_size: The size of the vocabulary.</span>
+<span class="sd">            vector_size: The dimension of the embedding.</span>
+<span class="sd">            window_size: The size of the window.</span>
+<span class="sd">            on:</span>
 <span class="sd">                The name of the feature that contains the text to vectorize. If `None`,</span>
 <span class="sd">                then each `learn_one` and `transform_one` should treat `x` as a `str`</span>
 <span class="sd">                and not as a `dict`., by default None.</span>
-<span class="sd">            strip_accents : bool, optional</span>
+<span class="sd">            strip_accents:</span>
 <span class="sd">                Whether or not to strip accent characters, by default True.</span>
-<span class="sd">            lowercase : bool, optional</span>
-<span class="sd">                Whether or not to convert all characters to lowercase by default True.</span>
-<span class="sd">            preprocessor : Callable[str], optional</span>
-<span class="sd">                An optional preprocessing function which overrides the `strip_accents`</span>
-<span class="sd">                and `lowercase` steps, while preserving the tokenizing and n-grams</span>
-<span class="sd">                generation steps., by default None</span>
-<span class="sd">            tokenizer : Callable[[str], List[str]], optional</span>
-<span class="sd">                A function used to convert preprocessed text into a `dict` of tokens.</span>
-<span class="sd">                A default tokenizer is used if `None` is passed. Set to `False` to</span>
-<span class="sd">                disable tokenization, by default None.</span>
-<span class="sd">            ngram_range : Tuple[int, int], optional</span>
-<span class="sd">                The lower and upper boundary of the range n-grams to be extracted. All</span>
-<span class="sd">                values of n such that `min_n &lt;= n &lt;= max_n` will be used. For example an</span>
-<span class="sd">                `ngram_range` of `(1, 1)` means only unigrams, `(1, 2)` means unigrams</span>
-<span class="sd">                and bigrams, and `(2, 2)` means only bigrams, by default (1, 1).</span>
+<span class="sd">            lowercase: Whether or not to convert all characters to lowercase</span>
+<span class="sd">                by default True.</span>
+<span class="sd">            preprocessor: An optional preprocessing function which overrides the</span>
+<span class="sd">                `strip_accents` and `lowercase` steps, while preserving the tokenizing</span>
+<span class="sd">                and n-grams generation steps., by default None</span>
+<span class="sd">            tokenizer: A function used to convert preprocessed text into a `dict` of</span>
+<span class="sd">                tokens. A default tokenizer is used if `None` is passed. Set to `False`</span>
+<span class="sd">                to disable tokenization, by default None.</span>
+<span class="sd">            ngram_range: The lower and upper boundary of the range n-grams to be</span>
+<span class="sd">                extracted. All values of n such that `min_n &lt;= n &lt;= max_n` will be used.</span>
+<span class="sd">                For example an `ngram_range` of `(1, 1)` means only unigrams, `(1, 2)`</span>
+<span class="sd">                means unigrams and bigrams, and `(2, 2)` means only bigrams, by default</span>
+<span class="sd">                (1, 1).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">on</span><span class="o">=</span><span class="n">on</span><span class="p">,</span>
@@ -1019,9 +1037,9 @@
         <tr>
           <td><code>vocab_size</code></td>
           <td>
+                <code>int</code>
           </td>
-          <td><p>int
-The size of the vocabulary.</p></td>
+          <td><p>The size of the vocabulary.</p></td>
           <td>
               <em>required</em>
           </td>
@@ -1029,9 +1047,9 @@ The size of the vocabulary.</p></td>
         <tr>
           <td><code>vector_size</code></td>
           <td>
+                <code>int</code>
           </td>
-          <td><p>int
-The dimension of the embedding.</p></td>
+          <td><p>The dimension of the embedding.</p></td>
           <td>
               <em>required</em>
           </td>
@@ -1039,9 +1057,9 @@ The dimension of the embedding.</p></td>
         <tr>
           <td><code>window_size</code></td>
           <td>
+                <code>int</code>
           </td>
-          <td><p>int
-The size of the window.</p></td>
+          <td><p>The size of the window.</p></td>
           <td>
               <em>required</em>
           </td>
@@ -1049,9 +1067,9 @@ The size of the window.</p></td>
         <tr>
           <td><code>on</code></td>
           <td>
+                <code>str</code>
           </td>
-          <td><p>str, optional
-The name of the feature that contains the text to vectorize. If <code>None</code>,
+          <td><p>The name of the feature that contains the text to vectorize. If <code>None</code>,
 then each <code>learn_one</code> and <code>transform_one</code> should treat <code>x</code> as a <code>str</code>
 and not as a <code>dict</code>., by default None.</p></td>
           <td>
@@ -1061,9 +1079,9 @@ and not as a <code>dict</code>., by default None.</p></td>
         <tr>
           <td><code>strip_accents</code></td>
           <td>
+                <code>bool</code>
           </td>
-          <td><p>bool, optional
-Whether or not to strip accent characters, by default True.</p></td>
+          <td><p>Whether or not to strip accent characters, by default True.</p></td>
           <td>
                 <code>True</code>
           </td>
@@ -1071,9 +1089,10 @@ Whether or not to strip accent characters, by default True.</p></td>
         <tr>
           <td><code>lowercase</code></td>
           <td>
+                <code>bool</code>
           </td>
-          <td><p>bool, optional
-Whether or not to convert all characters to lowercase by default True.</p></td>
+          <td><p>Whether or not to convert all characters to lowercase
+by default True.</p></td>
           <td>
                 <code>True</code>
           </td>
@@ -1082,10 +1101,9 @@ Whether or not to convert all characters to lowercase by default True.</p></td>
           <td><code>preprocessor</code></td>
           <td>
           </td>
-          <td><p>Callable[str], optional
-An optional preprocessing function which overrides the <code>strip_accents</code>
-and <code>lowercase</code> steps, while preserving the tokenizing and n-grams
-generation steps., by default None</p></td>
+          <td><p>An optional preprocessing function which overrides the
+<code>strip_accents</code> and <code>lowercase</code> steps, while preserving the tokenizing
+and n-grams generation steps., by default None</p></td>
           <td>
                 <code>None</code>
           </td>
@@ -1093,11 +1111,11 @@ generation steps., by default None</p></td>
         <tr>
           <td><code>tokenizer</code></td>
           <td>
+                <code><span title="typing.Callable">Callable</span>[[str], <span title="typing.List">List</span>[str]]</code>
           </td>
-          <td><p>Callable[[str], List[str]], optional
-A function used to convert preprocessed text into a <code>dict</code> of tokens.
-A default tokenizer is used if <code>None</code> is passed. Set to <code>False</code> to
-disable tokenization, by default None.</p></td>
+          <td><p>A function used to convert preprocessed text into a <code>dict</code> of
+tokens. A default tokenizer is used if <code>None</code> is passed. Set to <code>False</code>
+to disable tokenization, by default None.</p></td>
           <td>
                 <code>None</code>
           </td>
@@ -1105,12 +1123,13 @@ disable tokenization, by default None.</p></td>
         <tr>
           <td><code>ngram_range</code></td>
           <td>
+                <code><span title="typing.Tuple">Tuple</span>[int, int]</code>
           </td>
-          <td><p>Tuple[int, int], optional
-The lower and upper boundary of the range n-grams to be extracted. All
-values of n such that <code>min_n &lt;= n &lt;= max_n</code> will be used. For example an
-<code>ngram_range</code> of <code>(1, 1)</code> means only unigrams, <code>(1, 2)</code> means unigrams
-and bigrams, and <code>(2, 2)</code> means only bigrams, by default (1, 1).</p></td>
+          <td><p>The lower and upper boundary of the range n-grams to be
+extracted. All values of n such that <code>min_n &lt;= n &lt;= max_n</code> will be used.
+For example an <code>ngram_range</code> of <code>(1, 1)</code> means only unigrams, <code>(1, 2)</code>
+means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by default
+(1, 1).</p></td>
           <td>
                 <code>(1, 1)</code>
           </td>
@@ -1169,12 +1188,7 @@ and bigrams, and <code>(2, 2)</code> means only bigrams, by default (1, 1).</p><
 <span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">vocab_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">vector_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -1182,40 +1196,35 @@ and bigrams, and <code>(2, 2)</code> means only bigrams, by default (1, 1).</p><
     <span class="n">on</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">strip_accents</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">lowercase</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="n">preprocessor</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">preprocessor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">tokenizer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">ngram_range</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base constructor for common hyperparameters.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        vocab_size : int</span>
-<span class="sd">            The size of the vocabulary.</span>
-<span class="sd">        vector_size : int</span>
-<span class="sd">            The dimension of the embedding.</span>
-<span class="sd">        window_size : int</span>
-<span class="sd">            The size of the window.</span>
-<span class="sd">        on : str, optional</span>
+<span class="sd">        vocab_size: The size of the vocabulary.</span>
+<span class="sd">        vector_size: The dimension of the embedding.</span>
+<span class="sd">        window_size: The size of the window.</span>
+<span class="sd">        on:</span>
 <span class="sd">            The name of the feature that contains the text to vectorize. If `None`,</span>
 <span class="sd">            then each `learn_one` and `transform_one` should treat `x` as a `str`</span>
 <span class="sd">            and not as a `dict`., by default None.</span>
-<span class="sd">        strip_accents : bool, optional</span>
+<span class="sd">        strip_accents:</span>
 <span class="sd">            Whether or not to strip accent characters, by default True.</span>
-<span class="sd">        lowercase : bool, optional</span>
-<span class="sd">            Whether or not to convert all characters to lowercase by default True.</span>
-<span class="sd">        preprocessor : Callable[str], optional</span>
-<span class="sd">            An optional preprocessing function which overrides the `strip_accents`</span>
-<span class="sd">            and `lowercase` steps, while preserving the tokenizing and n-grams</span>
-<span class="sd">            generation steps., by default None</span>
-<span class="sd">        tokenizer : Callable[[str], List[str]], optional</span>
-<span class="sd">            A function used to convert preprocessed text into a `dict` of tokens.</span>
-<span class="sd">            A default tokenizer is used if `None` is passed. Set to `False` to</span>
-<span class="sd">            disable tokenization, by default None.</span>
-<span class="sd">        ngram_range : Tuple[int, int], optional</span>
-<span class="sd">            The lower and upper boundary of the range n-grams to be extracted. All</span>
-<span class="sd">            values of n such that `min_n &lt;= n &lt;= max_n` will be used. For example an</span>
-<span class="sd">            `ngram_range` of `(1, 1)` means only unigrams, `(1, 2)` means unigrams</span>
-<span class="sd">            and bigrams, and `(2, 2)` means only bigrams, by default (1, 1).</span>
+<span class="sd">        lowercase: Whether or not to convert all characters to lowercase</span>
+<span class="sd">            by default True.</span>
+<span class="sd">        preprocessor: An optional preprocessing function which overrides the</span>
+<span class="sd">            `strip_accents` and `lowercase` steps, while preserving the tokenizing</span>
+<span class="sd">            and n-grams generation steps., by default None</span>
+<span class="sd">        tokenizer: A function used to convert preprocessed text into a `dict` of</span>
+<span class="sd">            tokens. A default tokenizer is used if `None` is passed. Set to `False`</span>
+<span class="sd">            to disable tokenization, by default None.</span>
+<span class="sd">        ngram_range: The lower and upper boundary of the range n-grams to be</span>
+<span class="sd">            extracted. All values of n such that `min_n &lt;= n &lt;= max_n` will be used.</span>
+<span class="sd">            For example an `ngram_range` of `(1, 1)` means only unigrams, `(1, 2)`</span>
+<span class="sd">            means unigrams and bigrams, and `(2, 2)` means only bigrams, by default</span>
+<span class="sd">            (1, 1).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
         <span class="n">on</span><span class="o">=</span><span class="n">on</span><span class="p">,</span>
@@ -1288,15 +1297,15 @@ and bigrams, and <code>(2, 2)</code> means only bigrams, by default (1, 1).</p><
 
       <details class="quote">
         <summary>Source code in <code>iwef/models/base/iwv.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">69</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
 <span class="normal">70</span>
 <span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+<span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
 <span class="k">def</span> <span class="nf">learn_many</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Train a mini-batch of text features.</span>
 
@@ -1350,17 +1359,17 @@ the words of the vocabulary, and the values are the training vectors.</p>
 
       <details class="quote">
         <summary>Source code in <code>iwef/models/base/iwv.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">79</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
 <span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
 <span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
 <span class="k">def</span> <span class="nf">vocab2dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Abstract method for transforming the vocabulary into a dictionary. The keys are</span>
