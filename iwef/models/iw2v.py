@@ -10,7 +10,20 @@ from iwef.models.iword2vec import CBOW, SG, PrepCbow, PrepSG
 
 
 class IWord2Vec(IWVBase):
-    """
+    """Word2Vec incremental architectures is an adaptation of the popular word2vec
+    proposed by Mikolov et al. to the streaming scenario. To adapt these algorithms to
+    a streaming setting, we rely on the Incremental SkipGram with Negative Sampling
+    model proposed by Kaji et al. The main assumptions we consider are:
+
+    1. The models must deal with the fact that the vocabulary is dynamic and unknown,
+        so the structures are updated as it is trained.
+    2. The unigram table is created incrementally using the algorithm proposed by
+        Kaji et al.
+    3. The internal structure of the architecture was programmed in Pytorch.
+
+    In this package, both CBOW and SG models were adapted using the incremental negative
+        sampling technique to accelerate their training speed.
+
     References:
         1. Kaji, N., & Kobayashi, H. (2017). Incremental skip-gram model with negative
             sampling. arXiv preprint arXiv:1704.03956.
