@@ -1,5 +1,5 @@
 """Hola"""
-from typing import Callable, List
+from typing import Callable, Dict, List
 
 import numpy as np
 from torch.optim import SparseAdam
@@ -113,14 +113,12 @@ class IWord2Vec(IWVBase):
         self.device = device
         self.model.to(self.device)
 
-    def get_embedding(self, word: str):
-        ...
-
-    def vocab2dict(self) -> np.ndarray:
-        """_summary_
+    def vocab2dict(self) -> Dict[str, np.ndarray]:
+        """Converts the vocabulary in a dictionary of embeddings.
 
         Returns:
-            _description_
+            An dict where the words are the keys, and their values are the
+                embedding vectors.
         """
         embeddings = {}
         for word in tqdm(self.prep.vocab.word2idx.keys()):
@@ -128,23 +126,22 @@ class IWord2Vec(IWVBase):
         return embeddings
 
     def transform_one(self, x: str) -> np.ndarray:
-        """_summary_
+        """Obtain the vector embedding of a word.
 
         Args:
-        x: _description_
+            x: word to obtain the embedding.
 
         Returns:
-            _description_
+            The vector embedding of the word.
         """
         word_idx = self.prep.vocab[x]
         return self.model.get_embedding(word_idx)
 
     def learn_one(self, x: str, **kwargs) -> None:
-        """_summary_
+        """Train one instance of text feature.
 
         Args:
-            x:
-            _description_
+            x: one line of text.
         """
         tokens = self.process_text(x)
         batch = self.prep(tokens)

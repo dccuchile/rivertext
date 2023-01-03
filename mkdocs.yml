@@ -10,8 +10,6 @@ repo_url: https://github.com/giturra/iwef
 theme:
     name: material
     locale: en
-    features:
-      - navigation.tabs
     analytics: {gtag: 'G-274394082'}
     highlightjs: true
     hljs_languages:
