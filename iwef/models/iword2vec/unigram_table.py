@@ -15,10 +15,10 @@ class UnigramTable:
     word w are added to the array table.
 
     References:
-    | [1]: Nobuhiro Kaji and Hayato Kobayashi. 2017. Incremental Skip-gram Model
-    |      with Negative Sampling. In Proceedings of the 2017 Conference on
-    |      Empirical Methods in Natural Language Processing, pages 363–371,
-    |      Copenhagen, Denmark. Association for Computational Linguistics.
+        1.Nobuhiro Kaji and Hayato Kobayashi. 2017. Incremental Skip-gram Model
+            with Negative Sampling. In Proceedings of the 2017 Conference on
+            Empirical Methods in Natural Language Processing, pages 363–371,
+            Copenhagen, Denmark. Association for Computational Linguistics.
 
     """
 

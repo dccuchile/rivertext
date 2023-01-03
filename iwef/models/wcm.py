@@ -10,7 +10,21 @@ from iwef.utils import Context, Vocab
 
 
 class WordContextMatrix(IWVBase):
-    """
+    """The Streaming PPMI model is a counting-based method that constructs a
+    word-context matrix of size 𝑉 × 𝐶, where 𝑉 is the number of words
+    contained in the vocabulary and 𝐶 is the number of contexts around the
+    target words. Each relation between a target word and a context
+    corresponds to a smoothed PPMI score.
+
+    Our implementation must deal with the following considerations:
+
+    1. Each line of text or tweet can only be seen one time. After that,
+        it must discard.
+    2. The PPMI’s probabilities are calculated incrementally,
+        which means they are saved in memory.
+    3. The algorithm adapt the vocabulary and contexts to a
+        streaming setting because in principle are unknown.
+
     References:
         1. Bravo-Marquez, F., Khanchandani, A., & Pfahringer, B. (2022). Incremental
             Word Vectors for Time-Evolving Sentiment Lexicon Induction. Cognitive

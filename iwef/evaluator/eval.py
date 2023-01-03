@@ -20,12 +20,12 @@ class PeriodEvaluator:
         """_summary_
 
         Args:
-            dataset: _description_
-            model: _description_
-            batch_size: _description_, by default 32
-            golden_dataset: _description_, by default None
-            eval_func: _description_, by default
-                Callable[[Dict, np.ndarray, np.ndarray], int]
+            dataset: Stream to train.
+            model: Model to train.
+            batch_size: batch_size, by default 32
+            golden_dataset: Golden dataset relations, by default None
+            eval_func: Function evaluator acording to the golden dataset, by default
+            None.
         """
         self.dataset = dataset
         self.dataloader = DataLoader(self.dataset, batch_size=batch_size)
@@ -37,7 +37,8 @@ class PeriodEvaluator:
         """_summary_
 
         Args:
-            p: _description_, by default 3200
+            p: Number of instances to process before evaluating the model,
+                by default 3200.
         """
         c = 0
         for batch in self.dataloader:
