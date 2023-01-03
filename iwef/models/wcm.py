@@ -282,7 +282,7 @@ class WordContextMatrix(IWVBase):
 
 
 def _get_contexts(ind_word: int, w_size: int, tokens: List[str]) -> Tuple[str]:
-    # to do: agregar try para check que es posible obtener los elementos de los tokens
+
     slice_start = ind_word - w_size if (ind_word - w_size >= 0) else 0
     slice_end = (
         len(tokens) if (ind_word + w_size + 1 >= len(tokens)) else ind_word + w_size + 1

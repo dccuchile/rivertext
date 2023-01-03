@@ -62,7 +62,9 @@ References
 
 @article{montiel2021river,
   title={River: machine learning for streaming data in Python},
-  author={Montiel, Jacob and Halford, Max and Mastelini, Saulo Martiello and Bolmier, Geoffrey and Sourty, Raphael and Vaysse, Robin and Zouitine, Adil and Gomes, Heitor Murilo and Read, Jesse and Abdessalem, Talel and others},
+  author={Montiel, Jacob and Halford, Max and Mastelini, Saulo Martiello and Bolmier, Geoffrey and Sourty,
+    Raphael and Vaysse, Robin and Zouitine, Adil and Gomes, Heitor Murilo and Read, Jesse and Abdessalem,
+    Talel and others},
   year={2021}
 }
 
@@ -77,6 +79,3 @@ Team
 Contact
 ------------
 Please write to gabrieliturrab at ug.chile.cl for inquiries about the software. You are also welcome to do a pull request or publish an issue in the IWEF repository on Github.
-
-Contributors
-------------

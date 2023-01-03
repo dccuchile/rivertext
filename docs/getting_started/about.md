@@ -19,7 +19,6 @@ The official documentation can be found at this [link](https://giturra.github.io
 
 ## Motivation and Goals
 
-## Roadmap
 
 ## Team
 
