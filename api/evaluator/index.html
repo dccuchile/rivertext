@@ -775,7 +775,8 @@
 <span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PeriodEvaluator</span><span class="p">:</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PeriodEvaluator</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;_summary_&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -789,12 +790,12 @@
         <span class="sd">&quot;&quot;&quot;_summary_</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            dataset: _description_</span>
-<span class="sd">            model: _description_</span>
-<span class="sd">            batch_size: _description_, by default 32</span>
-<span class="sd">            golden_dataset: _description_, by default None</span>
-<span class="sd">            eval_func: _description_, by default</span>
-<span class="sd">                Callable[[Dict, np.ndarray, np.ndarray], int]</span>
+<span class="sd">            dataset: Stream to train.</span>
+<span class="sd">            model: Model to train.</span>
+<span class="sd">            batch_size: batch_size, by default 32</span>
+<span class="sd">            golden_dataset: Golden dataset relations, by default None</span>
+<span class="sd">            eval_func: Function evaluator acording to the golden dataset, by default</span>
+<span class="sd">            None.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
@@ -806,7 +807,8 @@
         <span class="sd">&quot;&quot;&quot;_summary_</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            p: _description_, by default 3200</span>
+<span class="sd">            p: Number of instances to process before evaluating the model,</span>
+<span class="sd">                by default 3200.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataloader</span><span class="p">:</span>
@@ -863,7 +865,7 @@
           <td>
                 <code><span title="torch.utils.data.IterableDataset">IterableDataset</span></code>
           </td>
-          <td><p><em>description</em></p></td>
+          <td><p>Stream to train.</p></td>
           <td>
               <em>required</em>
           </td>
@@ -873,7 +875,7 @@
           <td>
                 <code><a class="autorefs autorefs-internal" title="iwef.models.base.IWVBase" href="../base/#iwef.models.base.iwv.IWVBase">IWVBase</a></code>
           </td>
-          <td><p><em>description</em></p></td>
+          <td><p>Model to train.</p></td>
           <td>
               <em>required</em>
           </td>
@@ -883,7 +885,7 @@
           <td>
                 <code>int</code>
           </td>
-          <td><p><em>description</em>, by default 32</p></td>
+          <td><p>batch_size, by default 32</p></td>
           <td>
                 <code>32</code>
           </td>
@@ -893,7 +895,7 @@
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p><em>description</em>, by default None</p></td>
+          <td><p>Golden dataset relations, by default None</p></td>
           <td>
                 <code>None</code>
           </td>
@@ -903,8 +905,7 @@
           <td>
                 <code><span title="typing.Callable">Callable</span>[[<span title="typing.Dict">Dict</span>, <span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span>, <span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span>], int]</code>
           </td>
-          <td><p><em>description</em>, by default
-Callable[[Dict, np.ndarray, np.ndarray], int]</p></td>
+          <td><p>Function evaluator acording to the golden dataset, by default</p></td>
           <td>
                 <code>None</code>
           </td>
@@ -947,12 +948,12 @@ Callable[[Dict, np.ndarray, np.ndarray], int]</p></td>
     <span class="sd">&quot;&quot;&quot;_summary_</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        dataset: _description_</span>
-<span class="sd">        model: _description_</span>
-<span class="sd">        batch_size: _description_, by default 32</span>
-<span class="sd">        golden_dataset: _description_, by default None</span>
-<span class="sd">        eval_func: _description_, by default</span>
-<span class="sd">            Callable[[Dict, np.ndarray, np.ndarray], int]</span>
+<span class="sd">        dataset: Stream to train.</span>
+<span class="sd">        model: Model to train.</span>
+<span class="sd">        batch_size: batch_size, by default 32</span>
+<span class="sd">        golden_dataset: Golden dataset relations, by default None</span>
+<span class="sd">        eval_func: Function evaluator acording to the golden dataset, by default</span>
+<span class="sd">        None.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
@@ -995,7 +996,8 @@ Callable[[Dict, np.ndarray, np.ndarray], int]</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p><em>description</em>, by default 3200</p></td>
+          <td><p>Number of instances to process before evaluating the model,
+by default 3200.</p></td>
           <td>
                 <code>3200</code>
           </td>
@@ -1020,11 +1022,13 @@ Callable[[Dict, np.ndarray, np.ndarray], int]</p></td>
 <span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3200</span><span class="p">):</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3200</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;_summary_</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        p: _description_, by default 3200</span>
+<span class="sd">        p: Number of instances to process before evaluating the model,</span>
+<span class="sd">            by default 3200.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataloader</span><span class="p">:</span>
