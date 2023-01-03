@@ -1,4 +1,4 @@
-"""Implementation of the Incremental Word Contex Matrix algorithm."""
+"""Implementation of the Incremental SkipGram and CBOW0 algorithms."""
 from typing import Callable, Dict, List, Tuple
 
 import numpy as np
@@ -107,24 +107,24 @@ class WordContextMatrix(IWVBase):
         Args:
             x: one line of text.
 
-            Examples:
-        >>> from iwef.models.wcm import WordContextMatrix
-        >>> from torch.utils.data import DataLoader
-        >>> from iwef.utils import TweetStream
-        >>> ts = TweetStream("/path/to/tweets.txt")
-        >>> wcm = WordContextMatrix(5, 1, 3)
-        >>> dataloader = DataLoader(ts)
-        >>> for tweet in dataloader:
-        >>>     wcm.learn_one(tweet)
-        >>> wcm.vocab2dict()
-        {'hello': [0.77816248, 0.99913448, 0.14790398],
-        'are': [0.86127345, 0.24901696, 0.28613529],
-        'you': [0.64463917, 0.9003653 , 0.26000987],
-        'this': [0.97007572, 0.08310498, 0.61532574],
-        'example':  [0.74144294, 0.77877194, 0.67438642]
-        }
-        >>>  wcm.transform_one('hello')
-        [0.77816248, 0.99913448, 0.14790398]
+        Examples:
+            >>> from iwef.models.wcm import WordContextMatrix
+            >>> from torch.utils.data import DataLoader
+            >>> from iwef.utils import TweetStream
+            >>> ts = TweetStream("/path/to/tweets.txt")
+            >>> wcm = WordContextMatrix(5, 1, 3)
+            >>> dataloader = DataLoader(ts)
+            >>> for tweet in dataloader:
+            >>>     wcm.learn_one(tweet)
+            >>> wcm.vocab2dict()
+            {'hello': [0.77816248, 0.99913448, 0.14790398],
+            'are': [0.86127345, 0.24901696, 0.28613529],
+            'you': [0.64463917, 0.9003653 , 0.26000987],
+            'this': [0.97007572, 0.08310498, 0.61532574],
+            'example':  [0.74144294, 0.77877194, 0.67438642]
+            }
+            >>>  wcm.transform_one('hello')
+            [0.77816248, 0.99913448, 0.14790398]
         """
         tokens = self.process_text(x)
         for w in tokens:
@@ -148,24 +148,24 @@ class WordContextMatrix(IWVBase):
             X: A list of sentence features.
             y: A series of target values, by default None.
 
-            Examples:
-        >>> from iwef.models.wcm import WordContextMatrix
-        >>> from torch.utils.data import DataLoader
-        >>> from iwef.utils import TweetStream
-        >>> ts = TweetStream("/path/to/tweets.txt")
-        >>> wcm = WordContextMatrix(5, 1, 3)
-        >>> dataloader = DataLoader(ts, batch_size=5)
-        >>> for batch in dataloader:
-        >>>     wcm.learn_many(batch)
-        >>> wcm.vocab2dict()
-        {'hello': [0.77816248, 0.99913448, 0.14790398],
-        'are': [0.86127345, 0.24901696, 0.28613529],
-        'you': [0.64463917, 0.9003653 , 0.26000987],
-        'this': [0.97007572, 0.08310498, 0.61532574],
-        'example':  [0.74144294, 0.77877194, 0.67438642]
-        }
-        >>>  wcm.transform_one('hello')
-        [0.77816248, 0.99913448, 0.14790398]
+        Examples:
+            >>> from iwef.models.wcm import WordContextMatrix
+            >>> from torch.utils.data import DataLoader
+            >>> from iwef.utils import TweetStream
+            >>> ts = TweetStream("/path/to/tweets.txt")
+            >>> wcm = WordContextMatrix(5, 1, 3)
+            >>> dataloader = DataLoader(ts, batch_size=5)
+            >>> for batch in dataloader:
+            >>>     wcm.learn_many(batch)
+            >>> wcm.vocab2dict()
+            {'hello': [0.77816248, 0.99913448, 0.14790398],
+            'are': [0.86127345, 0.24901696, 0.28613529],
+            'you': [0.64463917, 0.9003653 , 0.26000987],
+            'this': [0.97007572, 0.08310498, 0.61532574],
+            'example':  [0.74144294, 0.77877194, 0.67438642]
+            }
+            >>>  wcm.transform_one('hello')
+            [0.77816248, 0.99913448, 0.14790398]
         """
         for x in X:
             tokens = self.process_text(x)

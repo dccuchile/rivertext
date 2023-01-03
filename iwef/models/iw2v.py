@@ -1,8 +1,8 @@
 """Hola"""
-from typing import Callable, Dict, List
+from typing import Callable, Dict, List, Tuple
 
 import numpy as np
-from torch.optim import SparseAdam
+from torch.optim import Optimizer, SparseAdam
 from tqdm import tqdm
 
 from iwef.models.base import IWVBase
@@ -10,44 +10,73 @@ from iwef.models.iword2vec import CBOW, SG, PrepCbow, PrepSG
 
 
 class IWord2Vec(IWVBase):
-    """_summary_"""
+    """
+    Examples:
+        >>> from torch.utils.data import DataLoader
+        >>> from iwef.models.iw2v import IWord2Vec
+        >>> from iwef.utils import TweetStream
+        >>> ts = TweetStream("/path/to/tweets.txt")
+        >>> dataloader = DataLoader(ts, batch_size=32)
+        >>> iw2v = IWord2Vec(
+        ...    window_size=3,
+        ...    vocab_size=3
+        ...    emb_size=3,
+        ...    sg=0,
+        ...    neg_samples_sum=1,
+        ...    device="cuda:0"
+        ... )
+        >>> for batch in dataloader:
+        ...    iw2v.learn_many(batch)
+        >>> iw2v.vocab2dict()
+        {'hello': [0.77816248, 0.99913448, 0.14790398],
+        'are': [0.86127345, 0.24901696, 0.28613529],
+        'you': [0.64463917, 0.9003653 , 0.26000987],
+        'this': [0.97007572, 0.08310498, 0.61532574],
+        'example':  [0.74144294, 0.77877194, 0.67438642]
+        }
+        >>>  iw2v.transform_one('hello')
+        [0.77816248, 0.99913448, 0.14790398]
+
+    """
 
     def __init__(
         self,
         batch_size: int = 32,
         vocab_size: int = 1_000_000,
-        emb_size=100,
+        emb_size: int = 100,
         unigram_table_size: int = 100_000_000,
         window_size: int = 5,
         alpha: float = 0.75,
         subsampling_threshold: float = 1e-3,
         neg_samples_sum: int = 10,
-        sg=1,
-        lr=0.025,
+        sg: int = 1,
+        lr: float = 0.025,
         device: str = None,
-        optimizer=SparseAdam,
+        optimizer: Optimizer = SparseAdam,
         on: str = None,
         strip_accents: bool = True,
         lowercase: bool = True,
         preprocessor=None,
         tokenizer: Callable[[str], List[str]] = None,
-        ngram_range=(1, 1),
+        ngram_range: Tuple[int, int] = (1, 1),
     ):
-        """_summary_
+        """An instance of IWord2Vec class.
 
         Args:
-            batch_size: _description_, by default 32
-            vocab_size:_description_, by default 1_000_000
-            emb_size: _description_, by default 100
-            unigram_table_size: _description_, by default 100_000_000
-            window_size: _description_, by default 5
-            alpha: _description_, by default 0.75
-            subsampling_threshold :_description_, by default 1e-3
-            neg_samples_sum: _description_, by default 10
-            sg:  _description_, by default 1
-            lr: _description_, by default 0.025
-            device:_description_, by default None
-            optimizer: _description_, by default SparseAdam
+            batch_size: Mini-batch size, by default 32,
+            vocab_size: Vocab size, by default 1_000_000.
+            emb_size: Embdding size, by default 100.
+            unigram_table_size: Unigram table size, by default 100_000_000.
+            window_size: Window size, by default 5
+            alpha: Smoother parameter, by default 0.75
+            subsampling_threshold : Subsampling parameter, by default 1e-3
+            neg_samples_sum: Number of negative sampling to used, by default 10.
+            sg: training algorithm, 1 for CBOW; otherwise SG.
+            lr: Learning rate of the optimizer, by default 0.025
+            device: Device to run the wrapped model on. Can be "cpu" or "cuda", by
+                default cuda.
+            optimizer: Optimizer to be used for training the model.,
+                by default SparseAdam.
             on: The name of the feature that contains the text to vectorize. If `None`,
                 then each `learn_one` and `transform_one` should treat `x` as a `str`
                 and not as a `dict`., by default None.
@@ -142,6 +171,33 @@ class IWord2Vec(IWVBase):
 
         Args:
             x: one line of text.
+
+        Examples:
+            >>> from torch.utils.data import DataLoader
+            >>> from iwef.models.iw2v import IWord2Vec
+            >>> from iwef.utils import TweetStream
+            >>> ts = TweetStream("/path/to/tweets.txt")
+            >>> dataloader = DataLoader(ts)
+            >>> iw2v = IWord2Vec(
+            ...    window_size=3,
+            ...    vocab_size=3
+            ...    emb_size=3,
+            ...    sg=0,
+            ...    neg_samples_sum=1,
+            ...    device="cuda:0"
+            ... )
+            >>> for tweet in dataloader:
+            ...    iw2v.learn_one(tweet)
+            >>> iw2v.vocab2dict()
+            {'hello': [0.77816248, 0.99913448, 0.14790398],
+            'are': [0.86127345, 0.24901696, 0.28613529],
+            'you': [0.64463917, 0.9003653 , 0.26000987],
+            'this': [0.97007572, 0.08310498, 0.61532574],
+            'example':  [0.74144294, 0.77877194, 0.67438642]
+            }
+            >>>  iw2v.transform_one('hello')
+            [0.77816248, 0.99913448, 0.14790398]
+
         """
         tokens = self.process_text(x)
         batch = self.prep(tokens)
@@ -160,6 +216,32 @@ class IWord2Vec(IWVBase):
         Args:
             X: A list of sentence features.
             y: A series of target values, by default None.
+
+        Examples:
+            >>> from torch.utils.data import DataLoader
+            >>> from iwef.models.iw2v import IWord2Vec
+            >>> from iwef.utils import TweetStream
+            >>> ts = TweetStream("/path/to//tweets.txt")
+            >>> dataloader = DataLoader(ts, batch_size=32)
+            >>> iw2v = IWord2Vec(
+            ...    window_size=3,
+            ...    vocab_size=3
+            ...    emb_size=3,
+            ...    sg=0,
+            ...    neg_samples_sum=1,
+            ...    device="cuda:0"
+            ... )
+            >>> for batch in dataloader:
+            ...    iw2v.learn_many(batch)
+            >>> iw2v.vocab2dict()
+            {'hello': [0.77816248, 0.99913448, 0.14790398],
+            'are': [0.86127345, 0.24901696, 0.28613529],
+            'you': [0.64463917, 0.9003653 , 0.26000987],
+            'this': [0.97007572, 0.08310498, 0.61532574],
+            'example':  [0.74144294, 0.77877194, 0.67438642]
+            }
+            >>>  wcm.transform_one('hello')
+            [0.77816248, 0.99913448, 0.14790398]
         """
 
         tokens = list(map(self.process_text, X))
