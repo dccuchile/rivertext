@@ -9,9 +9,8 @@ class Vocab:
     model. Besides saving the words, this class considers all the elements that any
     architecture might need, including look-up tables, counters, and space indexes.
 
-    References
-    ----------
-    | [1]: https://github.com/yahoojapan/yskip/blob/master/src/vocab.h
+    References:
+        1. https://github.com/yahoojapan/yskip/blob/master/src/vocab.h
     """
 
     def __init__(self, max_size: int = 1_000_000):

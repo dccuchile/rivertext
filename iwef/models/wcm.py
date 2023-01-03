@@ -1,4 +1,4 @@
-"""Implementation of the Incremental SkipGram and CBOW0 algorithms."""
+"""Implementation of the Incremental SPPMI algorithm."""
 from typing import Callable, Dict, List, Tuple
 
 import numpy as np
@@ -11,7 +11,13 @@ from iwef.utils import Context, Vocab
 
 class WordContextMatrix(IWVBase):
     """
-
+    References:
+        1. Bravo-Marquez, F., Khanchandani, A., & Pfahringer, B. (2022). Incremental
+            Word Vectors for Time-Evolving Sentiment Lexicon Induction. Cognitive
+            Computation, 14(1), 425-441.
+        2. Montiel, J., Halford, M., Mastelini, S. M., Bolmier, G., Sourty, R., Vaysse,
+            R., ... & Bifet, A. (2021). River: machine learning for streaming data in
+            Python.
     Examples:
         >>> from iwef.models.wcm import WordContextMatrix
         >>> from torch.utils.data import DataLoader

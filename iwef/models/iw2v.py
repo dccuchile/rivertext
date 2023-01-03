@@ -1,4 +1,4 @@
-"""Hola"""
+"""Implementation of the Incremental SkipGram and CBOW algorithms."""
 from typing import Callable, Dict, List, Tuple
 
 import numpy as np
@@ -11,6 +11,12 @@ from iwef.models.iword2vec import CBOW, SG, PrepCbow, PrepSG
 
 class IWord2Vec(IWVBase):
     """
+    References:
+        1. Kaji, N., & Kobayashi, H. (2017). Incremental skip-gram model with negative
+            sampling. arXiv preprint arXiv:1704.03956.
+        2. Montiel, J., Halford, M., Mastelini, S. M., Bolmier, G., Sourty, R., Vaysse,
+            R., ... & Bifet, A. (2021). River: machine learning for streaming data in
+            Python.
     Examples:
         >>> from torch.utils.data import DataLoader
         >>> from iwef.models.iw2v import IWord2Vec
