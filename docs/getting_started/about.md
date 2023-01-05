@@ -16,7 +16,7 @@ IWEF also standardizes the training process through an interface similar to the 
 
 The official documentation can be found at this [link](https://giturra.github.io/iwef/).
 
-sas
+
 ## Motivation and Goals
 
 
