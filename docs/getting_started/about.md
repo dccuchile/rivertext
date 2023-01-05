@@ -1,6 +1,6 @@
 # About
 
-Incremental Word Embedding Framework (IWEF) is an open-source library for modeling and
+RiverText is an open-source library for modeling and
 training different incremental word vector architectures proposed by the state-of-the-art.
 
 It seeks to standardize many existing incremental word vector algorithms into a unified

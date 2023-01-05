@@ -1,4 +1,4 @@
-IWEF: The Incremental Word Embedding Framework (This work is still in development)
+RiverText (This work is still in development)
 ===================================================================================
 
 Incremental Word Embedding Framework (IWEF) is an open-source library for modeling and
