@@ -1,10 +1,10 @@
-site_name: IWEF
+site_name: RiverText
 
 plugins:
   - mkdocstrings
 
 repo_name: IWEF
-repo_url: https://github.com/giturra/iwef
+repo_url: https://github.com/dccuchile/rivertext
 
 
 theme:
