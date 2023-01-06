@@ -1,7 +1,7 @@
 RiverText (This work is still in development)
 ===================================================================================
 
-Incremental Word Embedding Framework (IWEF) is an open-source library for modeling and
+RiverText is an open-source library for modeling and
 training different incremental word vector architectures proposed by the state-of-the-art.
 
 It seeks to standardize many existing incremental word vector algorithms into a unified
@@ -42,6 +42,15 @@ References
 ========
 
 ```bibtex
+
+@article{montiel2021river,
+  title={River: machine learning for streaming data in Python},
+  author={Montiel, Jacob and Halford, Max and Mastelini, Saulo Martiello and Bolmier, Geoffrey and Sourty,
+    Raphael and Vaysse, Robin and Zouitine, Adil and Gomes, Heitor Murilo and Read, Jesse and Abdessalem,
+    Talel and others},
+  year={2021}
+}
+
 @article{bravo2022incremental,
   title={Incremental Word Vectors for Time-Evolving Sentiment Lexicon Induction},
   author={Bravo-Marquez, Felipe and Khanchandani, Arun and Pfahringer, Bernhard},
@@ -60,13 +69,7 @@ References
   year={2017}
 }
 
-@article{montiel2021river,
-  title={River: machine learning for streaming data in Python},
-  author={Montiel, Jacob and Halford, Max and Mastelini, Saulo Martiello and Bolmier, Geoffrey and Sourty,
-    Raphael and Vaysse, Robin and Zouitine, Adil and Gomes, Heitor Murilo and Read, Jesse and Abdessalem,
-    Talel and others},
-  year={2021}
-}
+
 
 ```
 
