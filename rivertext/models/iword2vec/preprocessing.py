@@ -9,8 +9,8 @@ import torch
 from nltk import word_tokenize
 from river.utils import dict2numpy
 
-from iwef.models.iword2vec.unigram_table import UnigramTable
-from iwef.utils import Vocab
+from rivertext.models.iword2vec.unigram_table import UnigramTable
+from rivertext.utils import Vocab
 
 
 class Preprocessing:

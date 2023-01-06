@@ -3,7 +3,7 @@ site_name: RiverText
 plugins:
   - mkdocstrings
 
-repo_name: IWEF
+repo_name: RiverText
 repo_url: https://github.com/dccuchile/rivertext
 
 

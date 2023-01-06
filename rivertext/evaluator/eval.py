@@ -3,7 +3,7 @@ from typing import Callable, Dict
 import numpy as np
 from torch.utils.data import DataLoader, IterableDataset
 
-from iwef.models.base import IWVBase
+from rivertext.models.base import IWVBase
 
 
 class PeriodEvaluator:

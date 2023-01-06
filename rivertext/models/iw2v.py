@@ -5,8 +5,8 @@ import numpy as np
 from torch.optim import Optimizer, SparseAdam
 from tqdm import tqdm
 
-from iwef.models.base import IWVBase
-from iwef.models.iword2vec import CBOW, SG, PrepCbow, PrepSG
+from rivertext.models.base import IWVBase
+from rivertext.models.iword2vec import CBOW, SG, PrepCbow, PrepSG
 
 
 class IWord2Vec(IWVBase):

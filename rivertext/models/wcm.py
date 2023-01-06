@@ -5,8 +5,8 @@ import numpy as np
 from scipy import sparse
 from sklearn.decomposition import IncrementalPCA
 
-from iwef.models.base import IWVBase
-from iwef.utils import Context, Vocab
+from rivertext.models.base import IWVBase
+from rivertext.utils import Context, Vocab
 
 
 class WordContextMatrix(IWVBase):

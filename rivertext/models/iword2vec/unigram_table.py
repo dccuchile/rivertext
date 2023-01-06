@@ -1,7 +1,7 @@
 """Incremental algorithm for extracting negative sampling from a text data stream."""
 import numpy as np
 
-from iwef.utils import Vocab, round_number
+from rivertext.utils import Vocab, round_number
 
 
 class UnigramTable:
