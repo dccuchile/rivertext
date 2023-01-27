@@ -8,16 +8,16 @@ interface and facilitate the development of new methods.
 
 RiverTex provides two training paradigms:
 
-* learn_one, which trains one instance at a time;
+* `learn_one`, which trains one instance at a time;
 
-* and learn_many, which trains a mini-batch of instances at a time.
+* and `learn_many`, which trains a mini-batch of instances at a time.
 
 This allows for more efficient training of text representation models with text data streams.
 
-RiverTex also provides an interface similar to the river package, making it easy for developers to use the library to quickly
+RiverText also provides an interface similar to the [`river`](https://riverml.xyz/0.14.0/) package, making it easy for developers to use the library to quickly
 and easily train text representation models.
 
-The official documentation can be found at this [link](https://giturra.github.io/iwef/).
+The official documentation can be found at this [link](https://dccuchile.github.io/rivertext/).
 
 Installation
 ============
