@@ -690,31 +690,32 @@
 
 
 <h1 id="about">About</h1>
-<p>RiverText is an open-source library for modeling and
-training different incremental word vector architectures proposed by the state-of-the-art.</p>
-<p>It seeks to standardize many existing incremental word vector algorithms into a unified
-framework to provide a standardized interface for:</p>
+<p>RiverTex is an open-source library for modeling and training different incremental word vector architectures proposed by the state-of-the-art.</p>
+<p>It seeks to standardize many existing incremental word vector algorithms into a unified framework to provide a standardized
+interface and facilitate the development of new methods.</p>
+<p>RiverTex provides two training paradigms:</p>
 <ul>
-<li>Encapsulating existing incremental word vector methods from previous work and designing new ones.</li>
-<li>Training text representation regarding text data streams.</li>
+<li>
+<p><code>learn_one</code>, which trains one instance at a time;</p>
+</li>
+<li>
+<p>and <code>learn_many</code>, which trains a mini-batch of instances at a time.</p>
+</li>
 </ul>
-<p>IWEF also standardizes the training process through an interface similar to the <code>river</code> package. This standardization follows two training paradigms:</p>
-<ul>
-<li>Training one instance per time (<code>learn_one</code> method).</li>
-<li>Training a mini-batch of instances per time (<code>learn_many</code> method).</li>
-</ul>
-<p>The official documentation can be found at this <a href="https://giturra.github.io/iwef/">link</a>.</p>
+<p>This allows for more efficient training of text representation models with text data streams.</p>
+<p>RiverText also provides an interface similar to the <a href="https://riverml.xyz/0.14.0/"><code>river</code></a> package, making it easy for developers to use the library to quickly
+and easily train text representation models.</p>
 <h2 id="motivation-and-goals">Motivation and Goals</h2>
 <h2 id="team">Team</h2>
 <ul>
-<li><a href="https://giturra.github.io/">Gabriel Iturra</a></li>
+<li><a href="hhttps://giturra.cl/">Gabriel Iturra</a></li>
 <li><a href="https://felipebravom.com/">Felipe Bravo-Marquez</a></li>
 </ul>
 <h2 id="license">License</h2>
 <p>IWEF is licensed under the BSD 3-Clause License.</p>
-<p>Details of the license on this <a href="https://github.com/giturra/iwef/blob/main/LICENSE">link</a>.</p>
+<p>Details of the license on this <a href="https://github.com/dccuchile/rivertext/blob/main/LICENSE">link</a>.</p>
 <h2 id="contact">Contact</h2>
-<p>Please write to gabrieliturrab at ug.chile.cl for inquiries about the software. You are also welcome to do a pull request or publish an issue in the IWEF repository on Github.</p>
+<p>Please write to gabrieliturrab at ug.chile.cl for inquiries about the software. You are also welcome to do a pull request or publish an issue in the RiverText repository on Github.</p>
 
 
 
