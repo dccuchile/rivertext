@@ -1,19 +1,21 @@
 RiverText (This work is still in development)
 ===================================================================================
 
-RiverText is an open-source library for modeling and
-training different incremental word vector architectures proposed by the state-of-the-art.
+RiverTex is an open-source library for modeling and training different incremental word vector architectures proposed by the state-of-the-art.
 
-It seeks to standardize many existing incremental word vector algorithms into a unified
-framework to provide a standardized interface for:
+It seeks to standardize many existing incremental word vector algorithms into a unified framework to provide a standardized
+interface and facilitate the development of new methods.
 
-* Encapsulating existing incremental word vector methods from previous work and designing new ones.
-* Training text representation regarding text data streams.
+RiverTex provides two training paradigms:
 
-IWEF also standardizes the training process through an interface similar to the `river` package. This standardization follows two training paradigms:
+* learn_one, which trains one instance at a time;
 
-* Training one instance per time (`learn_one` method).
-* Training a mini-batch of instances per time (`learn_many` method).
+* and learn_many, which trains a mini-batch of instances at a time.
+
+This allows for more efficient training of text representation models with text data streams.
+
+RiverTex also provides an interface similar to the river package, making it easy for developers to use the library to quickly
+and easily train text representation models.
 
 The official documentation can be found at this [link](https://giturra.github.io/iwef/).
 
@@ -42,7 +44,6 @@ References
 ========
 
 ```bibtex
-
 @article{montiel2021river,
   title={River: machine learning for streaming data in Python},
   author={Montiel, Jacob and Halford, Max and Mastelini, Saulo Martiello and Bolmier, Geoffrey and Sourty,
@@ -68,9 +69,6 @@ References
   journal={arXiv preprint arXiv:1704.03956},
   year={2017}
 }
-
-
-
 ```
 
 Team
@@ -81,4 +79,4 @@ Team
 
 Contact
 ------------
-Please write to gabrieliturrab at ug.chile.cl for inquiries about the software. You are also welcome to do a pull request or publish an issue in the IWEF repository on Github.
+Please write to gabrieliturrab at ug.chile.cl for inquiries about the software. You are also welcome to do a pull request or publish an issue in the RiverText repository on Github.

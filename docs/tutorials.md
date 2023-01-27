@@ -1,1 +1,1 @@
-::: iwef.utils.rand
+::: rivertext.utils.rand

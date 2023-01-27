@@ -1,2 +1,2 @@
-::: iwef.models.wcm
+::: rivertext.models.wcm
     show_root_heading: false

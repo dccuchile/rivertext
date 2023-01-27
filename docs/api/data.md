@@ -1,2 +1,2 @@
-::: iwef.utils.data
+::: rivertext.utils.data
     show_root_heading: false

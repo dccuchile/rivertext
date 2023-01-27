@@ -1,2 +1,2 @@
-::: iwef.models.iword2vec.model
+::: rivertext.models.iword2vec.model
     show_root_heading: false

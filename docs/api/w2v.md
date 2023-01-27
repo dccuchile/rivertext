@@ -1,2 +1,2 @@
-::: iwef.models.iw2v
+::: rivertext.models.iw2v
     show_root_heading: false
