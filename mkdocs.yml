@@ -15,6 +15,8 @@ theme:
     hljs_languages:
         - yaml
         - python
+    features:
+      - navigation.tabs
 
 # Copyright
 copyright: Copyright &copy; 2023
@@ -23,7 +25,8 @@ copyright: Copyright &copy; 2023
 nav:
   - Introduction:
     - Welcome!: index.md
-  - Getting Started:
+  - Introduction:
+      - Installation: getting_started/about.md  
       - About: getting_started/about.md
   - User Guide: tutorials.md
   - API:
@@ -40,3 +43,4 @@ nav:
           - word2vec: api/w2v.md
       - evaluator: api/evaluator.md
   - Contributing: reference.md
+  - Overall Ranking: reference.md
