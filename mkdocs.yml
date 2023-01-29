@@ -1,11 +1,15 @@
 site_name: RiverText
+site_description:  RiverText is a Python Library for Training and Evaluating Incremental Word Embeddings from Text Data Streams.
+site_author: Gabriel Iturra
+site_url: https://github.com/dccuchile/rivertext
+
 
 plugins:
   - mkdocstrings
 
 repo_name: RiverText
 repo_url: https://github.com/dccuchile/rivertext
-
+edit_uri: https://github.com/dccuchile/rivertext
 
 theme:
     name: material
@@ -25,10 +29,8 @@ copyright: Copyright &copy; 2023
 
 nav:
   - Introduction:
-    - Welcome!: index.md
-  - Introduction:
-      - Installation: getting_started/about.md  
-      - About: getting_started/about.md
+      - Installation: introduction/about.md  
+      - About: introduction/about.md
   - User Guide: tutorials.md
   - API:
       - utils:
