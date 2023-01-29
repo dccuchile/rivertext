@@ -33,9 +33,9 @@ class WordContextMatrix(IWVBase):
             R., ... & Bifet, A. (2021). River: machine learning for streaming data in
             Python.
     Examples:
-        >>> from iwef.models.wcm import WordContextMatrix
+        >>> from rivertext.models.wcm import WordContextMatrix
         >>> from torch.utils.data import DataLoader
-        >>> from iwef.utils import TweetStream
+        >>> from rivertext.utils import TweetStream
         >>> ts = TweetStream("/path/to/tweets.txt")
         >>> wcm = WordContextMatrix(5, 1, 3)
         >>> dataloader = DataLoader(ts, batch_size=5)
@@ -128,9 +128,9 @@ class WordContextMatrix(IWVBase):
             x: one line of text.
 
         Examples:
-            >>> from iwef.models.wcm import WordContextMatrix
+            >>> from rivertext.models.wcm import WordContextMatrix
             >>> from torch.utils.data import DataLoader
-            >>> from iwef.utils import TweetStream
+            >>> from rivertext.utils import TweetStream
             >>> ts = TweetStream("/path/to/tweets.txt")
             >>> wcm = WordContextMatrix(5, 1, 3)
             >>> dataloader = DataLoader(ts)
@@ -169,9 +169,9 @@ class WordContextMatrix(IWVBase):
             y: A series of target values, by default None.
 
         Examples:
-            >>> from iwef.models.wcm import WordContextMatrix
+            >>> from rivertext.models.wcm import WordContextMatrix
             >>> from torch.utils.data import DataLoader
-            >>> from iwef.utils import TweetStream
+            >>> from rivertext.utils import TweetStream
             >>> ts = TweetStream("/path/to/tweets.txt")
             >>> wcm = WordContextMatrix(5, 1, 3)
             >>> dataloader = DataLoader(ts, batch_size=5)

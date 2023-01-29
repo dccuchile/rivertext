@@ -14,7 +14,7 @@ class TweetStream(IterableDataset):
     The tweets are expected to be separated by a line break through the file on disk.
 
     Examples:
-        >>> from iwef.utils import TweetStream
+        >>> from rivertext.utils import TweetStream
         >>> ts = TweetStream("/path/to/tweets.txt")
         >>> dataloader = DataLoader(ts, batch_size=1)
         >>> for batch in dataloader:
@@ -51,7 +51,7 @@ class TweetStream(IterableDataset):
         """Take some tweets from the file on the disk, creating a generator.
 
         Examples:
-            >>> from iwef.utils import TweetStream
+            >>> from rivertext.utils import TweetStream
             >>> ts = TweetStream("/path/to/tweets.txt")
             >>> next(ts)
             >>> "hello how are you?"

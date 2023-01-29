@@ -32,8 +32,8 @@ class IWord2Vec(IWVBase):
             Python.
     Examples:
         >>> from torch.utils.data import DataLoader
-        >>> from iwef.models.iw2v import IWord2Vec
-        >>> from iwef.utils import TweetStream
+        >>> from rivertext.models.iw2v import IWord2Vec
+        >>> from rivertext.utils import TweetStream
         >>> ts = TweetStream("/path/to/tweets.txt")
         >>> dataloader = DataLoader(ts, batch_size=32)
         >>> iw2v = IWord2Vec(
@@ -193,8 +193,8 @@ class IWord2Vec(IWVBase):
 
         Examples:
             >>> from torch.utils.data import DataLoader
-            >>> from iwef.models.iw2v import IWord2Vec
-            >>> from iwef.utils import TweetStream
+            >>> from rivertext.models.iw2v import IWord2Vec
+            >>> from rivertext.utils import TweetStream
             >>> ts = TweetStream("/path/to/tweets.txt")
             >>> dataloader = DataLoader(ts)
             >>> iw2v = IWord2Vec(
@@ -238,8 +238,8 @@ class IWord2Vec(IWVBase):
 
         Examples:
             >>> from torch.utils.data import DataLoader
-            >>> from iwef.models.iw2v import IWord2Vec
-            >>> from iwef.utils import TweetStream
+            >>> from rivertext.models.iw2v import IWord2Vec
+            >>> from rivertext.utils import TweetStream
             >>> ts = TweetStream("/path/to//tweets.txt")
             >>> dataloader = DataLoader(ts, batch_size=32)
             >>> iw2v = IWord2Vec(

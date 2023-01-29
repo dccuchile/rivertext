@@ -1,4 +1,4 @@
-"""Contains a base class for implement any incremental method in IWEF."""
+"""Contains a base class for implement any incremental method in RiverText."""
 import abc
 from typing import Callable, Dict, List, Tuple
 
@@ -8,7 +8,7 @@ from river.feature_extraction.vectorize import VectorizerMixin
 
 
 class IWVBase(Transformer, VectorizerMixin):
-    """Base class for implement any incremental method in IWEF."""
+    """Base class for implement any incremental method in RiverText."""
 
     def __init__(
         self,
