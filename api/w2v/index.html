@@ -945,8 +945,8 @@ model proposed by Kaji et al. The main assumptions we consider are:</p>
 </details>
 <p><strong>Examples:</strong></p>
     <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iwef.models.iw2v</span> <span class="kn">import</span> <span class="n">IWord2Vec</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iwef.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rivertext.models.iw2v</span> <span class="kn">import</span> <span class="n">IWord2Vec</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rivertext.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">TweetStream</span><span class="p">(</span><span class="s2">&quot;/path/to/tweets.txt&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">iw2v</span> <span class="o">=</span> <span class="n">IWord2Vec</span><span class="p">(</span>
@@ -1259,8 +1259,8 @@ model proposed by Kaji et al. The main assumptions we consider are:</p>
 <span class="sd">            Python.</span>
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; from torch.utils.data import DataLoader</span>
-<span class="sd">        &gt;&gt;&gt; from iwef.models.iw2v import IWord2Vec</span>
-<span class="sd">        &gt;&gt;&gt; from iwef.utils import TweetStream</span>
+<span class="sd">        &gt;&gt;&gt; from rivertext.models.iw2v import IWord2Vec</span>
+<span class="sd">        &gt;&gt;&gt; from rivertext.utils import TweetStream</span>
 <span class="sd">        &gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; dataloader = DataLoader(ts, batch_size=32)</span>
 <span class="sd">        &gt;&gt;&gt; iw2v = IWord2Vec(</span>
@@ -1420,8 +1420,8 @@ model proposed by Kaji et al. The main assumptions we consider are:</p>
 
 <span class="sd">        Examples:</span>
 <span class="sd">            &gt;&gt;&gt; from torch.utils.data import DataLoader</span>
-<span class="sd">            &gt;&gt;&gt; from iwef.models.iw2v import IWord2Vec</span>
-<span class="sd">            &gt;&gt;&gt; from iwef.utils import TweetStream</span>
+<span class="sd">            &gt;&gt;&gt; from rivertext.models.iw2v import IWord2Vec</span>
+<span class="sd">            &gt;&gt;&gt; from rivertext.utils import TweetStream</span>
 <span class="sd">            &gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)</span>
 <span class="sd">            &gt;&gt;&gt; dataloader = DataLoader(ts)</span>
 <span class="sd">            &gt;&gt;&gt; iw2v = IWord2Vec(</span>
@@ -1465,8 +1465,8 @@ model proposed by Kaji et al. The main assumptions we consider are:</p>
 
 <span class="sd">        Examples:</span>
 <span class="sd">            &gt;&gt;&gt; from torch.utils.data import DataLoader</span>
-<span class="sd">            &gt;&gt;&gt; from iwef.models.iw2v import IWord2Vec</span>
-<span class="sd">            &gt;&gt;&gt; from iwef.utils import TweetStream</span>
+<span class="sd">            &gt;&gt;&gt; from rivertext.models.iw2v import IWord2Vec</span>
+<span class="sd">            &gt;&gt;&gt; from rivertext.utils import TweetStream</span>
 <span class="sd">            &gt;&gt;&gt; ts = TweetStream(&quot;/path/to//tweets.txt&quot;)</span>
 <span class="sd">            &gt;&gt;&gt; dataloader = DataLoader(ts, batch_size=32)</span>
 <span class="sd">            &gt;&gt;&gt; iw2v = IWord2Vec(</span>
@@ -1985,8 +1985,8 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 
 <p><strong>Examples:</strong></p>
     <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iwef.models.iw2v</span> <span class="kn">import</span> <span class="n">IWord2Vec</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iwef.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rivertext.models.iw2v</span> <span class="kn">import</span> <span class="n">IWord2Vec</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rivertext.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">TweetStream</span><span class="p">(</span><span class="s2">&quot;/path/to//tweets.txt&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">iw2v</span> <span class="o">=</span> <span class="n">IWord2Vec</span><span class="p">(</span>
@@ -2064,8 +2064,8 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; from torch.utils.data import DataLoader</span>
-<span class="sd">        &gt;&gt;&gt; from iwef.models.iw2v import IWord2Vec</span>
-<span class="sd">        &gt;&gt;&gt; from iwef.utils import TweetStream</span>
+<span class="sd">        &gt;&gt;&gt; from rivertext.models.iw2v import IWord2Vec</span>
+<span class="sd">        &gt;&gt;&gt; from rivertext.utils import TweetStream</span>
 <span class="sd">        &gt;&gt;&gt; ts = TweetStream(&quot;/path/to//tweets.txt&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; dataloader = DataLoader(ts, batch_size=32)</span>
 <span class="sd">        &gt;&gt;&gt; iw2v = IWord2Vec(</span>
@@ -2145,8 +2145,8 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 
 <p><strong>Examples:</strong></p>
     <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iwef.models.iw2v</span> <span class="kn">import</span> <span class="n">IWord2Vec</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iwef.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rivertext.models.iw2v</span> <span class="kn">import</span> <span class="n">IWord2Vec</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rivertext.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">TweetStream</span><span class="p">(</span><span class="s2">&quot;/path/to/tweets.txt&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">iw2v</span> <span class="o">=</span> <span class="n">IWord2Vec</span><span class="p">(</span>
@@ -2222,8 +2222,8 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; from torch.utils.data import DataLoader</span>
-<span class="sd">        &gt;&gt;&gt; from iwef.models.iw2v import IWord2Vec</span>
-<span class="sd">        &gt;&gt;&gt; from iwef.utils import TweetStream</span>
+<span class="sd">        &gt;&gt;&gt; from rivertext.models.iw2v import IWord2Vec</span>
+<span class="sd">        &gt;&gt;&gt; from rivertext.utils import TweetStream</span>
 <span class="sd">        &gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; dataloader = DataLoader(ts)</span>
 <span class="sd">        &gt;&gt;&gt; iw2v = IWord2Vec(</span>

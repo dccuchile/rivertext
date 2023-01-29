@@ -897,7 +897,7 @@
 <p>The tweets are expected to be separated by a line break through the file on disk.</p>
 
 <p><strong>Examples:</strong></p>
-    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iwef.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rivertext.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">TweetStream</span><span class="p">(</span><span class="s2">&quot;/path/to/tweets.txt&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
@@ -976,7 +976,7 @@
 <span class="sd">    The tweets are expected to be separated by a line break through the file on disk.</span>
 
 <span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; from iwef.utils import TweetStream</span>
+<span class="sd">        &gt;&gt;&gt; from rivertext.utils import TweetStream</span>
 <span class="sd">        &gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; dataloader = DataLoader(ts, batch_size=1)</span>
 <span class="sd">        &gt;&gt;&gt; for batch in dataloader:</span>
@@ -1013,7 +1013,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Take some tweets from the file on the disk, creating a generator.</span>
 
 <span class="sd">        Examples:</span>
-<span class="sd">            &gt;&gt;&gt; from iwef.utils import TweetStream</span>
+<span class="sd">            &gt;&gt;&gt; from rivertext.utils import TweetStream</span>
 <span class="sd">            &gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)</span>
 <span class="sd">            &gt;&gt;&gt; next(ts)</span>
 <span class="sd">            &gt;&gt;&gt; &quot;hello how are you?&quot;</span>
@@ -1119,7 +1119,7 @@
       <p>Take some tweets from the file on the disk, creating a generator.</p>
 
 <p><strong>Examples:</strong></p>
-    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iwef.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rivertext.utils</span> <span class="kn">import</span> <span class="n">TweetStream</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">TweetStream</span><span class="p">(</span><span class="s2">&quot;/path/to/tweets.txt&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;hello how are you?&quot;</span>
@@ -1167,7 +1167,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Take some tweets from the file on the disk, creating a generator.</span>
 
 <span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; from iwef.utils import TweetStream</span>
+<span class="sd">        &gt;&gt;&gt; from rivertext.utils import TweetStream</span>
 <span class="sd">        &gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; next(ts)</span>
 <span class="sd">        &gt;&gt;&gt; &quot;hello how are you?&quot;</span>
