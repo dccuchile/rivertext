@@ -1,1 +1,7 @@
-# Welcome to the RiverText documentation!
+---
+hide:
+    - navigation
+template: home.html
+title: deep-river
+---
+

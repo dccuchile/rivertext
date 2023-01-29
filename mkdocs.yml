@@ -9,6 +9,7 @@ repo_url: https://github.com/dccuchile/rivertext
 
 theme:
     name: material
+    custom_dir: docs/overrides
     locale: en
     analytics: {gtag: 'G-274394082'}
     highlightjs: true
@@ -44,3 +45,15 @@ nav:
       - evaluator: api/evaluator.md
   - Contributing: reference.md
   - Overall Ranking: reference.md
+
+
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/vega@5
+  - https://cdn.jsdelivr.net/npm/vega-lite@5
+  - https://cdn.jsdelivr.net/npm/vega-embed@6
+
+extra_css:
+  - stylesheets/extra.css
