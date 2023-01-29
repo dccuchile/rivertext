@@ -29,7 +29,9 @@ copyright: Copyright &copy; 2023
 
 
 nav:
+  - Home: index.md
   - Introduction:
+      - getting_started.md
       - Installation: introduction/about.md
       - About: introduction/about.md
   - User Guide: tutorials.md
