@@ -5,9 +5,10 @@ from river.utils import VectorDict
 
 
 class Vocab:
-    """Container class that saves the words map to any word embedding vector in a
-    model. Besides saving the words, this class considers all the elements that any
-    architecture might need, including look-up tables, counters, and space indexes.
+    """The Container class efficiently stores the mapping of words to their
+    corresponding vector representations and supports all necessary elements
+    required by an architecture, such as lookup tables, counters, and space indexes.
+    It is an essential tool for managing and accessing word embeddings.
 
     References:
         1. https://github.com/yahoojapan/yskip/blob/master/src/vocab.h
@@ -45,8 +46,9 @@ class Vocab:
     def add(self, word: str) -> int:
         """Add a new word.
 
-        The new word added must update several data structures to maintain the look-up
-        tables, word counts, and free index for new words.
+        When a new word is added to the Vocabulary class, multiple data structures are
+        updated to maintain the accuracy of the lookup tables, word counts, and
+        available index for new entries.
 
         Args:
             word: New word to add.
