@@ -29,7 +29,7 @@ copyright: Copyright &copy; 2023
 
 nav:
   - Introduction:
-      - Installation: introduction/about.md  
+      - Installation: introduction/about.md
       - About: introduction/about.md
   - User Guide: tutorials.md
   - API:
