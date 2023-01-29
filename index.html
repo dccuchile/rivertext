@@ -1,3 +1,4 @@
+<!-- Custom HTML site displayed as the landing page -->
 
 <!doctype html>
 <html lang="en" class="no-js">
@@ -10,14 +11,14 @@
       
       
       
-        <link rel="next" href="getting_started/about/">
+        <link rel="next" href="tutorials/">
       
       <link rel="icon" href="assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.7">
     
     
       
-        <title>Welcome! - RiverText</title>
+        <title>deep-river - RiverText</title>
       
     
     
@@ -42,6 +43,8 @@
     
       <link rel="stylesheet" href="assets/_mkdocstrings.css">
     
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,11 +68,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#welcome-to-the-rivertext-documentation" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -100,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Welcome!
+              deep-river
             
           </span>
         </div>
@@ -129,118 +127,39 @@
     <div class="md-container" data-md-component="container">
       
       
-        
-          
-            
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-    
-  
 
+<link href="https://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet">
+<!-- Hero for landing page -->
+<section class="tx-container">
+  <div class="md-grid md-typeset">
+    <div class="tx-hero">
 
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="." class="md-tabs__link md-tabs__link--active">
-        Introduction
-      </a>
-    </li>
-  
+      <div class="tx-hero__content">
+        <h1 class=".focus-in-contract-bck"> RiverText </h1>
+        <h3> A Python Library for Training and Evaluating
+          Incremental Word Embeddings from Text Data Streams.</h3>
+        <a href="tutorials/" title="User Guide"
+          class="md-button md-button--primary">
+          Get started
+        </a>
+        <a href="https://github.com/dccuchile/rivertext" title="" class="md-button">
+          GitHub
+        </a>
+      </div>
 
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="getting_started/about/" class="md-tabs__link">
-        Introduction
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="tutorials/" class="md-tabs__link">
-      User Guide
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="api/data/" class="md-tabs__link">
-        API
-      </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="reference/" class="md-tabs__link">
-      Contributing
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="reference/" class="md-tabs__link">
-      Overall Ranking
-    </a>
-  </li>
-
-      
-    </ul>
+    </div>
   </div>
-</nav>
-          
-        
-      
+</section>
+
+
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -316,8 +235,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
       <a href="." class="md-nav__link md-nav__link--active">
         Welcome!
@@ -369,7 +286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting_started/about/" class="md-nav__link">
+      <a href="getting_started/about.md" class="md-nav__link">
         Installation
       </a>
     </li>
@@ -383,7 +300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting_started/about/" class="md-nav__link">
+      <a href="getting_started/about.md" class="md-nav__link">
         About
       </a>
     </li>
@@ -713,6 +630,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -721,8 +640,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  
-    
   
   
 </nav>
@@ -735,20 +652,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-                  
 
-  
-  
-
-
-
-<h1 id="welcome-to-the-rivertext-documentation">Welcome to the RiverText documentation!</h1>
-
-
-
-
-
-                
               </article>
             </div>
           
@@ -757,28 +661,7 @@
         
       </main>
       
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-    <div class="md-copyright__highlight">
-      Copyright &copy; 2023
-    </div>
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
-</div>
-      
-    </div>
-  </div>
-</footer>
-      
+
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
@@ -788,6 +671,18 @@
     
     
       <script src="assets/javascripts/bundle.a00a7c5e.min.js"></script>
+      
+        <script src="javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
       
     
   </body>
