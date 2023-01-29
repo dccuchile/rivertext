@@ -28,7 +28,7 @@ and easily train text representation models.
 
 ## License
 
-IWEF is licensed under the BSD 3-Clause License.
+RiverText is licensed under the BSD 3-Clause License.
 
 Details of the license on this [link](https://github.com/dccuchile/rivertext/blob/main/LICENSE).
 
