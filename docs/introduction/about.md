@@ -20,7 +20,6 @@ RiverText also provides an interface similar to the [`river`](https://riverml.xy
 
 ## Team
 
-
 * [Gabriel Iturra](https://giturra.cl/)
 * [Felipe Bravo-Marquez](https://felipebravom.com/)
 
