@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader, IterableDataset
 from rivertext.models.base import IWVBase
 
 
-class PeriodEvaluator:
+class PeriodicEvaluator:
     """_summary_"""
 
     def __init__(

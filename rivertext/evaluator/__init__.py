@@ -1,3 +1,3 @@
-from rivertext.evaluator.eval import PeriodEvaluator
+from rivertext.evaluator.eval import PeriodicEvaluator
 
-__all__ = ["PeriodEvaluator"]
+__all__ = ["PeriodicEvaluator"]

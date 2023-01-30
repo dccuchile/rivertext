@@ -1,5 +1,5 @@
 nltk==3.7
-numpy==1.21.5
+numpy==1.22.3
 river==0.11.1
 scikit_learn==1.2.1
 scipy==1.10.0
