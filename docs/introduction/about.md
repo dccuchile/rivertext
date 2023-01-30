@@ -13,7 +13,7 @@ RiverTex provides two training paradigms:
 
 This allows for more efficient training of text representation models with text data streams.
 
-RiverText also provides an interface similar to the [`river`](https://riverml.xyz/0.14.0/) package, making it easy for developers to use the library to quickly and easily train text representation models.
+RiverText also provides an interface similar to the [`river`](https://riverml.xyz) package, making it easy for developers to use the library to quickly and easily train text representation models.
 
 ## Motivation and Goals
 
