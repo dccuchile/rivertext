@@ -25,6 +25,16 @@ Installation
 Requirements
 ------------
 
+These package will be installed along with the package, in case these have not already been installed:
+
+1. nltk
+2. numpy
+3. river
+4. scikit_learn
+5. scipy
+6. torch
+7. tqdm
+
 Contributing
 ------------
 
@@ -51,9 +61,6 @@ Then, to compile the documentation, run:
 mkdocs build
 mkdocs serve
 ```
-
-
-
 
 Changelog
 =========
