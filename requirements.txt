@@ -3,5 +3,5 @@ numpy==1.22.3
 river==0.11.1
 scikit_learn==1.2.1
 scipy==1.10.0
-torch==1.10.0
+torch==1.13.1
 tqdm==4.49.0
