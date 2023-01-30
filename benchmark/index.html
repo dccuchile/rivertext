@@ -72,6 +72,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#benchmark" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -627,10 +632,43 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Benchmark
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Benchmark
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overall-ranking" class="md-nav__link">
+    Overall Ranking
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -653,6 +691,23 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overall-ranking" class="md-nav__link">
+    Overall Ranking
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -672,9 +727,124 @@
   </a>
 
 
-  <h1>Benchmark</h1>
-
-
+<h1 id="benchmark">Benchmark</h1>
+<h2 id="overall-ranking">Overall Ranking</h2>
+<table>
+<thead>
+<tr>
+<th align="center">model</th>
+<th align="center">emb_size</th>
+<th align="center">window_size</th>
+<th align="center">num_ns</th>
+<th align="center">men_ranking</th>
+<th align="center">mturk_ranking</th>
+<th align="center">ap_ranking</th>
+<th align="center">mean_ranking</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">cbow</td>
+<td align="center">300</td>
+<td align="center">3</td>
+<td align="center">8</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">2,333333333</td>
+</tr>
+<tr>
+<td align="center">cbow</td>
+<td align="center">300</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">7</td>
+<td align="center">2</td>
+<td align="center">3,333333333</td>
+</tr>
+<tr>
+<td align="center">cbow</td>
+<td align="center">100</td>
+<td align="center">3</td>
+<td align="center">10</td>
+<td align="center">8</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">4,666666667</td>
+</tr>
+<tr>
+<td align="center">cbow</td>
+<td align="center">300</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">9</td>
+<td align="center">3</td>
+<td align="center">7</td>
+<td align="center">6,333333333</td>
+</tr>
+<tr>
+<td align="center">cbow</td>
+<td align="center">100</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">12</td>
+<td align="center">6,333333333</td>
+</tr>
+<tr>
+<td align="center">cbow</td>
+<td align="center">200</td>
+<td align="center">3</td>
+<td align="center">10</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">11</td>
+<td align="center">6,666666667</td>
+</tr>
+<tr>
+<td align="center">cbow</td>
+<td align="center">300</td>
+<td align="center">3</td>
+<td align="center">10</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">16</td>
+<td align="center">8,333333333</td>
+</tr>
+<tr>
+<td align="center">cbow</td>
+<td align="center">200</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">6</td>
+<td align="center">8,666666667</td>
+</tr>
+<tr>
+<td align="center">cbow</td>
+<td align="center">200</td>
+<td align="center">3</td>
+<td align="center">8</td>
+<td align="center">7</td>
+<td align="center">12</td>
+<td align="center">13</td>
+<td align="center">10,66666667</td>
+</tr>
+<tr>
+<td align="center">cbow</td>
+<td align="center">100</td>
+<td align="center">3</td>
+<td align="center">8</td>
+<td align="center">4</td>
+<td align="center">18</td>
+<td align="center">10</td>
+<td align="center">10,66666667</td>
+</tr>
+</tbody>
+</table>
 
 
 
