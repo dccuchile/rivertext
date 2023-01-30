@@ -356,6 +356,33 @@
     Usage
   </a>
   
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#incremental-word-context-matrix" class="md-nav__link">
+    Incremental Word Context Matrix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incremental-skipgram" class="md-nav__link">
+    Incremental SkipGram
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incremental-cbow" class="md-nav__link">
+    Incremental CBOW
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -728,6 +755,33 @@
     Usage
   </a>
   
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#incremental-word-context-matrix" class="md-nav__link">
+    Incremental Word Context Matrix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incremental-skipgram" class="md-nav__link">
+    Incremental SkipGram
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incremental-cbow" class="md-nav__link">
+    Incremental CBOW
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -752,7 +806,85 @@
 
 <h1 id="getting-started">Getting started</h1>
 <h2 id="installation">Installation</h2>
+<p>Feel welcome to <a href="https://github.com/dccuchile/rivertext/issues/new">open an issue on GitHub</a> if you are having any trouble.</p>
 <h2 id="usage">Usage</h2>
+<h3 id="incremental-word-context-matrix">Incremental Word Context Matrix</h3>
+<pre><code class="language-python">&gt;&gt;&gt; from rivertext.models.wcm import WordContextMatrix
+&gt;&gt;&gt; from torch.utils.data import DataLoader
+&gt;&gt;&gt; from rivertext.utils import TweetStream
+
+&gt;&gt;&gt; from web.datasets.similarity import fetch_MEN
+&gt;&gt;&gt; from web.evaluate import evaluate_similarity
+
+&gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)
+
+&gt;&gt;&gt; wcm = WordContextMatrix(10000, 5, 500)
+
+&gt;&gt;&gt; dataloader = DataLoader(ts, batch_size=32)
+
+&gt;&gt;&gt; men = fetch_MEN()
+
+&gt;&gt;&gt; for batch in tqdm(dataloader):
+...    wcm.learn_many(batch)
+
+&gt;&gt;&gt; embs = wcm.vocab2dict()
+&gt;&gt;&gt; print(f'Spearman Correlation: {evaluate_similarity(embs, men.X, men.y)}')
+Spearman Correlation: 0.08286971636085129
+</code></pre>
+<h3 id="incremental-skipgram">Incremental SkipGram</h3>
+<pre><code class="language-python">&gt;&gt;&gt; from torch.utils.data import DataLoader
+
+&gt;&gt;&gt; from rivertext.models.iw2v import IWord2Vec
+&gt;&gt;&gt; from rivertext.utils import TweetStream
+
+&gt;&gt;&gt; from web.datasets.similarity import fetch_MEN
+&gt;&gt;&gt; from web.evaluate import evaluate_similarity
+
+&gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)
+&gt;&gt;&gt; men = fetch_MEN()
+&gt;&gt;&gt; dataloader = DataLoader(ts, batch_size=32)
+
+&gt;&gt;&gt; iw2v = IWord2Vec(window_size=3, 
+... emb_size=200, 
+... sg=1, 
+... neg_samples_sum=8, 
+... device=&quot;cuda:0&quot;
+... )
+
+&gt;&gt;&gt; for batch in tqdm(dataloader):
+...    iw2v.learn_many(batch)
+
+&gt;&gt;&gt; embs = iw2v.vocab2dict()
+&gt;&gt;&gt; print(evaluate_similarity(embs, men.X, men.y))
+Spearman Correlation: 0.08286971636085129
+</code></pre>
+<h3 id="incremental-cbow">Incremental CBOW</h3>
+<pre><code class="language-python">&gt;&gt;&gt; from torch.utils.data import DataLoader
+
+&gt;&gt;&gt; from rivertext.models.iw2v import IWord2Vec
+&gt;&gt;&gt; from rivertext.utils import TweetStream
+
+&gt;&gt;&gt; from web.datasets.similarity import fetch_MEN
+&gt;&gt;&gt; from web.evaluate import evaluate_similarity
+
+&gt;&gt;&gt; ts = TweetStream(&quot;/path/to/tweets.txt&quot;)
+&gt;&gt;&gt; men = fetch_MEN()
+&gt;&gt;&gt; dataloader = DataLoader(ts, batch_size=32)
+
+&gt;&gt;&gt; iw2v = IWord2Vec(window_size=3, 
+... emb_size=200, 
+... sg=0, 
+... neg_samples_sum=8, 
+... device=&quot;cuda:0&quot;
+... )
+
+&gt;&gt;&gt; for batch in tqdm(dataloader):
+...    iw2v.learn_many(batch)
+
+&gt;&gt;&gt; embs = iw2v.vocab2dict()
+&gt;&gt;&gt; print(evaluate_similarity(embs, men.X, men.y))
+Spearman Correlation: 0.08286971636085129
+</code></pre>
 
 
 
