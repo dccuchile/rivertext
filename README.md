@@ -37,6 +37,24 @@ Testing
 Build the documentation
 -----------------------
 
+The documentation is created using `mkdocs` and `mkdocs-material`. It can be found in the docs folder at the root of the project. First, you need to install:
+
+```
+pip install mkdocs
+pip install "mkdocstrings[python]"
+pip install mkdocs-material
+```
+
+Then, to compile the documentation, run:
+
+```
+mkdocs build
+mkdocs serve
+```
+
+
+
+
 Changelog
 =========
 
