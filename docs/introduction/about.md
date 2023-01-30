@@ -20,7 +20,7 @@ RiverText also provides an interface similar to the [`river`](https://riverml.xy
 Incremental word embedding models are becoming increasingly important in NLP systems. They allow for the dynamic update of word embeddings as new data becomes available, avoiding the need for retraining a model from scratch.
 Previous approaches to word embedding models have focused on batch training, which can become impractical when dealing large amounts of data. The development of incremental word embedding models has addressed this issue, offering a more efficient solution.
 
-The main objectives of our incremental word embedding library are:
+The main objectives we want to achieve with this library are:
 
 * To provide a ready-to-use tool for updating word embeddings incrementally as new data becomes available.
 
