@@ -21,6 +21,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/dccuchile/rivertext/overview/</loc>
+         <lastmod>2023-01-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/dccuchile/rivertext/release/</loc>
          <lastmod>2023-01-30</lastmod>
          <changefreq>daily</changefreq>
