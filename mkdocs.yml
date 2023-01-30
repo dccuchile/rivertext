@@ -34,6 +34,7 @@ nav:
       - getting_started.md
       - About: introduction/about.md
   - API:
+      - overview.md
       - utils:
           - data: api/data.md
           - rand: api/rand.md
