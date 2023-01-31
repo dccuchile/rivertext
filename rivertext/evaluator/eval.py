@@ -7,7 +7,7 @@ from rivertext.models.base import IWVBase
 
 
 class PeriodicEvaluator:
-    """_summary_"""
+    """_summar"""
 
     def __init__(
         self,
