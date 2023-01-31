@@ -46,10 +46,10 @@ Spearman Correlation: 0.08286971636085129
 >>> men = fetch_MEN()
 >>> dataloader = DataLoader(ts, batch_size=32)
 
->>> iw2v = IWord2Vec(window_size=3, 
-... emb_size=200, 
-... sg=1, 
-... neg_samples_sum=8, 
+>>> iw2v = IWord2Vec(window_size=3,
+... emb_size=200,
+... sg=1,
+... neg_samples_sum=8,
 ... device="cuda:0"
 ... )
 
@@ -75,10 +75,10 @@ Spearman Correlation: 0.08286971636085129
 >>> men = fetch_MEN()
 >>> dataloader = DataLoader(ts, batch_size=32)
 
->>> iw2v = IWord2Vec(window_size=3, 
-... emb_size=200, 
-... sg=0, 
-... neg_samples_sum=8, 
+>>> iw2v = IWord2Vec(window_size=3,
+... emb_size=200,
+... sg=0,
+... neg_samples_sum=8,
 ... device="cuda:0"
 ... )
 
