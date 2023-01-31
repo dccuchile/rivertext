@@ -7,34 +7,39 @@ from rivertext.models.base import IWVBase
 
 
 class PeriodicEvaluator:
-    """_summar"""
+    """Periodic Evaluation assesses the entire incremental word embeddingsmodel's
+    performance using an intrinsic NLP task-related test dataset after a set number, p,
+    of instances, have been processed and trained. This allows for the continuous
+    evaluation of the model's accuracy and helps identify improvement areas."""
 
     def __init__(
         self,
         dataset: IterableDataset,
         model: IWVBase,
-        batch_size: int = 32,
+        p: int = 32,
         golden_dataset: Callable = None,
         eval_func: Callable[[Dict, np.ndarray, np.ndarray], int] = None,
     ):
-        """_summary_
+        """Create a instance of PeriodicClass
 
         Args:
             dataset: Stream to train.
             model: Model to train.
-            batch_size: batch_size, by default 32
+            batch_size: batch size for the dataloader, by default 32
             golden_dataset: Golden dataset relations, by default None
             eval_func: Function evaluator acording to the golden dataset, by default
             None.
         """
         self.dataset = dataset
-        self.dataloader = DataLoader(self.dataset, batch_size=batch_size)
+        self.dataloader = DataLoader(self.dataset, batch_size=p)
         self.model = model
         self.gold_relation = golden_dataset()
         self.evaluator = eval_func
 
     def run(self, p: int = 3200):
-        """_summary_
+        """Algorithm executes periodic assessments of the entire
+        model every p instances, providing continuous evaluation and identification of
+        areas for improvement.
 
         Args:
             p: Number of instances to process before evaluating the model,

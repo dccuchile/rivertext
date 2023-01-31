@@ -10,7 +10,7 @@ from rivertext.utils import Context, Vocab
 
 
 class WordContextMatrix(IWVBase):
-    """The Streaming PPMI model is a counting-based method that constructs a
+    """The WordContextMatrix model is a counting-based method that constructs a
     word-context matrix of size 𝑉 × 𝐶, where 𝑉 is the number of words
     contained in the vocabulary and 𝐶 is the number of contexts around the
     target words. Each relation between a target word and a context
