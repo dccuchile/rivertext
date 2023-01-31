@@ -20,7 +20,7 @@ class PeriodicEvaluator:
         golden_dataset: Callable = None,
         eval_func: Callable[[Dict, np.ndarray, np.ndarray], int] = None,
     ):
-        """Create a instance of PeriodicClass
+        """Create a instance of PeriodicEvaluator class.
 
         Args:
             dataset: Stream to train.
