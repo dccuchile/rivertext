@@ -879,7 +879,7 @@
         Bases: <code><a class="autorefs autorefs-internal" title="rivertext.models.base.IWVBase" href="../base/#rivertext.models.base.iwv.IWVBase">IWVBase</a></code></p>
 
   
-      <p>The Streaming PPMI model is a counting-based method that constructs a
+      <p>The WordContextMatrix model is a counting-based method that constructs a
 word-context matrix of size 𝑉 × 𝐶, where 𝑉 is the number of words
 contained in the vocabulary and 𝐶 is the number of contexts around the
 target words. Each relation between a target word and a context
@@ -1198,7 +1198,7 @@ corresponds to a smoothed PPMI score.</p>
 <span class="normal">279</span>
 <span class="normal">280</span>
 <span class="normal">281</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">WordContextMatrix</span><span class="p">(</span><span class="n">IWVBase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;The Streaming PPMI model is a counting-based method that constructs a</span>
+    <span class="sd">&quot;&quot;&quot;The WordContextMatrix model is a counting-based method that constructs a</span>
 <span class="sd">    word-context matrix of size 𝑉 × 𝐶, where 𝑉 is the number of words</span>
 <span class="sd">    contained in the vocabulary and 𝐶 is the number of contexts around the</span>
 <span class="sd">    target words. Each relation between a target word and a context</span>
