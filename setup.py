@@ -1,34 +1,67 @@
-from distutils.core import setup
+#! /usr/bin/env python
+"""Rivertext: An Python Library for training and evaluating on Incremental Word.
+Embedding"""
+
+import codecs
+
+from setuptools import find_packages, setup
+
+import rivertext
+
+DISTNAME = "rivertext"
+DESCRIPTION = "An Python Library for training and evaluating on Incremental Word"
+with codecs.open("README.md", encoding="utf-8-sig") as f:
+    LONG_DESCRIPTION = f.read()
+AUTHOR = "Rivertext Team"
+MAINTAINER = "Rivertext Team"
+MAINTAINER_EMAIL = "gabrielturrab@ug.uchile.cl"
+URL = "https://github.com/dccuchile/rivertext"
+LICENSE = "new BSD"
+DOWNLOAD_URL = "https://github.com/dccuchile/rivertext"
+VERSION = rivertext.__version__
+INSTALL_REQUIRES = [  # I get to this in a second
+    "nltk",
+    "numpy",
+    "river",
+    "scikit_learn",
+    "scipy",
+    "torch",
+    "tqdm",
+]
+CLASSIFIERS = [
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved",
+    "Programming Language :: Python",
+    "Topic :: Software Development",
+    "Topic :: Scientific/Engineering",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
 
 setup(
-    name="rivertext",  # How you named your package folder (MyLib)
-    packages=["rivertext"],  # Chose the same as "name"
-    version="0.0.1",  # Start with a small number and increase it with every change you make
-    license="MIT",  # Chose a license from here: https://help.github.com/articles/licensing-a-repository
-    description="A Library for Training and Evaluating Incremental Word Embeddings from Text Data Streams",  # Give a short description about your library
-    author="Gabriel Iturra",  # Type in your name
-    author_email="gabrieliturrab@ug.uchile.cl   ",  # Type in your E-Mail
-    url="https://github.com/dccuchile/rivertext",  # Provide either the link to your github or to your website
-    download_url="https://github.com/dccuchile/rivertext/archive/refs/tags/v.0.0.1.tar.gz",  # I explain this later on
-    keywords=[
-        "word-embedding",
-        "incremental-learning",
-        "streaming-data",
-    ],  # Keywords that define your package best
-    install_requires=[  # I get to this in a second
-        "nltk",
-        "numpy",
-        "river",
-        "scikit_learn",
-        "scipy",
-        "torch",
-        "tqdm",
-    ],
-    classifiers=[
-        "Development Status :: 3 - Alpha",  # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
-        "Intended Audience :: Developers",  # Define that your audience are developers
-        "Topic :: Software Development :: Build Tools",
-        "License :: OSI Approved :: MIT License",  # Again, pick a license
-        "Programming Language :: Python :: 3.10",  # Specify which pyhton versions that you want to support
-    ],
+    name=DISTNAME,
+    author=AUTHOR,
+    maintainer=MAINTAINER,
+    maintainer_email=MAINTAINER_EMAIL,
+    description=DESCRIPTION,
+    license=LICENSE,
+    url=URL,
+    version=VERSION,
+    download_url=DOWNLOAD_URL,
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/x-md",
+    zip_safe=False,  # the package can run out of an .egg file
+    classifiers=CLASSIFIERS,
+    packages=find_packages(),
+    install_requires=INSTALL_REQUIRES,
+    python_requires=">=3.6",
+    include_package_data=True,
 )

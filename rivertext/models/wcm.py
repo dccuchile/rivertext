@@ -146,7 +146,7 @@ class WordContextMatrix(IWVBase):
             >>>  wcm.transform_one('hello')
             [0.77816248, 0.99913448, 0.14790398]
         """
-        tokens = self.process_text(x)
+        tokens = list(self.process_text(x))
         for w in tokens:
             self.d += 1
             self.vocab.add(w)
@@ -188,7 +188,7 @@ class WordContextMatrix(IWVBase):
             [0.77816248, 0.99913448, 0.14790398]
         """
         for x in X:
-            tokens = self.process_text(x)
+            tokens = list(self.process_text(x))
 
             for w in tokens:
 
