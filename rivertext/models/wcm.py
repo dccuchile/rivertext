@@ -54,9 +54,9 @@ class WordContextMatrix(IWVBase):
 
     def __init__(
         self,
-        vocab_size: int,
-        window_size: int,
-        context_size: int,
+        vocab_size: int = 1_000_000,
+        window_size: int = 3,
+        context_size: int = 500,
         emb_size: int = 300,
         reduce_emb_dim: bool = True,
         on: str = None,
