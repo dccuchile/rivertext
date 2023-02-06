@@ -77,9 +77,7 @@ class PeriodicEvaluator:
         else:
             with open(self.path_output_file, encoding="utf-8") as reader:
                 data = json.load(reader)
-                data['values'].append(result)
-            
+                data["values"].append(result)
+
             with open(self.path_output_file, "w", encoding="utf-8") as writer:
-                json.dump(
-                    data, writer
-                )
+                json.dump(data, writer)
