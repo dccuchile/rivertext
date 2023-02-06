@@ -21,7 +21,7 @@ URL = "https://github.com/dccuchile/rivertext"
 LICENSE = "new BSD"
 DOWNLOAD_URL = "https://github.com/dccuchile/rivertext"
 VERSION = rivertext.__version__
-INSTALL_REQUIRES = [  # I get to this in a second
+INSTALL_REQUIRES = [
     "nltk",
     "numpy",
     "river",
