@@ -9,7 +9,7 @@ from setuptools import find_packages, setup
 import rivertext
 
 DISTNAME = "rivertext"
-DESCRIPTION = "An Python Library for training and evaluating on Incremental Word"
+DESCRIPTION = "An Python Library for training and evaluating on Incremental Word."
 with codecs.open("README.md", encoding="utf-8-sig") as f:
     LONG_DESCRIPTION = f.read()
 AUTHOR = "Rivertext Team"
