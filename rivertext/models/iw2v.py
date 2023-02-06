@@ -132,7 +132,7 @@ class IWord2Vec(IWVBase):
         self.sg = sg
 
         if sg:
-            self.model_name = "SG"
+            self.model_name = "ISG"
             self.model = SG(self.vocab_size, emb_size)
             self.prep = PrepSG(
                 vocab_size=vocab_size,
@@ -146,7 +146,7 @@ class IWord2Vec(IWVBase):
             self.optimizer = optimizer(self.model.parameters(), lr=lr)
 
         else:
-            self.model_name = "CBOW"
+            self.model_name = "ICBOW"
             self.model = CBOW(vocab_size, emb_size)
             self.prep = PrepCbow(
                 vocab_size=vocab_size,

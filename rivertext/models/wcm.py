@@ -104,6 +104,8 @@ class WordContextMatrix(IWVBase):
             ngram_range=ngram_range,
         )
 
+        self.model_name = "IWCM"
+
         self.context_size = context_size
         self.vocab = Vocab(self.vocab_size)
         self.contexts = Context(self.context_size)

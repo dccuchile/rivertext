@@ -1,3 +1,5 @@
+import os
+import json
 from typing import Callable, Dict
 
 import numpy as np
@@ -19,6 +21,7 @@ class PeriodicEvaluator:
         p: int = 32,
         golden_dataset: Callable = None,
         eval_func: Callable[[Dict, np.ndarray, np.ndarray], int] = None,
+        path_output_file: str = None,
     ):
         """Create a instance of PeriodicEvaluator class.
 
@@ -35,6 +38,13 @@ class PeriodicEvaluator:
         self.model = model
         self.gold_relation = golden_dataset()
         self.evaluator = eval_func
+        self.path_output_file = path_output_file
+
+        if not self.path_output_file.endswith(".json"):
+            raise ValueError(
+                f"the extension file must be an JSON, but you got: \
+                {self.path_output_file}."
+            )
 
     def run(self, p: int = 3200):
         """Algorithm executes periodic assessments of the entire
@@ -53,5 +63,23 @@ class PeriodicEvaluator:
                 result = self.evaluator(
                     embs, self.gold_relation.X, self.gold_relation.y
                 )
-                print(result)
+                self._save_result(result)
             c += len(batch)
+
+    def _save_result(self, result: float):
+        if self.path_output_file is not None and not os.path.exists(
+            self.path_output_file
+        ):
+            with open(self.path_output_file, "w", encoding="utf-8") as writer:
+                json.dump(
+                    {"model_name": self.model.model_name, "values": [result]}, writer
+                )
+        else:
+            with open(self.path_output_file, encoding="utf-8") as reader:
+                data = json.load(reader)
+                data['values'].append(result)
+            
+            with open(self.path_output_file, "w", encoding="utf-8") as writer:
+                json.dump(
+                    data, writer
+                )
