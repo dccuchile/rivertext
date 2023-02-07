@@ -48,15 +48,21 @@ All unit tests are in the rivertext/tests folder. It uses `pytest` as a framewor
 
 To run the test, execute:
 
-`pytest tests`
+`
+pytest tests
+`
 
 To check the coverage, run:
 
-`pytest tests --cov-report xml:cov.xml --cov rivertext`
+`
+pytest tests --cov-report xml:cov.xml --cov rivertext
+`
 
 And then:
 
-`coverage report -m`
+`
+coverage report -m
+`
 
 Build the documentation
 -----------------------
