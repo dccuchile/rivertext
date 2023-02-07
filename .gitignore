@@ -162,3 +162,7 @@ cython_debug/
 .ruff_cache/
 
 /main*.py
+
+# coverage files
+cov.xml
+test-results/junit.xml
