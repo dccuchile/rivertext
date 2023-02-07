@@ -44,6 +44,20 @@ Development Requirements
 Testing
 -------
 
+All unit tests are in the rivertext/tests folder. It uses `pytest` as a framework to run them.
+
+To run the test, execute:
+
+`pytest tests`
+
+To check the coverage, run:
+
+`pytest tests --cov-report xml:cov.xml --cov rivertext`
+
+And then:
+
+`coverage report -m`
+
 Build the documentation
 -----------------------
 
