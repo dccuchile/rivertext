@@ -4,13 +4,13 @@ from rivertext.utils import Vocab, Context
 
 def test_max_size_type():
     with pytest.raises(TypeError) as error:
-        vocab = Vocab("5")
+        Vocab("5")
         assert "max_size should be int, got -1" in error
 
 
 def test_max_size():
     with pytest.raises(ValueError) as error:
-        vocab = Vocab(-1)
+        Vocab(-1)
         assert "max_size should be greater than 0, got -1" in error
 
 
