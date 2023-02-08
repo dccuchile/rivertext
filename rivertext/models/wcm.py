@@ -148,7 +148,7 @@ class WordContextMatrix(IWVBase):
             >>>  wcm.transform_one('hello')
             [0.77816248, 0.99913448, 0.14790398]
         """
-        tokens = list(self.process_text(x))
+        tokens = self.process_text(x[0])
         for w in tokens:
             self.d += 1
             self.vocab.add(w)
@@ -190,8 +190,9 @@ class WordContextMatrix(IWVBase):
             [0.77816248, 0.99913448, 0.14790398]
         """
         for x in X:
+            # print(x)
             tokens = list(self.process_text(x))
-
+            # print(tokens)
             for w in tokens:
 
                 self.d += 1
@@ -257,9 +258,9 @@ class WordContextMatrix(IWVBase):
                     / (self.vocab.counter[idx] * self.contexts.counter[cidx])
                 )
                 embedding[cidx] = max(0.0, value)
-        return embedding
+        return np.array(embedding)
 
-    def _reduced_emb2dict(self) -> np.ndarray:
+    def _reduced_emb2dict(self) -> Dict[str, np.ndarray]:
         if self.reduced_emb_dim:
             indexes = np.array(list(self.modified_words), dtype=float)
             embs = self.transformer.fit_transform(self.get_embeddings(indexes))
@@ -273,6 +274,12 @@ class WordContextMatrix(IWVBase):
             embeddings[word] = self.emb_matrix[idx].toarray()
         return embeddings
 
+    def _vocab2dict(self):
+        embeddinds = {}
+        for word, idx in self.vocab.word2idx.items():
+            embeddinds[word] = self.transform_one(word)
+        return embeddinds
+
     def vocab2dict(self) -> Dict[str, np.ndarray]:
         """Converts the vocabulary in a dictionary of embeddings.
 
@@ -280,7 +287,10 @@ class WordContextMatrix(IWVBase):
             An dict where the words are the keys, and their values are the
                 embedding vectors.
         """
-        return self._reduced_emb2dict()
+        if self.reduced_emb_dim:
+            return self._reduced_emb2dict()
+        else:
+            return self._vocab2dict()
 
 
 def _get_contexts(ind_word: int, w_size: int, tokens: List[str]) -> Tuple[str]:
