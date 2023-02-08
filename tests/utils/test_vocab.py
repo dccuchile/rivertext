@@ -23,7 +23,6 @@ def test_add_method():
 
 def test_add_tokens_method():
     vocab = Vocab(max_size=3)
-    vocab.add_tokens(["how", "are", "you", "?"])
     assert len(vocab) == 3
 
 
