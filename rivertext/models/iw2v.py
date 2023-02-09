@@ -218,7 +218,7 @@ class IWord2Vec(IWVBase):
             [0.77816248, 0.99913448, 0.14790398]
 
         """
-        tokens = self.process_text(x)
+        tokens = self.process_text(x[0])
         batch = self.prep(tokens)
         targets = batch[0].to(self.device)
         contexts = batch[1].to(self.device)
