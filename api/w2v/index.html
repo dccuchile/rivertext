@@ -197,6 +197,22 @@
   
 
 
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/textstreams/" class="md-tabs__link">
+        Examples
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
   <li class="md-tabs__item">
     <a href="../../release/" class="md-tabs__link">
       Release
@@ -687,6 +703,54 @@
     <li class="md-nav__item">
       <a href="../evaluator/" class="md-nav__link">
         evaluator
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/textstreams/" class="md-nav__link">
+        TweetStream and Dataloader
       </a>
     </li>
   
@@ -1305,7 +1369,7 @@ model proposed by Kaji et al. The main assumptions we consider are:</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">sg</span> <span class="o">=</span> <span class="n">sg</span>
 
         <span class="k">if</span> <span class="n">sg</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;SG&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;ISG&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">SG</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">emb_size</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">prep</span> <span class="o">=</span> <span class="n">PrepSG</span><span class="p">(</span>
                 <span class="n">vocab_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span>
@@ -1319,7 +1383,7 @@ model proposed by Kaji et al. The main assumptions we consider are:</p>
             <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;CBOW&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;ICBOW&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">CBOW</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">emb_size</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">prep</span> <span class="o">=</span> <span class="n">PrepCbow</span><span class="p">(</span>
                 <span class="n">vocab_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span>
@@ -1391,7 +1455,7 @@ model proposed by Kaji et al. The main assumptions we consider are:</p>
 <span class="sd">            [0.77816248, 0.99913448, 0.14790398]</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">batch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prep</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
         <span class="n">targets</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
         <span class="n">contexts</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
@@ -1848,7 +1912,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
     <span class="bp">self</span><span class="o">.</span><span class="n">sg</span> <span class="o">=</span> <span class="n">sg</span>
 
     <span class="k">if</span> <span class="n">sg</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;SG&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;ISG&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">SG</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">emb_size</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prep</span> <span class="o">=</span> <span class="n">PrepSG</span><span class="p">(</span>
             <span class="n">vocab_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span>
@@ -1862,7 +1926,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
         <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
 
     <span class="k">else</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;CBOW&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;ICBOW&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">CBOW</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">emb_size</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prep</span> <span class="o">=</span> <span class="n">PrepCbow</span><span class="p">(</span>
             <span class="n">vocab_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span>
@@ -2193,7 +2257,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 <span class="sd">        [0.77816248, 0.99913448, 0.14790398]</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">batch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prep</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
     <span class="n">targets</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
     <span class="n">contexts</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
