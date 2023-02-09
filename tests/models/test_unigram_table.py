@@ -52,3 +52,67 @@ def test_samples():
         assert isinstance(index, float)
     assert indexes[0] in np.array([0.0, 0.0, 1.0, 2.0, 2.0])
     assert indexes[1] in np.array([0.0, 0.0, 1.0, 2.0, 2.0])
+
+
+def test_update_not_full_table():
+    sentences = [["my", "name", "is", "John", "Doe"], ["how", "are", "you", "?"]]
+    ut = UnigramTable(max_size=6)
+    vocab = Vocab(3)
+    total_counts = 0
+    alpha = 1.3
+    for sentence in sentences:
+        for word in sentence:
+            word_idx = vocab.add(word)
+            if word_idx is not None:
+                total_counts += 1
+                F = np.power(vocab.counter[word_idx], alpha) - np.power(
+                    (vocab.counter[word_idx] - 1), alpha
+                )
+                ut.update(word_idx, F)
+    for index in ut.table:
+        assert isinstance(index, float)
+
+
+def test_update_not_full_table2():
+    sentences = [
+        line.split(" ") for line in open("/data/giturra/datasets/1e5tweets.txt")
+    ]
+    ut = UnigramTable(100_000)
+    vocab = Vocab(1_000)
+    total_counts = 0
+    alpha = 1.3
+    for sentence in sentences:
+        for word in sentence:
+            word_idx = vocab.add(word)
+            if word_idx is not None:
+                total_counts += 1
+                F = np.power(vocab.counter[word_idx], alpha) - np.power(
+                    (vocab.counter[word_idx] - 1), alpha
+                )
+                ut.update(word_idx, F)
+    ut.build(vocab, alpha)
+    for index in ut.table:
+        assert isinstance(index, float)
+
+
+def test_update_full_table():
+    sentences = [
+        ["my", "name", "is", "John", "Doe"],
+        ["how", "are", "you", "?"],
+        ["how", "are", "you", "?"],
+    ]
+    ut = UnigramTable(max_size=6)
+    vocab = Vocab(10)
+    total_counts = 0
+    alpha = 0.75
+    for sentence in sentences:
+        for word in sentence:
+            word_idx = vocab.add(word)
+            if word_idx is not None:
+                total_counts += 1
+                F = np.power(vocab.counter[word_idx], alpha) - np.power(
+                    (vocab.counter[word_idx] - 1), alpha
+                )
+                ut.update(word_idx, F)
+    for index in ut.table:
+        assert isinstance(index, float)
