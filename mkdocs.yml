@@ -48,6 +48,8 @@ nav:
           - wcm: api/wcm.md
           - word2vec: api/w2v.md
       - evaluator: api/evaluator.md
+  - Examples: 
+      - examples/textstreams.ipynb
   - Release: release.md
   - Benchmark: benchmark.md
 

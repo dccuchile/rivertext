@@ -166,3 +166,5 @@ cython_debug/
 # coverage files
 cov.xml
 test-results/junit.xml
+
+wcm.ipynb
