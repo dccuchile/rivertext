@@ -199,7 +199,7 @@ class WordContextMatrix(IWVBase):
                 self.vocab.add(w)
 
                 if self.vocab.max_size == self.vocab.size:
-                    self._reduce_vocab()
+                    self.reduce_vocab()
 
                 i = tokens.index(w)
                 contexts = _get_contexts(i, self.window_size, tokens)
@@ -213,7 +213,7 @@ class WordContextMatrix(IWVBase):
                     col = self.contexts.word2idx.get(c, 0)
                     self.coocurence_matrix[row, col] += 1
 
-    def _reduce_vocab(self) -> None:
+    def reduce_vocab(self) -> None:
         """Reduce the number of words in the vocabulary."""
         self.vocab.counter = self.vocab.counter - 1
         for idx, count in list(self.vocab.counter.items()):

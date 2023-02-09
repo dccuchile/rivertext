@@ -17,10 +17,23 @@ from rivertext.models import WordContextMatrix
 #         assert isinstance(emb, np.ndarray)
 
 
+def test_learn_one_without_reduction():
+    ts = TweetStream("./tests/tweets/1e5tweets.txt")
+    dataloader = DataLoader(ts, batch_size=1)
+    wcm = WordContextMatrix(reduce_emb_dim=False)
+    for tweet in dataloader:
+        wcm.learn_one(tweet)
+    embs = wcm.vocab2dict()
+
+    for word, emb in embs.items():
+        assert isinstance(word, str)
+        assert isinstance(emb, np.ndarray)
+
+
 def test_learn_many():
     ts = TweetStream("./tests/tweets/1e5tweets.txt")
     dataloader = DataLoader(ts, batch_size=32)
-    wcm = WordContextMatrix()
+    wcm = WordContextMatrix(vocab_size=100_000)
     for tweet in dataloader:
         wcm.learn_many(tweet)
     embs = wcm.vocab2dict()
@@ -30,10 +43,10 @@ def test_learn_many():
         assert isinstance(emb, np.ndarray)
 
 
-def test_learn_many_without_reduced_embs():
+def test_learn_many_without_reduction():
     ts = TweetStream("./tests/tweets/1e5tweets.txt")
     dataloader = DataLoader(ts, batch_size=32)
-    wcm = WordContextMatrix(reduce_emb_dim=False)
+    wcm = WordContextMatrix(vocab_size=100_000, reduce_emb_dim=False)
     for tweet in dataloader:
         wcm.learn_many(tweet)
     embs = wcm.vocab2dict()
