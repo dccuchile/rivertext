@@ -2,87 +2,92 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://github.com/dccuchile/rivertext/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/benchmark/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/explanation/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/getting_started/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/overview/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/release/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/api/base/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/api/data/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/api/evaluator/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/api/pytorch_nn/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/api/rand/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/api/unigram_table/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/api/vocab/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/api/w2v/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/api/wcm/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/examples/textstreams/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/dccuchile/rivertext/examples/wcm/</loc>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/dccuchile/rivertext/introduction/about/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
