@@ -167,5 +167,5 @@ cython_debug/
 cov.xml
 test-results/junit.xml
 
-wcm.ipynb
+
 docs/examples/tweets.txt
