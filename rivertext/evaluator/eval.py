@@ -40,11 +40,12 @@ class PeriodicEvaluator:
         self.evaluator = eval_func
         self.path_output_file = path_output_file
 
-        if not self.path_output_file.endswith(".json"):
-            raise ValueError(
-                f"the extension file must be an JSON, but you got: \
-                {self.path_output_file}."
-            )
+        if path_output_file is not None:
+            if not not self.path_output_file.endswith(".json"):
+                raise ValueError(
+                    f"the extension file must be an JSON, but you got: \
+                    {self.path_output_file}."
+                )
 
     def run(self, p: int = 3200):
         """Algorithm executes periodic assessments of the entire
