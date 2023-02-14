@@ -9,7 +9,7 @@ plugins:
   - mkdocs-jupyter:
       execute: true
       ignore: ["./docs/examples/tweets.txt"]
-      
+
 repo_name: RiverText
 repo_url: https://github.com/dccuchile/rivertext
 edit_uri: https://github.com/dccuchile/rivertext
