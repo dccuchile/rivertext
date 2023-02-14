@@ -2336,7 +2336,7 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
     <span class="n">sg</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">neg_samples_sum</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
     <span class="n">emb_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> 
-    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda:1&quot;</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda:0&quot;</span>
 <span class="p">)</span>
 </pre></div>
 <div id="cell-3" class="clipboard-copy-txt">isg = IWord2Vec(
@@ -2346,7 +2346,7 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
     sg=1,
     neg_samples_sum=3,
     emb_size=100, 
-    device="cuda:1"
+    device="cuda:0"
 )</div>
     
         </div>
@@ -2367,8 +2367,8 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2398,6 +2398,61 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
     </div>
 
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">RuntimeError</span>                              Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-4-4106ab5ed10d&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">for</span> tweets <span class="ansi-green-fg">in</span> dataloader1<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg">     </span>isg<span class="ansi-blue-fg">.</span>learn_many<span class="ansi-blue-fg">(</span>tweets<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/anaconda3/envs/thesis/lib/python3.8/site-packages/rivertext/models/iw2v.py</span> in <span class="ansi-cyan-fg">learn_many</span><span class="ansi-blue-fg">(self, X, y, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    273</span>         loss <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>model<span class="ansi-blue-fg">(</span>targets<span class="ansi-blue-fg">,</span> contexts<span class="ansi-blue-fg">,</span> neg_samples<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    274</span>         loss<span class="ansi-blue-fg">.</span>backward<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">--&gt; 275</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>optimizer<span class="ansi-blue-fg">.</span>step<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/anaconda3/envs/thesis/lib/python3.8/site-packages/torch/optim/optimizer.py</span> in <span class="ansi-cyan-fg">wrapper</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">     86</span>                 profile_name <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#34;Optimizer.step#{}.step&#34;</span><span class="ansi-blue-fg">.</span>format<span class="ansi-blue-fg">(</span>obj<span class="ansi-blue-fg">.</span>__class__<span class="ansi-blue-fg">.</span>__name__<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     87</span>                 <span class="ansi-green-fg">with</span> torch<span class="ansi-blue-fg">.</span>autograd<span class="ansi-blue-fg">.</span>profiler<span class="ansi-blue-fg">.</span>record_function<span class="ansi-blue-fg">(</span>profile_name<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 88</span><span class="ansi-red-fg">                     </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     89</span>             <span class="ansi-green-fg">return</span> wrapper
+<span class="ansi-green-intense-fg ansi-bold">     90</span> 
+
+<span class="ansi-green-fg">~/anaconda3/envs/thesis/lib/python3.8/site-packages/torch/autograd/grad_mode.py</span> in <span class="ansi-cyan-fg">decorate_context</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">     26</span>         <span class="ansi-green-fg">def</span> decorate_context<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     27</span>             <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>__class__<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 28</span><span class="ansi-red-fg">                 </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     29</span>         <span class="ansi-green-fg">return</span> cast<span class="ansi-blue-fg">(</span>F<span class="ansi-blue-fg">,</span> decorate_context<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     30</span> 
+
+<span class="ansi-green-fg">~/anaconda3/envs/thesis/lib/python3.8/site-packages/torch/optim/sparse_adam.py</span> in <span class="ansi-cyan-fg">step</span><span class="ansi-blue-fg">(self, closure)</span>
+<span class="ansi-green-intense-fg ansi-bold">     89</span>                         state<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;exp_avg&#39;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> torch<span class="ansi-blue-fg">.</span>zeros_like<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">,</span> memory_format<span class="ansi-blue-fg">=</span>torch<span class="ansi-blue-fg">.</span>preserve_format<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     90</span>                         <span class="ansi-red-fg"># Exponential moving average of squared gradient values</span>
+<span class="ansi-green-fg">---&gt; 91</span><span class="ansi-red-fg">                         </span>state<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;exp_avg_sq&#39;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> torch<span class="ansi-blue-fg">.</span>zeros_like<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">,</span> memory_format<span class="ansi-blue-fg">=</span>torch<span class="ansi-blue-fg">.</span>preserve_format<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     92</span> 
+<span class="ansi-green-intense-fg ansi-bold">     93</span>                     exp_avgs<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span>state<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;exp_avg&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">RuntimeError</span>: CUDA out of memory. Tried to allocate 382.00 MiB (GPU 0; 23.70 GiB total capacity; 1.12 GiB already allocated; 96.69 MiB free; 1.12 GiB reserved in total by PyTorch) If reserved memory is &gt;&gt; allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF</pre>
+</div>
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -2433,9 +2488,9 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">embs</span> <span class="o">=</span> <span class="n">isg</span><span class="o">.</span><span class="n">vocab2dict</span><span class="p">()</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">embs1</span> <span class="o">=</span> <span class="n">isg</span><span class="o">.</span><span class="n">vocab2dict</span><span class="p">()</span>
 </pre></div>
-<div id="cell-5" class="clipboard-copy-txt">embs = isg.vocab2dict()</div>
+<div id="cell-5" class="clipboard-copy-txt">embs1 = isg.vocab2dict()</div>
     
         </div>
     </div>
@@ -2457,7 +2512,7 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>100%|██████████| 4008/4008 [00:00&lt;00:00, 16820.90it/s]
+<pre>100%|██████████| 273/273 [00:00&lt;00:00, 37429.56it/s]
 </pre>
 </div>
 </div>
@@ -2488,9 +2543,9 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">embs</span><span class="p">[</span><span class="s1">&#39;is&#39;</span><span class="p">]</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">embs1</span><span class="p">[</span><span class="s1">&#39;is&#39;</span><span class="p">]</span>
 </pre></div>
-<div id="cell-6" class="clipboard-copy-txt">embs['is']</div>
+<div id="cell-6" class="clipboard-copy-txt">embs1['is']</div>
     
         </div>
     </div>
@@ -2514,26 +2569,31 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>array([ 0.231488  , -0.18038347,  0.02714259, -0.13357967, -0.16204265,
-        0.2512737 ,  0.23575059,  0.18826476, -0.17922466, -0.17136371,
-       -0.12134254,  0.12883852, -0.10706265,  0.15769255, -0.13895077,
-       -0.00593513, -0.08406717, -0.37211418,  0.17008302, -0.0827684 ,
-        0.29975027,  0.37299722, -0.04620685,  0.30368072,  0.02104682,
-        0.17563239,  0.6408063 , -0.03267808, -0.21930969,  0.31056404,
-        0.13878383, -0.12072613,  0.15901984, -0.11245   ,  0.3337047 ,
-        0.08146209, -0.00260349, -0.1784896 , -0.23645003, -0.38375172,
-       -0.41447413,  0.16010693, -0.40539932,  0.18656456, -0.13996941,
-       -0.23305663,  0.16237709, -0.42298454, -0.21037808, -0.14358723,
-        0.16055585, -0.11984952,  0.13855638, -0.2111164 , -0.19166681,
-       -0.11043903, -0.16969557, -0.10500259, -0.05310311,  0.0345751 ,
-        0.03947533,  0.19499674, -0.34139937,  0.30522367,  0.2356278 ,
-       -0.12902805,  0.13512257, -0.13290513,  0.16339242,  0.17232047,
-       -0.18824148, -0.11141248,  0.21456376,  0.07739579,  0.2594112 ,
-       -0.20712784,  0.09168945, -0.2631091 , -0.08872004,  0.15103096,
-        0.11552913,  0.15207796, -0.1537884 , -0.2465888 ,  0.17270386,
-       -0.14938617, -0.22557706,  0.19315572, -0.24751428,  0.18442585,
-        0.497136  ,  0.3525424 , -0.05512565,  0.20285584,  0.24970746,
-       -0.1728278 , -0.151601  ,  0.09360552, -0.22646171,  0.11707746],
+<pre>array([ 4.3073711e-03,  2.3241804e-03, -4.3696770e-03,  2.1594423e-03,
+        1.9649267e-03,  3.0710362e-03,  4.8709386e-03,  3.6216914e-04,
+        9.1037212e-04,  2.9686862e-03,  3.8032746e-03,  1.1768263e-03,
+       -4.9839709e-03,  3.1627612e-03, -6.9031358e-04,  1.8780058e-03,
+        1.8843686e-03, -3.3934086e-03,  2.3504267e-03, -2.2312754e-03,
+       -8.0280304e-05,  1.6645377e-03, -8.0056250e-04, -1.8493902e-03,
+       -2.0892841e-03, -5.7435449e-04,  3.6542660e-03, -3.5342216e-04,
+        3.8252866e-03,  2.8926731e-04,  3.4402246e-03,  7.8141689e-05,
+       -7.7664854e-06,  3.3380459e-03, -3.7293977e-03,  1.4364099e-03,
+        4.9679577e-03, -4.8008137e-03, -1.6082590e-03, -3.3435039e-03,
+        3.3389453e-03, -3.6905599e-03, -2.2081940e-03,  3.9218697e-03,
+        1.0950512e-03, -4.1949069e-03, -2.5141269e-03, -6.2105595e-04,
+        4.6310094e-03, -4.2115984e-04,  3.5643659e-03, -4.3570534e-03,
+       -1.2064177e-03, -1.6338432e-03, -4.3087970e-03,  2.7200216e-03,
+       -2.6537525e-03, -4.0639807e-03, -6.6047133e-04, -1.9356983e-03,
+       -2.5069546e-03, -3.5693489e-03, -9.3394873e-04,  4.6383105e-03,
+       -1.0740679e-03, -2.1557866e-03,  1.7753714e-03,  4.7551040e-03,
+        3.4374679e-03, -5.6418718e-04, -1.3559950e-03, -2.0290196e-03,
+        4.5177154e-03, -1.8067318e-03, -3.1498235e-03, -1.8174439e-03,
+       -4.5109373e-03, -4.5924482e-04,  2.7389525e-04, -2.9891436e-03,
+       -6.8145868e-04, -4.6123732e-03, -1.1375725e-04,  2.6814824e-03,
+       -2.5146478e-03,  4.6044295e-03,  8.3410915e-04,  1.1131823e-03,
+        4.8963372e-03, -3.1231099e-03, -2.0111883e-03, -5.8835087e-04,
+        1.1442875e-03,  2.7554422e-03, -1.4689105e-03, -3.4000908e-03,
+       -3.4519611e-04,  2.1188061e-03,  2.5526898e-03,  1.6810535e-04],
       dtype=float32)</pre>
 </div>
 
@@ -2758,7 +2818,7 @@ dataloader2 = DataLoader(ts2, batch_size=32)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>100%|██████████| 4008/4008 [00:00&lt;00:00, 15824.15it/s]
+<pre>100%|██████████| 4008/4008 [00:00&lt;00:00, 9157.73it/s]
 </pre>
 </div>
 </div>
@@ -2815,26 +2875,26 @@ dataloader2 = DataLoader(ts2, batch_size=32)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>array([ 0.15027806,  0.03641854, -0.20595846, -0.33740154,  0.18101333,
-       -0.17292812,  0.15941755, -0.14377816,  0.16156423,  0.19745585,
-        0.20493375, -0.24906674, -0.18917513,  0.20252553, -0.15368035,
-        0.09637862,  0.17469992, -0.29017282, -0.16533177, -0.26793468,
-       -0.20602112,  0.00681853,  0.15998565,  0.13336712,  0.16302682,
-       -0.15026584,  0.15486476, -0.09908634, -0.10194352, -0.2645783 ,
-       -0.24647248, -0.18256325,  0.1911878 ,  0.17187563,  0.22163963,
-        0.18178144, -0.3612013 ,  0.09961005, -0.29581484, -0.22468354,
-       -0.15754706, -0.22551955, -0.10414088,  0.2961319 ,  0.31436616,
-        0.22650144, -0.17758062, -0.2192729 ,  0.19439591,  0.17622183,
-       -0.09290984, -0.11448206, -0.06344557, -0.23652369,  0.24706376,
-        0.22451104, -0.06180491,  0.1119739 ,  0.12666753,  0.25106493,
-       -0.11515992, -0.12844142,  0.07556851, -0.13405105, -0.21533391,
-        0.27492937, -0.22765361,  0.23466039,  0.27483088, -0.21516326,
-       -0.00384466,  0.19604702,  0.18273374,  0.08897555, -0.1600082 ,
-       -0.38314363, -0.23278464,  0.13155028,  0.25471   ,  0.13520552,
-       -0.18143772, -0.33071315, -0.21510631, -0.32558912,  0.15807945,
-        0.26096082,  0.14360592, -0.23237725,  0.06793682, -0.04346266,
-        0.22183633,  0.1454534 , -0.11490914,  0.34791487, -0.21190089,
-        0.17829862, -0.09038901, -0.12964058, -0.27656877, -0.25795016],
+<pre>array([-0.26648593, -0.15366423, -0.30467328,  0.35898155,  0.2497378 ,
+        0.19368905,  0.18319678,  0.17657608, -0.16764644,  0.30599642,
+        0.1696016 , -0.12817097, -0.11825473, -0.0287177 , -0.07285777,
+        0.18563841,  0.15434957, -0.26277873,  0.19697502,  0.14483091,
+       -0.06673753,  0.18215124,  0.17661676,  0.25998482, -0.28463006,
+        0.2958676 , -0.1509132 , -0.28141525, -0.1433504 , -0.16706647,
+       -0.32746097, -0.33154932, -0.06600964, -0.2715682 , -0.19704275,
+        0.17200746,  0.2181097 , -0.08792304,  0.19434214,  0.1121662 ,
+        0.34139538, -0.1362621 ,  0.12910944,  0.16058144, -0.15294442,
+        0.3670339 , -0.07438083,  0.06275017,  0.29609007, -0.25446877,
+       -0.07759649, -0.15910903, -0.1906581 ,  0.22067133,  0.24432375,
+       -0.19849616, -0.07947217,  0.16579735, -0.25447297, -0.22402975,
+        0.0888842 , -0.28395253, -0.16343734,  0.17103475,  0.12307021,
+        0.03569548,  0.03795107,  0.24701445, -0.33747882, -0.24763195,
+        0.1924861 ,  0.2317321 , -0.09525613,  0.3721707 ,  0.12766212,
+        0.23727214, -0.12090803,  0.16143143, -0.0094105 ,  0.10965665,
+       -0.22172566, -0.18113828,  0.25506866, -0.2508811 , -0.29370677,
+        0.06907888, -0.06882261, -0.23129047, -0.20547993, -0.21592005,
+        0.2147195 , -0.28182864, -0.18582332,  0.25850454, -0.26482475,
+        0.16847707, -0.33872625,  0.14583766, -0.18633944,  0.07771376],
       dtype=float32)</pre>
 </div>
 
