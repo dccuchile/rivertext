@@ -53,6 +53,7 @@ nav:
   - Examples:
       - examples/textstreams.ipynb
       - examples/wcm.ipynb
+      - examples/iw2v.ipynb
   - Release: release.md
   - Benchmark: benchmark.md
 
