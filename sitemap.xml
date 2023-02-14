@@ -76,6 +76,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/dccuchile/rivertext/examples/iw2v/</loc>
+         <lastmod>2023-02-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/dccuchile/rivertext/examples/textstreams/</loc>
          <lastmod>2023-02-14</lastmod>
          <changefreq>daily</changefreq>
