@@ -2308,8 +2308,8 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2355,75 +2355,6 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">RuntimeError</span>                              Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-3-6993f3847641&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> isg = IWord2Vec(
-</span><span class="ansi-green-intense-fg ansi-bold">      2</span>     vocab_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">1_000_000</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span>     unigram_table_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">100_000_000</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span>     window_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">3</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span>     sg<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span>
-
-<span class="ansi-green-fg">~/anaconda3/envs/thesis/lib/python3.8/site-packages/rivertext/models/iw2v.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, batch_size, vocab_size, emb_size, unigram_table_size, window_size, alpha, subsampling_threshold, neg_samples_sum, sg, lr, device, optimizer, on, strip_accents, lowercase, preprocessor, tokenizer, ngram_range)</span>
-<span class="ansi-green-intense-fg ansi-bold">    160</span>             self<span class="ansi-blue-fg">.</span>optimizer <span class="ansi-blue-fg">=</span> optimizer<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>model<span class="ansi-blue-fg">.</span>parameters<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> lr<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0.05</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    161</span>         self<span class="ansi-blue-fg">.</span>device <span class="ansi-blue-fg">=</span> device
-<span class="ansi-green-fg">--&gt; 162</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>model<span class="ansi-blue-fg">.</span>to<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>device<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    163</span> 
-<span class="ansi-green-intense-fg ansi-bold">    164</span>     <span class="ansi-green-fg">def</span> vocab2dict<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-&gt;</span> Dict<span class="ansi-blue-fg">[</span>str<span class="ansi-blue-fg">,</span> np<span class="ansi-blue-fg">.</span>ndarray<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">~/anaconda3/envs/thesis/lib/python3.8/site-packages/torch/nn/modules/module.py</span> in <span class="ansi-cyan-fg">to</span><span class="ansi-blue-fg">(self, *args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    897</span>             <span class="ansi-green-fg">return</span> t<span class="ansi-blue-fg">.</span>to<span class="ansi-blue-fg">(</span>device<span class="ansi-blue-fg">,</span> dtype <span class="ansi-green-fg">if</span> t<span class="ansi-blue-fg">.</span>is_floating_point<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">or</span> t<span class="ansi-blue-fg">.</span>is_complex<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">else</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> non_blocking<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    898</span> 
-<span class="ansi-green-fg">--&gt; 899</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_apply<span class="ansi-blue-fg">(</span>convert<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    900</span> 
-<span class="ansi-green-intense-fg ansi-bold">    901</span>     def register_backward_hook(
-
-<span class="ansi-green-fg">~/anaconda3/envs/thesis/lib/python3.8/site-packages/torch/nn/modules/module.py</span> in <span class="ansi-cyan-fg">_apply</span><span class="ansi-blue-fg">(self, fn)</span>
-<span class="ansi-green-intense-fg ansi-bold">    568</span>     <span class="ansi-green-fg">def</span> _apply<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> fn<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    569</span>         <span class="ansi-green-fg">for</span> module <span class="ansi-green-fg">in</span> self<span class="ansi-blue-fg">.</span>children<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 570</span><span class="ansi-red-fg">             </span>module<span class="ansi-blue-fg">.</span>_apply<span class="ansi-blue-fg">(</span>fn<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    571</span> 
-<span class="ansi-green-intense-fg ansi-bold">    572</span>         <span class="ansi-green-fg">def</span> compute_should_use_set_data<span class="ansi-blue-fg">(</span>tensor<span class="ansi-blue-fg">,</span> tensor_applied<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">~/anaconda3/envs/thesis/lib/python3.8/site-packages/torch/nn/modules/module.py</span> in <span class="ansi-cyan-fg">_apply</span><span class="ansi-blue-fg">(self, fn)</span>
-<span class="ansi-green-intense-fg ansi-bold">    591</span>             <span class="ansi-red-fg"># `with torch.no_grad():`</span>
-<span class="ansi-green-intense-fg ansi-bold">    592</span>             <span class="ansi-green-fg">with</span> torch<span class="ansi-blue-fg">.</span>no_grad<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 593</span><span class="ansi-red-fg">                 </span>param_applied <span class="ansi-blue-fg">=</span> fn<span class="ansi-blue-fg">(</span>param<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    594</span>             should_use_set_data <span class="ansi-blue-fg">=</span> compute_should_use_set_data<span class="ansi-blue-fg">(</span>param<span class="ansi-blue-fg">,</span> param_applied<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    595</span>             <span class="ansi-green-fg">if</span> should_use_set_data<span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">~/anaconda3/envs/thesis/lib/python3.8/site-packages/torch/nn/modules/module.py</span> in <span class="ansi-cyan-fg">convert</span><span class="ansi-blue-fg">(t)</span>
-<span class="ansi-green-intense-fg ansi-bold">    895</span>                 return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None,
-<span class="ansi-green-intense-fg ansi-bold">    896</span>                             non_blocking, memory_format=convert_to_format)
-<span class="ansi-green-fg">--&gt; 897</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> t<span class="ansi-blue-fg">.</span>to<span class="ansi-blue-fg">(</span>device<span class="ansi-blue-fg">,</span> dtype <span class="ansi-green-fg">if</span> t<span class="ansi-blue-fg">.</span>is_floating_point<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">or</span> t<span class="ansi-blue-fg">.</span>is_complex<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">else</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> non_blocking<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    898</span> 
-<span class="ansi-green-intense-fg ansi-bold">    899</span>         <span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_apply<span class="ansi-blue-fg">(</span>convert<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">RuntimeError</span>: CUDA error: out of memory
-CUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect.
-For debugging consider passing CUDA_LAUNCH_BLOCKING=1.</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2436,8 +2367,8 @@ For debugging consider passing CUDA_LAUNCH_BLOCKING=1.</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2467,35 +2398,6 @@ For debugging consider passing CUDA_LAUNCH_BLOCKING=1.</pre>
     </div>
 
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-4-4106ab5ed10d&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">for</span> tweets <span class="ansi-green-fg">in</span> dataloader1<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg">     </span>isg<span class="ansi-blue-fg">.</span>learn_many<span class="ansi-blue-fg">(</span>tweets<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;isg&#39; is not defined</pre>
-</div>
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -2555,13 +2457,8 @@ For debugging consider passing CUDA_LAUNCH_BLOCKING=1.</pre>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-5-0986408589ca&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>embs <span class="ansi-blue-fg">=</span> isg<span class="ansi-blue-fg">.</span>vocab2dict<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;isg&#39; is not defined</pre>
+<pre>100%|██████████| 4008/4008 [00:00&lt;00:00, 16820.90it/s]
+</pre>
 </div>
 </div>
 
@@ -2611,18 +2508,35 @@ For debugging consider passing CUDA_LAUNCH_BLOCKING=1.</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-6-a3d158e8454b&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>embs<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;is&#39;</span><span class="ansi-blue-fg">]</span>
 
-<span class="ansi-red-fg">NameError</span>: name &#39;embs&#39; is not defined</pre>
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>array([ 0.231488  , -0.18038347,  0.02714259, -0.13357967, -0.16204265,
+        0.2512737 ,  0.23575059,  0.18826476, -0.17922466, -0.17136371,
+       -0.12134254,  0.12883852, -0.10706265,  0.15769255, -0.13895077,
+       -0.00593513, -0.08406717, -0.37211418,  0.17008302, -0.0827684 ,
+        0.29975027,  0.37299722, -0.04620685,  0.30368072,  0.02104682,
+        0.17563239,  0.6408063 , -0.03267808, -0.21930969,  0.31056404,
+        0.13878383, -0.12072613,  0.15901984, -0.11245   ,  0.3337047 ,
+        0.08146209, -0.00260349, -0.1784896 , -0.23645003, -0.38375172,
+       -0.41447413,  0.16010693, -0.40539932,  0.18656456, -0.13996941,
+       -0.23305663,  0.16237709, -0.42298454, -0.21037808, -0.14358723,
+        0.16055585, -0.11984952,  0.13855638, -0.2111164 , -0.19166681,
+       -0.11043903, -0.16969557, -0.10500259, -0.05310311,  0.0345751 ,
+        0.03947533,  0.19499674, -0.34139937,  0.30522367,  0.2356278 ,
+       -0.12902805,  0.13512257, -0.13290513,  0.16339242,  0.17232047,
+       -0.18824148, -0.11141248,  0.21456376,  0.07739579,  0.2594112 ,
+       -0.20712784,  0.09168945, -0.2631091 , -0.08872004,  0.15103096,
+        0.11552913,  0.15207796, -0.1537884 , -0.2465888 ,  0.17270386,
+       -0.14938617, -0.22557706,  0.19315572, -0.24751428,  0.18442585,
+        0.497136  ,  0.3525424 , -0.05512565,  0.20285584,  0.24970746,
+       -0.1728278 , -0.151601  ,  0.09360552, -0.22646171,  0.11707746],
+      dtype=float32)</pre>
 </div>
+
 </div>
 
 </div>
@@ -2844,7 +2758,7 @@ dataloader2 = DataLoader(ts2, batch_size=32)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>100%|██████████| 4008/4008 [00:00&lt;00:00, 8374.95it/s]
+<pre>100%|██████████| 4008/4008 [00:00&lt;00:00, 15824.15it/s]
 </pre>
 </div>
 </div>
@@ -2901,31 +2815,26 @@ dataloader2 = DataLoader(ts2, batch_size=32)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>array([ 1.30241901e-01, -2.34681994e-01,  1.39704153e-01, -3.26756358e-01,
-        1.59722194e-02, -1.29942179e-01,  7.53115788e-02,  5.22193462e-02,
-        1.82869375e-01, -1.79796576e-01,  1.32958010e-01,  7.65599236e-02,
-       -6.41013384e-02, -1.00655407e-01, -2.39653796e-01, -9.19596702e-02,
-        4.15941238e-01,  1.37700811e-02, -1.31766737e-01, -2.19062239e-01,
-       -1.75354645e-01,  8.72125626e-02, -9.99593586e-02,  3.53754163e-01,
-       -1.80381268e-01, -8.57355595e-02, -2.27108076e-01, -2.78538674e-01,
-       -9.45770293e-02, -1.74026161e-01, -2.23630995e-01,  3.47500592e-02,
-        6.38369173e-02,  1.61751479e-01,  3.01848084e-01, -9.26756188e-02,
-       -7.41410255e-02, -1.02426574e-01,  1.82050653e-02,  1.63849667e-01,
-       -1.95593104e-01, -2.34592110e-01,  5.70759475e-02,  1.33766323e-01,
-        2.34865502e-01,  2.10338861e-01, -2.79045314e-01, -1.75144047e-01,
-       -2.42191896e-01,  3.99879143e-02, -1.08484499e-01,  6.14726543e-02,
-       -3.79286349e-01, -2.66911238e-01,  2.26991653e-01,  2.31263295e-01,
-       -1.20534748e-02, -1.20616972e-01,  3.02813947e-02,  3.60810906e-01,
-        9.38773602e-02, -3.07935923e-02, -3.71191651e-02, -8.29861611e-02,
-        1.04781166e-01,  1.79784924e-01,  8.30487534e-02, -3.20732594e-04,
-        2.46840566e-01, -1.56138569e-01,  1.20228827e-01,  1.42105162e-01,
-        9.94641334e-02, -3.39403749e-03, -2.10667729e-01, -3.12752426e-02,
-       -2.30785906e-02, -3.50164771e-01, -1.10963151e-01, -3.30352336e-02,
-        2.55815268e-01, -1.45349666e-01,  7.40153715e-02, -1.87509403e-01,
-       -6.58134818e-02,  1.24330223e-02,  1.06985420e-01,  4.67145562e-01,
-        3.80400062e-01, -2.09547728e-02, -1.08055688e-01, -2.97367573e-03,
-        1.56805858e-01,  4.76390123e-02, -8.34867358e-02, -1.65704548e-01,
-        1.42829761e-01,  1.61837965e-01,  1.78535491e-01, -3.27944383e-02],
+<pre>array([ 0.15027806,  0.03641854, -0.20595846, -0.33740154,  0.18101333,
+       -0.17292812,  0.15941755, -0.14377816,  0.16156423,  0.19745585,
+        0.20493375, -0.24906674, -0.18917513,  0.20252553, -0.15368035,
+        0.09637862,  0.17469992, -0.29017282, -0.16533177, -0.26793468,
+       -0.20602112,  0.00681853,  0.15998565,  0.13336712,  0.16302682,
+       -0.15026584,  0.15486476, -0.09908634, -0.10194352, -0.2645783 ,
+       -0.24647248, -0.18256325,  0.1911878 ,  0.17187563,  0.22163963,
+        0.18178144, -0.3612013 ,  0.09961005, -0.29581484, -0.22468354,
+       -0.15754706, -0.22551955, -0.10414088,  0.2961319 ,  0.31436616,
+        0.22650144, -0.17758062, -0.2192729 ,  0.19439591,  0.17622183,
+       -0.09290984, -0.11448206, -0.06344557, -0.23652369,  0.24706376,
+        0.22451104, -0.06180491,  0.1119739 ,  0.12666753,  0.25106493,
+       -0.11515992, -0.12844142,  0.07556851, -0.13405105, -0.21533391,
+        0.27492937, -0.22765361,  0.23466039,  0.27483088, -0.21516326,
+       -0.00384466,  0.19604702,  0.18273374,  0.08897555, -0.1600082 ,
+       -0.38314363, -0.23278464,  0.13155028,  0.25471   ,  0.13520552,
+       -0.18143772, -0.33071315, -0.21510631, -0.32558912,  0.15807945,
+        0.26096082,  0.14360592, -0.23237725,  0.06793682, -0.04346266,
+        0.22183633,  0.1454534 , -0.11490914,  0.34791487, -0.21190089,
+        0.17829862, -0.09038901, -0.12964058, -0.27656877, -0.25795016],
       dtype=float32)</pre>
 </div>
 
