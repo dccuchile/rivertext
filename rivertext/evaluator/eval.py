@@ -39,6 +39,7 @@ class PeriodicEvaluator:
         self.gold_relation = golden_dataset()
         self.evaluator = eval_func
         self.path_output_file = path_output_file
+        self.store_results = []
 
         if path_output_file is not None:
             if not not self.path_output_file.endswith(".json"):
@@ -64,7 +65,9 @@ class PeriodicEvaluator:
                 result = self.evaluator(
                     embs, self.gold_relation.X, self.gold_relation.y
                 )
-                self._save_result(result)
+                self.store_results.append(result)
+                if self.path_output_file is not None:
+                    self._save_result(result)
             c += len(batch)
 
     def _save_result(self, result: float):
