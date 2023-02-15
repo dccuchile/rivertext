@@ -32,7 +32,7 @@ Feel welcome to [open an issue on GitHub](https://github.com/dccuchile/rivertext
 Spearman Correlation: 0.08286971636085129
 ```
 
-### Incremental SkipGram
+### Incremental Word2Vec
 ```python
 >>> from torch.utils.data import DataLoader
 
@@ -58,34 +58,5 @@ Spearman Correlation: 0.08286971636085129
 
 >>> embs = iw2v.vocab2dict()
 >>> print(evaluate_similarity(embs, men.X, men.y))
-Spearman Correlation: 0.08286971636085129
-```
-### Incremental CBOW
-
-```python
->>> from torch.utils.data import DataLoader
-
->>> from rivertext.models.iw2v import IWord2Vec
->>> from rivertext.utils import TweetStream
-
->>> from web.datasets.similarity import fetch_MEN
->>> from web.evaluate import evaluate_similarity
-
->>> ts = TweetStream("/path/to/tweets.txt")
->>> men = fetch_MEN()
->>> dataloader = DataLoader(ts, batch_size=32)
-
->>> iw2v = IWord2Vec(window_size=3,
-... emb_size=200,
-... sg=0,
-... neg_samples_sum=8,
-... device="cuda:0"
-... )
-
->>> for batch in tqdm(dataloader):
-...    iw2v.learn_many(batch)
-
->>> embs = iw2v.vocab2dict()
->>> print(evaluate_similarity(embs, men.X, men.y))
-Spearman Correlation: 0.08286971636085129
+Spearman Correlation: 0.18149249269528014
 ```

@@ -2,7 +2,7 @@
 
 ## Experiment replication
 
-To ensure the successful replication of our experiment, we highly recommend following the steps outlined in this [guide](https://github.com/dccuchile/rivertext/tree/main/examples). These steps are designed to provide a clear and concise set of instructions for reproducing our results and to ensure that the process is as straightforward as possible. By following these steps, you can obtain the necessary data and tools, run the required models and evaluations, and obtain an overall ranking of hyperparameter configurations that can guide future research.
+To ensure the successful replication of our experiment, we highly recommend following the steps outlined in this [guide](https://github.com/dccuchile/rivertext/tree/main/experiments). These steps are designed to provide a clear and concise set of instructions for reproducing our results and to ensure that the process is as straightforward as possible. By following these steps, you can obtain the necessary data and tools, run the required models and evaluations, and obtain an overall ranking of hyperparameter configurations that can guide future research.
 
 It is important to note that some steps may require additional configuration or customization depending on the specific requirements of your research. Additionally, the performance of the models may be affected by factors such as the hardware used, the amount and quality of the training data, and the specific hyperparameters are chosen. Therefore, it is recommended that you carefully review the instructions and adapt them as necessary to suit your specific research needs.
 
