@@ -1,4 +1,4 @@
-RiverText (This work is still in development)
+RiverText
 ===================================================================================
 
 RiverTex is an open-source library for modeling and training different incremental word vector architectures proposed by the state-of-the-art.
