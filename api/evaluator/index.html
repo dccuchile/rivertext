@@ -989,7 +989,11 @@ evaluation of the model's accuracy and helps identify improvement areas.</p>
 <span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
-<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PeriodicEvaluator</span><span class="p">:</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PeriodicEvaluator</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Periodic Evaluation assesses the entire incremental word embeddingsmodel&#39;s</span>
 <span class="sd">    performance using an intrinsic NLP task-related test dataset after a set number, p,</span>
 <span class="sd">    of instances, have been processed and trained. This allows for the continuous</span>
@@ -1020,12 +1024,14 @@ evaluation of the model's accuracy and helps identify improvement areas.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">gold_relation</span> <span class="o">=</span> <span class="n">golden_dataset</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">eval_func</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path_output_file</span> <span class="o">=</span> <span class="n">path_output_file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">store_results</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_output_file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.json&quot;</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;the extension file must be an JSON, but you got: </span><span class="se">\</span>
-<span class="s2">                </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path_output_file</span><span class="si">}</span><span class="s2">.&quot;</span>
-            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">path_output_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_output_file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.json&quot;</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;the extension file must be an JSON, but you got: </span><span class="se">\</span>
+<span class="s2">                    </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path_output_file</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3200</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Algorithm executes periodic assessments of the entire</span>
@@ -1044,7 +1050,9 @@ evaluation of the model's accuracy and helps identify improvement areas.</p>
                 <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluator</span><span class="p">(</span>
                     <span class="n">embs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gold_relation</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gold_relation</span><span class="o">.</span><span class="n">y</span>
                 <span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_save_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">store_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_output_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_save_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
             <span class="n">c</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_save_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
@@ -1186,7 +1194,9 @@ evaluation of the model's accuracy and helps identify improvement areas.</p>
 <span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
-<span class="normal">47</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">dataset</span><span class="p">:</span> <span class="n">IterableDataset</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">IWVBase</span><span class="p">,</span>
@@ -1211,12 +1221,14 @@ evaluation of the model's accuracy and helps identify improvement areas.</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">gold_relation</span> <span class="o">=</span> <span class="n">golden_dataset</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">eval_func</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">path_output_file</span> <span class="o">=</span> <span class="n">path_output_file</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">store_results</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_output_file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.json&quot;</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;the extension file must be an JSON, but you got: </span><span class="se">\</span>
-<span class="s2">            </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path_output_file</span><span class="si">}</span><span class="s2">.&quot;</span>
-        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">path_output_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_output_file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.json&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;the extension file must be an JSON, but you got: </span><span class="se">\</span>
+<span class="s2">                </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path_output_file</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -1266,9 +1278,7 @@ by default 3200.</p></td>
 
       <details class="quote">
         <summary>Source code in <code>rivertext/evaluator/eval.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">51</span>
 <span class="normal">52</span>
 <span class="normal">53</span>
 <span class="normal">54</span>
@@ -1284,7 +1294,11 @@ by default 3200.</p></td>
 <span class="normal">64</span>
 <span class="normal">65</span>
 <span class="normal">66</span>
-<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3200</span><span class="p">):</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3200</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Algorithm executes periodic assessments of the entire</span>
 <span class="sd">    model every p instances, providing continuous evaluation and identification of</span>
 <span class="sd">    areas for improvement.</span>
@@ -1301,7 +1315,9 @@ by default 3200.</p></td>
             <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluator</span><span class="p">(</span>
                 <span class="n">embs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gold_relation</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gold_relation</span><span class="o">.</span><span class="n">y</span>
             <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_save_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">store_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_output_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_save_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
         <span class="n">c</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
