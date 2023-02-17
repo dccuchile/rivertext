@@ -906,7 +906,8 @@
 ...    wcm.learn_many(batch)
 
 &gt;&gt;&gt; embs = wcm.vocab2dict()
-&gt;&gt;&gt; print(f'Spearman Correlation: {evaluate_similarity(embs, men.X, men.y)}')
+&gt;&gt;&gt; result = evaluate_similarity(embs, men.X, men.y)
+&gt;&gt;&gt; print(f'Spearman Correlation: {result}')
 Spearman Correlation: 0.08286971636085129
 </code></pre>
 <h3 id="incremental-word2vec">Incremental Word2Vec</h3>
@@ -933,7 +934,8 @@ Spearman Correlation: 0.08286971636085129
 ...    iw2v.learn_many(batch)
 
 &gt;&gt;&gt; embs = iw2v.vocab2dict()
-&gt;&gt;&gt; print(evaluate_similarity(embs, men.X, men.y))
+&gt;&gt;&gt; result = evaluate_similarity(embs, men.X, men.y)
+&gt;&gt;&gt; print(f'Spearman Correlation: {result}')
 Spearman Correlation: 0.18149249269528014
 </code></pre>
 

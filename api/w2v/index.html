@@ -1272,9 +1272,7 @@ model proposed by Kaji et al. The main assumptions we consider are:</p>
 <span class="normal">270</span>
 <span class="normal">271</span>
 <span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">IWord2Vec</span><span class="p">(</span><span class="n">IWVBase</span><span class="p">):</span>
+<span class="normal">273</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">IWord2Vec</span><span class="p">(</span><span class="n">IWVBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Word2Vec incremental architectures is an adaptation of the popular word2vec</span>
 <span class="sd">    proposed by Mikolov et al. to the streaming scenario. To adapt these algorithms to</span>
 <span class="sd">    a streaming setting, we rely on the Incremental SkipGram with Negative Sampling</span>
@@ -1325,7 +1323,6 @@ model proposed by Kaji et al. The main assumptions we consider are:</p>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
         <span class="n">vocab_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1_000_000</span><span class="p">,</span>
         <span class="n">emb_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
         <span class="n">unigram_table_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100_000_000</span><span class="p">,</span>
@@ -1347,7 +1344,6 @@ model proposed by Kaji et al. The main assumptions we consider are:</p>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;An instance of IWord2Vec class.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            batch_size: Mini-batch size, by default 32,</span>
 <span class="sd">            vocab_size: Vocab size, by default 1_000_000.</span>
 <span class="sd">            emb_size: Embdding size, by default 100.</span>
 <span class="sd">            unigram_table_size: Unigram table size, by default 100_000_000.</span>
@@ -1558,7 +1554,7 @@ model proposed by Kaji et al. The main assumptions we consider are:</p>
 
 
 <h3 id="rivertext.models.iw2v.IWord2Vec.__init__" class="doc doc-heading">
-<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">vocab_size</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">emb_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">unigram_table_size</span><span class="o">=</span><span class="mi">100000000</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">subsampling_threshold</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">neg_samples_sum</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sg</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">SparseAdam</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">strip_accents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lowercase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">preprocessor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span></code>
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">vocab_size</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">emb_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">unigram_table_size</span><span class="o">=</span><span class="mi">100000000</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">subsampling_threshold</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">neg_samples_sum</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sg</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">SparseAdam</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">strip_accents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lowercase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">preprocessor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span></code>
 
 </h3>
 
@@ -1578,16 +1574,6 @@ model proposed by Kaji et al. The main assumptions we consider are:</p>
       </tr>
     </thead>
     <tbody>
-        <tr>
-          <td><code>batch_size</code></td>
-          <td>
-                <code>int</code>
-          </td>
-          <td><p>Mini-batch size, by default 32,</p></td>
-          <td>
-                <code>32</code>
-          </td>
-        </tr>
         <tr>
           <td><code>vocab_size</code></td>
           <td>
@@ -1864,11 +1850,8 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 <span class="normal">157</span>
 <span class="normal">158</span>
 <span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">160</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-    <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
     <span class="n">vocab_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1_000_000</span><span class="p">,</span>
     <span class="n">emb_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
     <span class="n">unigram_table_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100_000_000</span><span class="p">,</span>
@@ -1890,7 +1873,6 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;An instance of IWord2Vec class.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        batch_size: Mini-batch size, by default 32,</span>
 <span class="sd">        vocab_size: Vocab size, by default 1_000_000.</span>
 <span class="sd">        emb_size: Embdding size, by default 100.</span>
 <span class="sd">        unigram_table_size: Unigram table size, by default 100_000_000.</span>
@@ -2050,7 +2032,9 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 
       <details class="quote">
         <summary>Source code in <code>rivertext/models/iw2v.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">232</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
 <span class="normal">233</span>
 <span class="normal">234</span>
 <span class="normal">235</span>
@@ -2091,9 +2075,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 <span class="normal">270</span>
 <span class="normal">271</span>
 <span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">learn_many</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">273</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">learn_many</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Train a mini-batch of text features.</span>
 
 <span class="sd">    Args:</span>
@@ -2210,7 +2192,9 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 
       <details class="quote">
         <summary>Source code in <code>rivertext/models/iw2v.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">188</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
 <span class="normal">189</span>
 <span class="normal">190</span>
 <span class="normal">191</span>
@@ -2250,9 +2234,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 <span class="normal">225</span>
 <span class="normal">226</span>
 <span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">learn_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">228</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">learn_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Train one instance of text feature.</span>
 
 <span class="sd">    Args:</span>
@@ -2359,7 +2341,9 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 
       <details class="quote">
         <summary>Source code in <code>rivertext/models/iw2v.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">176</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
 <span class="normal">177</span>
 <span class="normal">178</span>
 <span class="normal">179</span>
@@ -2367,9 +2351,7 @@ means unigrams and bigrams, and <code>(2, 2)</code> means only bigrams, by defau
 <span class="normal">181</span>
 <span class="normal">182</span>
 <span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">transform_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="normal">184</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">transform_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtain the vector embedding of a word.</span>
 
 <span class="sd">    Args:</span>
@@ -2421,7 +2403,9 @@ embedding vectors.</p></td>
 
       <details class="quote">
         <summary>Source code in <code>rivertext/models/iw2v.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">164</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
 <span class="normal">165</span>
 <span class="normal">166</span>
 <span class="normal">167</span>
@@ -2429,9 +2413,7 @@ embedding vectors.</p></td>
 <span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">vocab2dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="normal">172</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">vocab2dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts the vocabulary in a dictionary of embeddings.</span>
 
 <span class="sd">    Returns:</span>
