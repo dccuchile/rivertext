@@ -60,7 +60,6 @@ class IWord2Vec(IWVBase):
 
     def __init__(
         self,
-        batch_size: int = 32,
         vocab_size: int = 1_000_000,
         emb_size: int = 100,
         unigram_table_size: int = 100_000_000,
@@ -82,7 +81,6 @@ class IWord2Vec(IWVBase):
         """An instance of IWord2Vec class.
 
         Args:
-            batch_size: Mini-batch size, by default 32,
             vocab_size: Vocab size, by default 1_000_000.
             emb_size: Embdding size, by default 100.
             unigram_table_size: Unigram table size, by default 100_000_000.

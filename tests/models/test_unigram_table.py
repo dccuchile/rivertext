@@ -16,7 +16,7 @@ def test_max_size_type():
 def test_max_size():
     with pytest.raises(ValueError) as error:
         UnigramTable(-1)
-        assert "max_size should be greater than 0, got -1" in error
+        assert "max_size should be greater than 100000, got -1" in error
 
 
 def test_build_table():

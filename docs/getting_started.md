@@ -28,7 +28,8 @@ Feel welcome to [open an issue on GitHub](https://github.com/dccuchile/rivertext
 ...    wcm.learn_many(batch)
 
 >>> embs = wcm.vocab2dict()
->>> print(f'Spearman Correlation: {evaluate_similarity(embs, men.X, men.y)}')
+>>> result = evaluate_similarity(embs, men.X, men.y) 
+>>> print(f'Spearman Correlation: {result}')
 Spearman Correlation: 0.08286971636085129
 ```
 
@@ -57,6 +58,7 @@ Spearman Correlation: 0.08286971636085129
 ...    iw2v.learn_many(batch)
 
 >>> embs = iw2v.vocab2dict()
->>> print(evaluate_similarity(embs, men.X, men.y))
+>>> result = evaluate_similarity(embs, men.X, men.y) 
+>>> print(f'Spearman Correlation: {result}')
 Spearman Correlation: 0.18149249269528014
 ```
