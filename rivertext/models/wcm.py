@@ -190,9 +190,7 @@ class WordContextMatrix(IWVBase):
             [0.77816248, 0.99913448, 0.14790398]
         """
         for x in X:
-            # print(x)
             tokens = list(self.process_text(x))
-            # print(tokens)
             for w in tokens:
 
                 self.d += 1
