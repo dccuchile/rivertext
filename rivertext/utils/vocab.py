@@ -28,8 +28,8 @@ class Vocab:
 
         if not isinstance(max_size, int):
             raise TypeError(f"max_size should be int, got {max_size}")
-        if max_size < 1000:
-            raise ValueError(f"max_size should be greater than 1000, got {max_size}")
+        if max_size < 0:
+            raise ValueError(f"max_size should be greater than 0, got {max_size}")
 
         self.max_size = max_size
         self.size = 0

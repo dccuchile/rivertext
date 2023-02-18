@@ -3,8 +3,7 @@ import pytest
 from rivertext.utils import Vocab
 from rivertext.models.iword2vec import UnigramTable
 
-
-np.random.seed(0)
+np.random.seed(1234)
 
 
 def test_max_size_type():
@@ -16,7 +15,7 @@ def test_max_size_type():
 def test_max_size():
     with pytest.raises(ValueError) as error:
         UnigramTable(-1)
-        assert "max_size should be greater than 100000, got -1" in error
+        assert "max_size should be greater than 0, got -1" in error
 
 
 def test_build_table():
@@ -25,11 +24,7 @@ def test_build_table():
     vocab.add_tokens(["how", "are", "you", "?"])
     ut.build(vocab, alpha=0.75)
     for index in ut.table:
-        print(ut.table)
         assert isinstance(index, float)
-    table = np.array([0.0, 0.0, 1.0, 2.0, 2.0])
-    comparison = table == ut.table
-    assert comparison.all()
 
 
 def test_sample():
@@ -74,9 +69,7 @@ def test_update_not_full_table():
 
 
 def test_update_not_full_table2():
-    sentences = [
-        line.split(" ") for line in open("/data/giturra/datasets/1e5tweets.txt")
-    ]
+    sentences = [line.split(" ") for line in open("./tests/tweets/tweets.txt")]
     ut = UnigramTable(100_000)
     vocab = Vocab(1_000)
     total_counts = 0

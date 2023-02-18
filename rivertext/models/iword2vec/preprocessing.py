@@ -46,6 +46,13 @@ class Preprocessing:
         tokenizer : Callable[[str], List[str]], optional
             _description_, by default word_tokenize
         """
+
+        if vocab_size < 1000 and unigram_table_size < 100000:
+            raise ValueError(
+                f"""The vocab and unigram table size must be greater than 1000 and
+                100000, "respectely, got {vocab_size} and {unigram_table_size}."""
+            )
+
         self.vocab_size = vocab_size
         self.vocab = Vocab(vocab_size)
 
@@ -284,12 +291,10 @@ class PrepSG(Preprocessing):
                     map(lambda word: self.vocab.word2idx[word], contexts_words)
                 )
                 neg_samples += neg_sample
-
         return (
             torch.LongTensor(targets),
             torch.LongTensor(contexts),
             torch.LongTensor(neg_samples),
-            len(batch),
         )
 
 
