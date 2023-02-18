@@ -2203,8 +2203,8 @@ Licensed under the Apache License, Version 2.0.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2240,6 +2240,37 @@ from rivertext.models import IWord2Vec</div>
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-1-b3323397d686&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> rivertext<span class="ansi-blue-fg">.</span>utils <span class="ansi-green-fg">import</span> TweetStream
+<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-green-fg">from</span> torch<span class="ansi-blue-fg">.</span>utils<span class="ansi-blue-fg">.</span>data <span class="ansi-green-fg">import</span> DataLoader
+<span class="ansi-green-intense-fg ansi-bold">      3</span> 
+<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-green-fg">from</span> rivertext<span class="ansi-blue-fg">.</span>models <span class="ansi-green-fg">import</span> IWord2Vec
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;rivertext&#39;</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2263,8 +2294,8 @@ from rivertext.models import IWord2Vec</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2296,6 +2327,35 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-2-5522f4f7b8c8&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>ts1 <span class="ansi-blue-fg">=</span> TweetStream<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;tweets.txt&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> dataloader1 <span class="ansi-blue-fg">=</span> DataLoader<span class="ansi-blue-fg">(</span>ts1<span class="ansi-blue-fg">,</span> batch_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">32</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;TweetStream&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2308,8 +2368,8 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2355,6 +2415,38 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-3-e44826ea00f0&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> isg = IWord2Vec(
+</span><span class="ansi-green-intense-fg ansi-bold">      2</span>     vocab_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">1_000_000</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span>     unigram_table_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">100_000_000</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>     window_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">3</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>     sg<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;IWord2Vec&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2367,8 +2459,8 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2398,6 +2490,35 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
     </div>
 
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-4-4106ab5ed10d&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">for</span> tweets <span class="ansi-green-fg">in</span> dataloader1<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span>     isg<span class="ansi-blue-fg">.</span>learn_many<span class="ansi-blue-fg">(</span>tweets<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;dataloader1&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -2457,8 +2578,13 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>100%|██████████| 4008/4008 [00:00&lt;00:00, 44154.74it/s]
-</pre>
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-5-10914195be52&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>embs1 <span class="ansi-blue-fg">=</span> isg<span class="ansi-blue-fg">.</span>vocab2dict<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;isg&#39; is not defined</pre>
 </div>
 </div>
 
@@ -2508,35 +2634,18 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-6-fcd849e256b3&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>embs1<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;is&#39;</span><span class="ansi-blue-fg">]</span>
 
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>array([-0.06146777, -0.10630005, -0.1922907 ,  0.0110179 ,  0.16168031,
-       -0.12005997,  0.22565529, -0.10623856,  0.3006509 , -0.07627785,
-        0.09304182,  0.14378536, -0.22917135, -0.11054306, -0.13227528,
-        0.1383731 , -0.18275735,  0.10016449,  0.13796264,  0.08814056,
-       -0.13809252,  0.09865604, -0.19875257,  0.15052651,  0.13052551,
-       -0.12869677,  0.3471614 , -0.0551182 , -0.11965147,  0.12429459,
-       -0.14095694, -0.11594745,  0.11796393, -0.05637971, -0.11634707,
-        0.06510879,  0.10471732,  0.3187372 , -0.18561774,  0.24938932,
-       -0.0380601 ,  0.01831627,  0.10087218,  0.12449042,  0.07407766,
-       -0.04841897,  0.12286422,  0.11491171,  0.10842728,  0.02809177,
-        0.27761373, -0.13815518,  0.06483039,  0.23666422, -0.06453735,
-        0.0233727 ,  0.24206828,  0.03557052,  0.11157909, -0.03370365,
-       -0.04777442, -0.08533367, -0.1449927 , -0.01723759, -0.00275725,
-        0.08194362,  0.03086768,  0.10220087,  0.12030703,  0.15662926,
-       -0.04722953,  0.1515336 , -0.05993268,  0.20403753,  0.10222948,
-       -0.09652078, -0.00210496, -0.08392535, -0.0677297 , -0.04900807,
-       -0.11460111, -0.19537608,  0.21343817, -0.18397935,  0.10313306,
-       -0.03056475,  0.09214378,  0.10187343, -0.08384579, -0.12559664,
-        0.13254578,  0.04518158, -0.0824452 ,  0.08358401,  0.1693467 ,
-       -0.02630098,  0.16686118, -0.13032284, -0.01564851, -0.03881665],
-      dtype=float32)</pre>
+<span class="ansi-red-fg">NameError</span>: name &#39;embs1&#39; is not defined</pre>
 </div>
-
 </div>
 
 </div>
@@ -2566,8 +2675,8 @@ dataloader1 = DataLoader(ts1, batch_size=32)</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2599,6 +2708,35 @@ dataloader2 = DataLoader(ts2, batch_size=32)</div>
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-7-bc9d12e3b6d0&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>ts2 <span class="ansi-blue-fg">=</span> TweetStream<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;tweets.txt&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> dataloader2 <span class="ansi-blue-fg">=</span> DataLoader<span class="ansi-blue-fg">(</span>ts2<span class="ansi-blue-fg">,</span> batch_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">32</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;TweetStream&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2611,8 +2749,8 @@ dataloader2 = DataLoader(ts2, batch_size=32)</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2656,6 +2794,38 @@ dataloader2 = DataLoader(ts2, batch_size=32)</div>
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-8-4e86c76936dc&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> icbow = IWord2Vec(
+</span><span class="ansi-green-intense-fg ansi-bold">      2</span>     vocab_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">1_000_000</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span>     unigram_table_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">100_000_000</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>     window_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">3</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>     neg_samples_sum<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">3</span><span class="ansi-blue-fg">,</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;IWord2Vec&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2668,8 +2838,8 @@ dataloader2 = DataLoader(ts2, batch_size=32)</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2699,6 +2869,35 @@ dataloader2 = DataLoader(ts2, batch_size=32)</div>
     </div>
 
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-9-f029b0e670bf&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">for</span> tweets <span class="ansi-green-fg">in</span> dataloader2<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span>     icbow<span class="ansi-blue-fg">.</span>learn_many<span class="ansi-blue-fg">(</span>tweets<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;dataloader2&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -2758,8 +2957,13 @@ dataloader2 = DataLoader(ts2, batch_size=32)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>100%|██████████| 4008/4008 [00:00&lt;00:00, 43310.43it/s]
-</pre>
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-10-9ceb86467a84&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>embs2 <span class="ansi-blue-fg">=</span> icbow<span class="ansi-blue-fg">.</span>vocab2dict<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;icbow&#39; is not defined</pre>
 </div>
 </div>
 
@@ -2809,35 +3013,18 @@ dataloader2 = DataLoader(ts2, batch_size=32)</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-11-74be4a67813d&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>embs2<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;is&#39;</span><span class="ansi-blue-fg">]</span>
 
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>array([-0.05074219,  0.2546758 , -0.12193271, -0.00098864,  0.16764653,
-       -0.09565799,  0.20964938,  0.20516622,  0.19785485,  0.08378827,
-       -0.13182402,  0.2730621 ,  0.11570194,  0.14177613,  0.01001941,
-       -0.16397211, -0.18959253, -0.04818182, -0.07412603,  0.15247285,
-       -0.22027299, -0.16518171, -0.16965395, -0.12614289,  0.1991023 ,
-       -0.18607473,  0.08992124, -0.1534458 , -0.39845377, -0.14295039,
-        0.18322298, -0.00464401,  0.1274748 ,  0.16183354,  0.21700233,
-       -0.20297879,  0.20864679,  0.21670198,  0.12513739, -0.1776107 ,
-       -0.2393329 ,  0.19818975,  0.10885444, -0.07346503, -0.19703631,
-       -0.15443027, -0.15884311, -0.1349944 , -0.17922892, -0.04248887,
-       -0.139746  ,  0.06786659, -0.14345333, -0.30106673,  0.16471273,
-        0.11461564,  0.06341767,  0.11282301, -0.15753764,  0.37319857,
-       -0.15100403,  0.10005477, -0.14702126, -0.07970752,  0.20441839,
-        0.19962174, -0.09857872,  0.14962487, -0.19236602,  0.21228589,
-       -0.17317301,  0.06370542,  0.02858823, -0.15823382,  0.19431174,
-       -0.25139263,  0.04409417,  0.11776678, -0.17416371, -0.1461162 ,
-        0.23959775, -0.18863592,  0.17246243, -0.07957716, -0.12456434,
-        0.09844831,  0.18376155, -0.24482632, -0.11088052,  0.1493963 ,
-       -0.08460099, -0.30686945,  0.08467549,  0.11475082,  0.1645318 ,
-       -0.21872506, -0.23923352,  0.1336801 , -0.18424137, -0.09564644],
-      dtype=float32)</pre>
+<span class="ansi-red-fg">NameError</span>: name &#39;embs2&#39; is not defined</pre>
 </div>
-
 </div>
 
 </div>

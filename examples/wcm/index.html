@@ -2016,8 +2016,8 @@ Licensed under the Apache License, Version 2.0.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2053,6 +2053,37 @@ from rivertext.models import WordContextMatrix</div>
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-1-de9e1f79edf3&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> rivertext<span class="ansi-blue-fg">.</span>utils <span class="ansi-green-fg">import</span> TweetStream
+<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-green-fg">from</span> torch<span class="ansi-blue-fg">.</span>utils<span class="ansi-blue-fg">.</span>data <span class="ansi-green-fg">import</span> DataLoader
+<span class="ansi-green-intense-fg ansi-bold">      3</span> 
+<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-green-fg">from</span> rivertext<span class="ansi-blue-fg">.</span>models <span class="ansi-green-fg">import</span> WordContextMatrix
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;rivertext&#39;</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2065,8 +2096,8 @@ from rivertext.models import WordContextMatrix</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2098,6 +2129,35 @@ dataloader = DataLoader(ts, batch_size=32)</div>
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-2-f9943f89a68a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>ts <span class="ansi-blue-fg">=</span> TweetStream<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;tweets.txt&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> dataloader <span class="ansi-blue-fg">=</span> DataLoader<span class="ansi-blue-fg">(</span>ts<span class="ansi-blue-fg">,</span> batch_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">32</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;TweetStream&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2110,8 +2170,8 @@ dataloader = DataLoader(ts, batch_size=32)</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2149,6 +2209,38 @@ dataloader = DataLoader(ts, batch_size=32)</div>
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-3-c6751943e162&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> wcm = WordContextMatrix(
+</span><span class="ansi-green-intense-fg ansi-bold">      2</span>     vocab_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">1_000_000</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span>     window_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">3</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>     context_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">500</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span> )
+
+<span class="ansi-red-fg">NameError</span>: name &#39;WordContextMatrix&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2161,8 +2253,8 @@ dataloader = DataLoader(ts, batch_size=32)</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2194,6 +2286,35 @@ dataloader = DataLoader(ts, batch_size=32)</div>
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-4-8d27809fc479&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">for</span> tweet <span class="ansi-green-fg">in</span> dataloader<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span>     wcm<span class="ansi-blue-fg">.</span>learn_many<span class="ansi-blue-fg">(</span>tweet<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;dataloader&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2206,8 +2327,8 @@ dataloader = DataLoader(ts, batch_size=32)</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2235,6 +2356,34 @@ dataloader = DataLoader(ts, batch_size=32)</div>
     </div>
 
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-5-d4f3f9c11bd8&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>embs <span class="ansi-blue-fg">=</span> wcm<span class="ansi-blue-fg">.</span>vocab2dict<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;wcm&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -2279,114 +2428,18 @@ dataloader = DataLoader(ts, batch_size=32)</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-6-446f21e2ff5c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>embs<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;gluetext&#39;</span><span class="ansi-blue-fg">]</span>
 
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>array([[-4.90652806e-01, -9.18516749e-01, -6.67474011e-01,
-        -1.02900223e-01, -1.54992910e-01, -3.45520332e-01,
-         2.82318190e-01, -2.02635024e-01, -2.78762428e-01,
-        -2.21729995e-01,  5.05685225e-02, -3.53309929e-01,
-        -4.51984338e-01, -1.87177402e-01,  4.39746137e-01,
-        -2.61922724e-01,  3.43171944e-02,  3.24519361e-01,
-        -3.36383529e-01, -6.55033069e-01,  7.39632709e-01,
-         8.04899118e-02,  3.07769806e-01, -5.81218723e-02,
-        -2.41607937e-01, -1.00179506e-01,  1.63125113e-01,
-         5.64900929e-01, -2.12086767e-01,  2.39328336e-01,
-         2.49869090e-01, -5.76718616e-02,  4.52973547e-02,
-         3.34887011e-01,  5.16206311e-01,  3.34740876e-01,
-        -1.81087225e-01,  3.71403378e-01,  1.33726355e-01,
-        -4.68918974e-01,  1.77899798e-01, -2.06579819e-01,
-        -9.01408774e-02,  1.48104612e-01,  3.29394079e-01,
-        -3.20459440e-01, -1.41673317e-01,  2.10159711e-01,
-         4.36535989e-01, -3.38868503e-01, -2.52990762e-01,
-         9.77968836e-02, -6.41711442e-02,  5.04988068e-02,
-        -2.40970273e-01,  3.66003001e-01, -3.07148065e-01,
-        -1.06799980e+00, -4.75016152e-01,  2.40213517e-01,
-         2.48416454e-01,  4.73811350e-01,  1.12027771e+00,
-        -9.82033901e-01,  1.98116263e-01,  9.10080493e-02,
-        -5.60286548e-01,  1.97339230e-03,  5.59240401e-01,
-         8.36165127e-01,  5.29804634e-01, -1.23382016e-01,
-         2.47684639e-01, -9.39987524e-02,  3.94344702e-01,
-        -9.92560596e-01,  2.90654187e-01, -3.44855629e-01,
-         3.25019583e-02,  3.97137978e-01, -2.87738852e-01,
-         5.17277333e-01,  6.29967212e-01,  3.90981990e-01,
-        -2.99334631e-01,  2.75965289e-01, -6.37330984e-01,
-         1.26546298e+00,  3.27923559e-01, -2.54623820e-01,
-        -7.80698485e-01, -7.54576571e-01,  4.71543082e-01,
-        -9.30703052e-01, -3.96869722e-01, -2.05480406e-01,
-         1.22545145e-01, -2.78729685e-01,  1.32245620e+00,
-         1.54998649e-01, -2.12645341e-01,  1.06241824e+00,
-         1.50942530e+00, -6.39712842e-01,  9.22891350e-01,
-         1.17585794e+00,  1.40357940e-01, -3.34316877e-01,
-         4.64781488e-01, -1.72796634e-01, -1.44073541e+00,
-        -1.53905033e+00,  2.34155104e-01, -3.24328975e-01,
-        -5.07006049e-02, -1.42947527e+00,  2.72071063e-01,
-        -6.97142358e-01,  1.18615382e+00, -2.38939284e-01,
-        -7.66793068e-01, -1.80780321e+00,  6.58257968e-02,
-         1.26952230e+00, -2.81054508e-01, -1.07527143e+00,
-        -1.56790856e+00,  1.71503259e+00, -6.25189924e-02,
-         2.07783652e-01,  6.28736343e-02,  9.15621295e-01,
-        -1.17743580e+00, -3.89847459e-01,  1.09568752e-01,
-         5.75304952e-01,  1.27752813e+00, -8.67061168e-01,
-        -1.00514240e+00, -1.70419923e+00,  8.92503615e-01,
-         2.40486362e+00,  1.31356963e+00,  7.50706864e-01,
-        -1.78292731e+00, -1.05828628e+00,  1.21554894e+00,
-         2.94371214e+00,  1.28960267e+00, -1.13278505e+00,
-         8.81033948e-01, -8.69615781e-01,  3.52718459e-01,
-         3.52906338e-01,  3.37549977e-01,  9.38708972e-02,
-         2.02626615e+00, -1.02265660e+00,  1.21799257e-01,
-        -1.47324956e+00,  1.46474802e-01,  9.29371420e-02,
-        -2.60725805e-01, -7.02584490e-01, -7.29818401e-01,
-        -7.31900486e-01, -1.75774859e+00,  7.55011661e-01,
-        -2.00921206e-01,  6.20688686e-01,  1.25329296e+00,
-         2.64736467e-01,  9.74099041e-01, -3.08356461e-01,
-        -1.35727755e+00, -4.38022897e-01,  4.55865579e-01,
-        -2.02473478e+00,  4.63330362e-01, -1.82955986e+00,
-         3.03418926e-01, -6.41470841e-01, -1.99613145e-01,
-        -6.45620470e-01,  5.51158284e-01,  7.01643988e-01,
-         3.21396146e-01,  2.26252754e-01,  5.85510256e-01,
-        -2.21027687e-01, -1.66461857e+00, -1.05060777e+00,
-         8.58148147e-01, -1.36802196e-01,  1.56200771e+00,
-         7.83830639e-01, -1.23925022e-01, -2.88155881e-01,
-         1.35894298e+00,  4.14229439e-01,  7.02326405e-01,
-         8.71239710e-01,  3.90028491e-01,  4.27323460e-01,
-        -3.85758856e-01, -6.08631234e-01,  1.78839110e-01,
-         9.58856656e-01,  7.60322672e-01,  6.51214006e-01,
-         1.35673693e-01, -3.58601403e-01, -7.29091952e-01,
-         8.24477301e-01, -8.31991769e-01, -8.11403964e-01,
-         1.40973869e+00,  5.33685715e-01,  3.63657244e-01,
-         7.26528319e-01, -2.65026178e-01, -5.68994750e-01,
-        -4.39698058e-01,  7.96342082e-01, -2.37796533e-01,
-        -1.21507735e+00, -9.70467109e-02,  2.45128000e-01,
-        -6.75622897e-01,  9.93928960e-01,  6.42136463e-01,
-        -3.48283922e-01,  2.53559392e-01,  1.39617634e+00,
-         1.08382872e+00,  4.89719692e-01,  1.50991927e-01,
-         2.52826242e-02,  3.90234888e-01, -5.03304356e-02,
-        -1.70063943e-01,  1.07221291e+00, -4.49215414e-01,
-         4.76097964e-01, -5.29014518e-01, -5.35815498e-01,
-         4.79080196e-01, -2.54085315e-01,  1.91835699e-01,
-        -9.61841030e-02,  7.46245696e-01,  2.80626827e-01,
-         7.21944388e-01,  6.34098752e-01, -4.91180141e-01,
-         5.27584767e-01,  2.70127471e-02, -3.35708065e-01,
-         3.88545582e-01,  7.77111753e-01, -6.90002379e-01,
-         8.22718046e-01, -5.73572792e-01,  1.33406528e+00,
-         2.67521433e-01, -4.59434381e-01, -4.86135955e-01,
-        -6.02902564e-01, -3.49972084e-01,  1.06183081e+00,
-         1.44361204e-01, -7.54230670e-01,  6.96012003e-01,
-         8.88937340e-01, -4.02718504e-02,  3.22911410e-01,
-         2.75457038e-01, -1.15907501e-01,  1.03993492e-01,
-        -8.52339506e-01,  5.50413917e-01,  7.70709610e-01,
-         1.20974553e-01, -3.62673831e-01, -1.09811966e+00,
-        -9.81264351e-01,  7.58735858e-01,  1.17548284e+00,
-        -9.49592648e-01, -3.05708103e-01, -5.58342723e-01,
-        -1.59878677e-01,  6.42023309e-01, -2.94845265e-01,
-        -3.38485430e-01,  5.40134877e-02,  7.41025728e-01,
-         1.21496052e-01, -6.15879181e-01, -1.69602130e-01]])</pre>
+<span class="ansi-red-fg">NameError</span>: name &#39;embs&#39; is not defined</pre>
 </div>
-
 </div>
 
 </div>
