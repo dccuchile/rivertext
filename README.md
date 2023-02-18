@@ -22,6 +22,12 @@ The official documentation can be found at this [link](https://dccuchile.github.
 Installation
 ============
 
+RiverText is meant to work with Python 3.10 and above. Installation can be done via ```pip```:
+
+```
+pip install rivertext
+```
+
 Requirements
 ------------
 
@@ -34,6 +40,7 @@ These package will be installed along with the package, in case these have not a
 5. scipy
 6. torch
 7. tqdm
+8 word-embeddings-benchmarks
 
 Contributing
 ------------

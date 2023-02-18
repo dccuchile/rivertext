@@ -2,6 +2,12 @@
 
 ## Installation
 
+RiverText is meant to work with Python 3.10 and above. Installation can be done via ```pip```:
+
+```
+pip install rivertext
+```
+
 Feel welcome to [open an issue on GitHub](https://github.com/dccuchile/rivertext/issues/new) if you are having any trouble.
 
 ## Usage
