@@ -148,20 +148,42 @@ class WordContextMatrix(IWVBase):
             >>>  wcm.transform_one('hello')
             [0.77816248, 0.99913448, 0.14790398]
         """
+
         tokens = self.process_text(x[0])
         for w in tokens:
+
             self.d += 1
             self.vocab.add(w)
+
             if self.vocab.max_size == self.vocab.size:
-                self._reduce_vocab()
+                self.reduce_vocab()
 
             i = tokens.index(w)
             contexts = _get_contexts(i, self.window_size, tokens)
+
+            if self.reduced_emb_dim and w in self.vocab.word2idx:
+                self.modified_words.add(self.vocab.word2idx[w])
+
             for c in contexts:
                 self.contexts.add(c)
                 row = self.vocab.word2idx.get(w, 0)
                 col = self.contexts.word2idx.get(c, 0)
                 self.coocurence_matrix[row, col] += 1
+
+        # tokens = self.process_text(x[0])
+        # for w in tokens:
+        #     self.d += 1
+        #     self.vocab.add(w)
+        #     if self.vocab.max_size == self.vocab.size:
+        #         self.reduce_vocab()
+
+        #     i = tokens.index(w)
+        #     contexts = _get_contexts(i, self.window_size, tokens)
+        #     for c in contexts:
+        #         self.contexts.add(c)
+        #         row = self.vocab.word2idx.get(w, 0)
+        #         col = self.contexts.word2idx.get(c, 0)
+        #         self.coocurence_matrix[row, col] += 1
 
     def learn_many(self, X: List[str], y=None, **kwargs) -> None:
         """Train a mini-batch of text features.
@@ -259,7 +281,7 @@ class WordContextMatrix(IWVBase):
         return np.array(embedding)
 
     def _reduced_emb2dict(self) -> Dict[str, np.ndarray]:
-        if self.reduced_emb_dim:
+        if self.reduced_emb_dim and len(self.modified_words) > 0:
             indexes = np.array(list(self.modified_words), dtype=float)
             embs = self.transformer.fit_transform(self.get_embeddings(indexes))
 
@@ -269,7 +291,7 @@ class WordContextMatrix(IWVBase):
 
         embeddings = {}
         for word, idx in self.vocab.word2idx.items():
-            embeddings[word] = self.emb_matrix[idx].toarray()
+            embeddings[word] = self.emb_matrix[idx].toarray().reshape((-1,))
         return embeddings
 
     def _vocab2dict(self):
