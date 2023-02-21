@@ -4,17 +4,17 @@ from rivertext.utils import TweetStream
 from rivertext.models import WordContextMatrix
 
 
-# def test_learn_one():
-#     ts = TweetStream("./tests/tweets/tweets.txt")
-#     dataloader = DataLoader(ts, batch_size=1)
-#     wcm = WordContextMatrix()
-#     for tweet in dataloader:
-#         wcm.learn_one(tweet)
-#     embs = wcm.vocab2dict()
+def test_learn_one():
+    ts = TweetStream("./tests/tweets/tweets.txt")
+    dataloader = DataLoader(ts, batch_size=1)
+    wcm = WordContextMatrix()
+    for tweet in dataloader:
+        wcm.learn_one(tweet)
+    embs = wcm.vocab2dict()
 
-#     for word, emb in embs.items():
-#         assert isinstance(word, str)
-#         assert isinstance(emb, np.ndarray)
+    for word, emb in embs.items():
+        assert isinstance(word, str)
+        assert isinstance(emb, np.ndarray)
 
 
 def test_learn_one_without_reduction():

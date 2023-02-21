@@ -263,8 +263,9 @@ class PrepSG(Preprocessing):
         contexts = []
         neg_samples = []
         for tweet in batch:
-
+            print(tweet)
             for target_idx, token in enumerate(tweet):
+                print(target_idx, token)
                 self.update_unigram_table(token)
 
             tokens_subsample = []
@@ -273,6 +274,7 @@ class PrepSG(Preprocessing):
                 if w in self.vocab.word2idx and random.random() < self.subsample_prob(
                     w
                 ):
+                    print(f"w = {w}.")
                     tokens_subsample.append(w)
 
             n = len(tokens_subsample)

@@ -217,7 +217,8 @@ class IWord2Vec(IWVBase):
 
         """
         tokens = self.process_text(x[0])
-        batch = self.prep(tokens)
+        batch = self.prep([tokens])
+        print(self.prep.vocab.counter)
         targets = batch[0].to(self.device)
         contexts = batch[1].to(self.device)
         neg_samples = batch[2].to(self.device)
