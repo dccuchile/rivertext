@@ -96,37 +96,17 @@ References
 ========
 
 ```bibtex
-@article{montiel2021river,
-  title={River: machine learning for streaming data in Python},
-  author={Montiel, Jacob and Halford, Max and Mastelini, Saulo Martiello and Bolmier, Geoffrey and Sourty,
-    Raphael and Vaysse, Robin and Zouitine, Adil and Gomes, Heitor Murilo and Read, Jesse and Abdessalem,
-    Talel and others},
-  year={2021}
-}
-
-@article{bravo2022incremental,
-  title={Incremental Word Vectors for Time-Evolving Sentiment Lexicon Induction},
-  author={Bravo-Marquez, Felipe and Khanchandani, Arun and Pfahringer, Bernhard},
-  journal={Cognitive Computation},
-  volume={14},
-  number={1},
-  pages={425--441},
-  year={2022},
-  publisher={Springer}
-}
-
-@article{kaji2017incremental,
-  title={Incremental skip-gram model with negative sampling},
-  author={Kaji, Nobuhiro and Kobayashi, Hayato},
-  journal={arXiv preprint arXiv:1704.03956},
-  year={2017}
+@article{iturra2023rivertext,
+  title={A Python Library for Training and Evaluating Incremental Word Embeddings from Text Data Streams},
+  author={Iturra-Bocaz, Gabriel and Bravo-Marquez, Felipe},
+  year={2023}
 }
 ```
 
 Team
 ====
 
-- [Gabriel Iturra](https://giturra.github.io/)
+- [Gabriel Iturra-Bocaz](https://giturra.github.io/)
 - [Felipe Bravo-Marquez](https://felipebravom.com/)
 
 Contact
