@@ -96,10 +96,22 @@ References
 ========
 
 ```bibtex
-@article{iturra2023rivertext,
-  title={A Python Library for Training and Evaluating Incremental Word Embeddings from Text Data Streams},
-  author={Iturra-Bocaz, Gabriel and Bravo-Marquez, Felipe},
-  year={2023}
+@inproceedings{10.1145/3539618.3591908,
+author = {Iturra-Bocaz, Gabriel and Bravo-Marquez, Felipe},
+title = {RiverText: A Python Library for Training and Evaluating Incremental Word Embeddings from Text Data Streams},
+year = {2023},
+isbn = {9781450394086},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3539618.3591908},
+doi = {10.1145/3539618.3591908},
+abstract = {Word embeddings have become essential components in various information retrieval and natural language processing tasks, such as ranking, document classification, and question answering. However, despite their widespread use, traditional word embedding models present a limitation in their static nature, which hampers their ability to adapt to the constantly evolving language patterns that emerge in sources such as social media and the web (e.g., new hashtags or brand names). To overcome this problem, incremental word embedding algorithms are introduced, capable of dynamically updating word representations in response to new language patterns and processing continuous data streams.This paper presents RiverText, a Python library for training and evaluating incremental word embeddings from text data streams. Our tool is a resource for the information retrieval and natural language processing communities that work with word embeddings in streaming scenarios, such as analyzing social media. The library implements different incremental word embedding techniques, such as Skip-gram, Continuous Bag of Words, and Word Context Matrix, in a standardized framework. In addition, it uses PyTorch as its backend for neural network training.We have implemented a module that adapts existing intrinsic static word embedding evaluation tasks for word similarity and word categorization to a streaming setting. Finally, we compare the implemented methods with different hyperparameter settings and discuss the results.Our open-source library is available at https://github.com/dccuchile/rivertext.},
+booktitle = {Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+pages = {3027–3036},
+numpages = {10},
+keywords = {data streams, word embeddings, incremental learning},
+location = {Taipei, Taiwan},
+series = {SIGIR '23}
 }
 ```
 
