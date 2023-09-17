@@ -40,7 +40,7 @@ These package will be installed along with the package, in case these have not a
 5. scipy
 6. torch
 7. tqdm
-8 word-embeddings-benchmarks
+8. word-embeddings-benchmarks
 
 Contributing
 ------------
