@@ -95,7 +95,7 @@ Changelog
 Citation
 ========
 
-Please cite the following paper if using this package in an academic publication:
+Please cite the following paper if you use this package in an academic publication:
 
 G. Iturra-Bocaz and F. Bravo-Marquez [RiverText: A Python Library for Training and Evaluating Incremental Word Embeddings from Text Data Stream. In Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR 2023)](https://dl.acm.org/doi/10.1145/3539618.3591908), Taipei, Taiwan.
 
