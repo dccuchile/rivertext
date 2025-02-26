@@ -127,4 +127,4 @@ Team
 
 Contact
 ------------
-Please write to gabriel.e.iturrabocaz@uis.no for inquiries about the software. You are also welcome to do a pull request or publish an issue in the RiverText repository on Github.
+Please write to gabriel.e.iturrabocaz at uis.no for inquiries about the software. You are also welcome to do a pull request or publish an issue in the RiverText repository on Github.
