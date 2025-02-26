@@ -122,9 +122,9 @@ series = {SIGIR '23}
 Team
 ====
 
-- [Gabriel Iturra-Bocaz](https://giturra.github.io/)
+- [Gabriel Iturra-Bocaz](https://giturra.cl/)
 - [Felipe Bravo-Marquez](https://felipebravom.com/)
 
 Contact
 ------------
-Please write to gabrieliturrab at ug.chile.cl for inquiries about the software. You are also welcome to do a pull request or publish an issue in the RiverText repository on Github.
+Please write to gabriel.e.iturrabocaz@uis.no for inquiries about the software. You are also welcome to do a pull request or publish an issue in the RiverText repository on Github.
